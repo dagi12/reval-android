@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">REVAL</string>
     <string name="reval_logo_image">Reval logo image</string>
-    <string name="student_login">ZALOGUJ SIĘ JAKO STUDENT</string>
-    <string name="admin_login">ZALOGUJ SIĘ JAKO ADMIN</string>
+    <string name="student_login">LOG IN AS STUDENT</string>
+    <string name="admin_login">LOG IN AS ADMIN</string>
 </resources>
