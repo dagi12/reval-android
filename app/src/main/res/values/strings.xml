@@ -4,4 +4,10 @@
     <string name="reval_logo_image">Reval logo image</string>
     <string name="student_login">ZALOGUJ SIĘ JAKO STUDENT</string>
     <string name="admin_login">ZALOGUJ SIĘ JAKO ADMIN</string>
+    <string name="empty_index">Nr indeksu nie może być pusty</string>
+    <string name="empty_password">Hasło nie może być puste</string>
+    <string name="short_password">Hasło musi mieć przynajmniej 6 znaków</string>
+    <string name="prompt_index">Wpisz swój indeks</string>
+    <string name="prompt_password">Wpisz hasło</string>
+    <string name="sign_in">Sign in</string>
 </resources>

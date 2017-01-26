@@ -21,8 +21,8 @@ import okhttp3.Response;
 import pl.edu.amu.wmi.reval.common.error.ErrorService;
 import pl.edu.amu.wmi.reval.common.error.ErrorServiceImpl;
 import pl.edu.amu.wmi.reval.common.services.PicassoCache;
-import pl.edu.amu.wmi.reval.task.TaskService;
-import pl.edu.amu.wmi.reval.task.TaskServiceImpl;
+import pl.edu.amu.wmi.reval.subject.SubjectService;
+import pl.edu.amu.wmi.reval.subject.SubjectServiceImpl;
 import pl.edu.amu.wmi.reval.user.PreferencesManager;
 import pl.edu.amu.wmi.reval.user.UserContext;
 import retrofit2.Retrofit;
@@ -31,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class MyApplicationModule {
 
-    private static final String API_URL = "http://10.63.105.231/";
+    private static final String API_URL = "http://reval.usermd.net/";
     private final Application mApplication;
 
     public MyApplicationModule(Application application) {
@@ -104,10 +104,11 @@ public class MyApplicationModule {
         return new PicassoCache();
     }
 
+
     @Provides
     @Singleton
-    TaskServiceImpl provideTaskServiceIpml(Retrofit retrofit) {
-        return new TaskServiceImpl(retrofit.create(TaskService.class));
+    SubjectServiceImpl provideSubjectServiceImpl(Retrofit retrofit) {
+        return new SubjectServiceImpl(retrofit.create(SubjectService.class));
     }
 
 }

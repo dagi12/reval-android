@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
+            android:name=".SignInActivity"
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,15 @@
         </activity>
         <activity
             android:name=".task.TaskActivity"
-            android:parentActivityName=".LoginActivity" />
+            android:parentActivityName=".SignInActivity" />
+        <activity
+            android:name=".CredentialsSignInActivity"
+            android:label="@string/sign_in"
+            android:parentActivityName=".SignInActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pl.edu.amu.wmi.reval.SignInActivity" />
+        </activity>
     </application>
 
 </manifest>

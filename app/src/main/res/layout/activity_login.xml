@@ -5,7 +5,7 @@
     style="@style/AppTheme.DefaultActivityPadding.LoginActivityStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pl.edu.amu.wmi.reval.LoginActivity">
+    tools:context="pl.edu.amu.wmi.reval.SignInActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
