@@ -1,4 +1,4 @@
-package pl.edu.amu.wmi.reval.question;
+package pl.edu.amu.wmi.reval.task;
 
 
 import junit.framework.Assert;
@@ -13,20 +13,20 @@ import pl.edu.amu.wmi.reval.common.util.ListUtils;
 import pl.edu.amu.wmi.reval.di.AbstractDaggerServiceTest;
 import retrofit2.Response;
 
-public class QuestionServiceTest extends AbstractDaggerServiceTest {
+public class TaskServiceTest extends AbstractDaggerServiceTest {
 
-    private QuestionService questionService;
+    private TaskService taskService;
 
     @Before
     @Override
     public void setUp() {
         super.setUp();
-        questionService = retrofit.create(QuestionService.class);
+        taskService = retrofit.create(TaskService.class);
     }
 
     @Test
     public void getQuestions() throws IOException {
-        Response<List<Question>> response = questionService.getQuestions().execute();
+        Response<List<Task>> response = taskService.getTasks().execute();
         Assert.assertFalse(ListUtils.isEmpty(response.body()));
     }
 

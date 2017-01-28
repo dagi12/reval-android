@@ -1,13 +1,13 @@
-package pl.edu.amu.wmi.reval.question;
+package pl.edu.amu.wmi.reval.task;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 
-public interface QuestionService {
+public interface TaskService {
 
     @GET("api/question_list/?format=json")
-    Call<List<Question>> getQuestions();
+    Call<List<Task>> getTasks();
 
 }

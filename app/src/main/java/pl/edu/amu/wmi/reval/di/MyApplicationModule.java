@@ -25,6 +25,8 @@ import pl.edu.amu.wmi.reval.subject.SubjectService;
 import pl.edu.amu.wmi.reval.subject.SubjectServiceImpl;
 import pl.edu.amu.wmi.reval.user.PreferencesManager;
 import pl.edu.amu.wmi.reval.user.UserContext;
+import pl.edu.amu.wmi.reval.user.UserService;
+import pl.edu.amu.wmi.reval.user.UserServiceImpl;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -40,13 +42,13 @@ public class MyApplicationModule {
 
     @Provides
     @Singleton
-    SharedPreferences provideSharedPreferences() {
+    protected SharedPreferences provideSharedPreferences() {
         return PreferenceManager.getDefaultSharedPreferences(mApplication);
     }
 
     @Provides
     @Singleton
-    Gson provideGson() {
+    protected Gson provideGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
         return gsonBuilder.create();
@@ -54,19 +56,19 @@ public class MyApplicationModule {
 
     @Provides
     @Singleton
-    PreferencesManager providePreferencesManager(SharedPreferences sharedPreferences, Gson gson) {
+    protected PreferencesManager providePreferencesManager(SharedPreferences sharedPreferences, Gson gson) {
         return new PreferencesManager(sharedPreferences, gson);
     }
 
     @Provides
     @Singleton
-    UserContext provideUserContext(PreferencesManager preferencesManager) {
+    protected UserContext provideUserContext(PreferencesManager preferencesManager) {
         return new UserContext(preferencesManager);
     }
 
     @Provides
     @Singleton
-    OkHttpClient provideOkHttpClient(final UserContext userContext) {
+    protected OkHttpClient provideOkHttpClient(final UserContext userContext) {
         return new OkHttpClient.Builder().addInterceptor(new Interceptor() {
 
             @Override
@@ -82,7 +84,7 @@ public class MyApplicationModule {
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit(OkHttpClient okHttpClient, Gson gson) {
+    protected Retrofit provideRetrofit(OkHttpClient okHttpClient, Gson gson) {
         return new Retrofit
                 .Builder()
                 .client(okHttpClient)
@@ -93,22 +95,28 @@ public class MyApplicationModule {
 
     @Provides
     @Singleton
-    ErrorServiceImpl provideErrorService(Retrofit retrofit) {
+    protected ErrorServiceImpl provideErrorService(Retrofit retrofit) {
         ErrorService errorService = retrofit.create(ErrorService.class);
         return new ErrorServiceImpl(errorService, Thread.getDefaultUncaughtExceptionHandler());
     }
 
     @Provides
     @Singleton
-    PicassoCache provideCachedImageManager() {
+    protected PicassoCache provideCachedImageManager() {
         return new PicassoCache();
     }
 
 
     @Provides
     @Singleton
-    SubjectServiceImpl provideSubjectServiceImpl(Retrofit retrofit) {
+    protected SubjectServiceImpl provideSubjectServiceImpl(Retrofit retrofit) {
         return new SubjectServiceImpl(retrofit.create(SubjectService.class));
+    }
+
+    @Provides
+    @Singleton
+    protected UserServiceImpl provideUserService(Retrofit retrofit, UserContext userContext) {
+        return new UserServiceImpl(retrofit.create(UserService.class), userContext);
     }
 
 }

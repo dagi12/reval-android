@@ -1,12 +1,18 @@
 package pl.edu.amu.wmi.reval.user;
 
-public class User {
+import pl.edu.amu.wmi.reval.common.grid.AbstractRevalItem;
+
+public class User extends AbstractRevalItem {
     private String token;
 
-    private boolean isAdmin;
+    private boolean admin;
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     public String getToken() {

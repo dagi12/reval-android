@@ -13,13 +13,16 @@ public class UserContext {
         this.user = preferencesManager.getDetailedUser();
     }
 
-
     public User getUser() {
         return user;
     }
 
+    public void setUser(User user) {
+        preferencesManager.saveDetailedUser(user);
+        this.user = user;
+    }
 
-    public boolean isLoggedIn() {
+    public boolean isSignedIn() {
         return user != null;
     }
 }

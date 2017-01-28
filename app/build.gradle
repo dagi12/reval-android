@@ -9,8 +9,10 @@ buildscript {
     }
     dependencies {
         classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.2.1'
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.1'
     }
 }
+
 
 apply plugin: "org.sonarqube"
 
@@ -66,14 +68,22 @@ android {
     return void
 }
 
+apply plugin: 'com.getkeepsafe.dexcount'
+
+dexcount {
+    format = "list"
+    includeFieldCount = false
+    orderByMethodCount = true
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    testApt 'com.google.dagger:dagger-compiler:2.7'
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'com.google.dagger:dagger-compiler:2.7'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    androidTestCompile "org.robolectric:robolectric:3.0"
-    testApt 'com.google.dagger:dagger-compiler:2.7'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.okhttp:okhttp:2.7.5'
     compile 'com.android.support:recyclerview-v7:25.1.0'

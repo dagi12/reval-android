@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimaryLight">#48516A</color>
-    <color name="colorPrimary">#313D5E</color>
     <color name="well_color_light">#242939</color>
+    <color name="colorPrimary">#1D2232</color>
     <color name="well_color_dark">#161A26</color>
+    <color name="well_color_text">@color/button_color</color>
     <color name="colorPrimaryDark">#151925</color>
     <color name="colorPrimaryDarker">#FF131721</color>
+    <color name="icon_tint">#99A0AE</color>
     <color name="colorAccent">#626F3C</color>
     <color name="textColorSecondary">#626F3C</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="accent_tint">#E61057</color>
     <color name="button_color">#8FB027</color>
+    <color name="red">#9b0b0b</color>
 </resources>

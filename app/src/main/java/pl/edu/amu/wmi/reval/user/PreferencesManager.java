@@ -24,9 +24,13 @@ public class PreferencesManager {
             @Override
             public void run() {
                 SharedPreferences.Editor prefsEditor = mPrefs.edit();
-                String json = gson.toJson(myObject);
-                prefsEditor.putString(prefName, json);
-                prefsEditor.apply();
+                if (myObject == null) {
+                    String json = gson.toJson(myObject);
+                    prefsEditor.putString(prefName, json);
+                    prefsEditor.apply();
+                } else {
+                    prefsEditor.remove(prefName);
+                }
             }
         }.run();
     }
@@ -38,6 +42,10 @@ public class PreferencesManager {
 
     public User getDetailedUser() {
         return loadPref(User.class, DETAILED_USER_PREF_NAME);
+    }
+
+    void saveDetailedUser(User user) {
+        savePref(user, DETAILED_USER_PREF_NAME);
     }
 
 

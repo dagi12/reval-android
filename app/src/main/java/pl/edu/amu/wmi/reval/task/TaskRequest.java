@@ -1,15 +1,15 @@
-package pl.edu.amu.wmi.reval.question;
+package pl.edu.amu.wmi.reval.task;
 
-public class QuestionRequest {
+public class TaskRequest {
     private int topic;
     private int subject;
     private int maxPoints;
     private String question;
 
-    public QuestionRequest() {
+    public TaskRequest() {
     }
 
-    public QuestionRequest(int topic, int subject, int maxPoints, String question) {
+    public TaskRequest(int topic, int subject, int maxPoints, String question) {
 
         this.topic = topic;
         this.subject = subject;

@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = TestModule.class)
-public interface TestComponent {
+@Component(modules = JUnitTestModule.class)
+public interface JUnitTestComponent {
     void inject(AbstractDaggerServiceTest abstractDaggerServiceTest);
 }

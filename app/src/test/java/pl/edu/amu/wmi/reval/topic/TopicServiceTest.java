@@ -8,9 +8,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
 
-import pl.edu.amu.wmi.reval.common.util.ListUtils;
 import pl.edu.amu.wmi.reval.di.AbstractDaggerServiceTest;
-import pl.edu.amu.wmi.reval.subject.SubjectService;
 import retrofit2.Response;
 
 public class TopicServiceTest extends AbstractDaggerServiceTest {

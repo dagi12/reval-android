@@ -1,8 +1,5 @@
 package pl.edu.amu.wmi.reval.di;
 
-import android.app.Application;
-import android.content.SharedPreferences;
-
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -17,12 +14,11 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import pl.edu.amu.wmi.reval.user.UserContext;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
-public class TestModule {
+public class JUnitTestModule {
 
     private static final String API_URL = "http://reval.usermd.net/";
 

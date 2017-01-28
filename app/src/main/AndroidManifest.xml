@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SignInActivity"
+            android:launchMode="singleTask"
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,16 +20,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".task.TaskActivity"
-            android:parentActivityName=".SignInActivity" />
-        <activity
             android:name=".CredentialsSignInActivity"
             android:label="@string/sign_in"
-            android:parentActivityName=".SignInActivity">
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".task.TaskActivity"
+            android:label="@string/title_activity_task"
+            android:parentActivityName=".SignInActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.edu.amu.wmi.reval.SignInActivity" />
         </activity>
+        <activity android:name=".TaskPageActivity"></activity>
     </application>
 
 </manifest>

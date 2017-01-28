@@ -6,12 +6,15 @@ import android.content.Context;
 public class MyApplication extends Application {
 
 
-    private static MyApplicationComponent mComponent;
-
+    private static MyApplicationComponent component;
     private static Context context;
 
     public static MyApplicationComponent getComponent() {
-        return mComponent;
+        return component;
+    }
+
+    public void setComponent(MyApplicationComponent component) {
+        MyApplication.component = component;
     }
 
     public static Context getContext() {
@@ -19,7 +22,7 @@ public class MyApplication extends Application {
     }
 
     private static void assignComponent(Application application) {
-        mComponent = DaggerMyApplicationComponent
+        component = DaggerMyApplicationComponent
                 .builder()
                 .myApplicationModule(new MyApplicationModule(application))
                 .build();

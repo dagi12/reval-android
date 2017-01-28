@@ -9,5 +9,8 @@
     <string name="short_password">Password must have at least 6 characters</string>
     <string name="prompt_index">Enter your index</string>
     <string name="prompt_password">Enter your password</string>
+    <string name="prompt_login">Enter your login</string>
     <string name="sign_in">Zaloguj się</string>
+    <string name="sign_in_error_message">Wrong login or password</string>
+    <string name="log_out">Log out</string>
 </resources>
