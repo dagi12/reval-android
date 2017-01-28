@@ -11,7 +11,7 @@ public final class MockData {
         User user = new User();
         user.setId(0);
         user.setName("Eryk Mariankowski");
-        user.setAdmin(false);
+        user.setAdmin(true);
         return user;
     }
 

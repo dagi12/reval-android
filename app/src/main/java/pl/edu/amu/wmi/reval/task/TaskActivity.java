@@ -2,6 +2,7 @@ package pl.edu.amu.wmi.reval.task;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,18 +12,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import pl.edu.amu.wmi.reval.MockData;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.TaskPageActivity;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
 import pl.edu.amu.wmi.reval.common.exception.HiddenElementException;
 import pl.edu.amu.wmi.reval.di.MyApplication;
-import pl.edu.amu.wmi.reval.user.UserContext;
 
 public class TaskActivity extends RevalActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -51,6 +48,9 @@ public class TaskActivity extends RevalActivity
         MyApplication.getComponent().inject(this);
         ButterKnife.bind(this);
         setNavigationDrawer();
+        if (userContext.getUser().isAdmin()) {
+            addButton.setVisibility(View.VISIBLE);
+        }
     }
 
     //todo możliwe że do wyjebania
@@ -63,6 +63,7 @@ public class TaskActivity extends RevalActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -72,10 +73,12 @@ public class TaskActivity extends RevalActivity
             super.onBackPressed();
         }
     }
+
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.nav_camera) {}
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//        int id = item.getItemId();
+//        if (id == R.id.nav_camera) {
+//        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
