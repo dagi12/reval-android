@@ -13,6 +13,7 @@ import android.widget.TextView;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnEditorAction;
 import pl.edu.amu.wmi.reval.di.MyApplication;
@@ -62,6 +63,7 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
         }
         if (verify()) {
             loginInProgress = true;
+            userService.signIn(this, getIntent().getBooleanExtra(ADMIN_MODE, false));
         }
     }
 
@@ -70,6 +72,7 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
         super.onCreate(savedInstanceState);
         MyApplication.getComponent().inject(this);
         setContentView(R.layout.activity_credentials_sign_in);
+        ButterKnife.bind(this);
         if (getIntent().getBooleanExtra(ADMIN_MODE, false)) {
             loginView.setHint(R.string.prompt_index);
         }
@@ -97,12 +100,11 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
     public void onSignInSuccess() {
         loginInProgress = false;
         startActivity(new Intent(this, TaskActivity.class));
-        userService.signIn(this, getIntent().getBooleanExtra(ADMIN_MODE, false));
     }
 
     @Override
     public void onSignInFailure() {
-        loginInProgress = false;
+        loginInProgress =   false;
         errorMessage.setVisibility(View.VISIBLE);
     }
 }

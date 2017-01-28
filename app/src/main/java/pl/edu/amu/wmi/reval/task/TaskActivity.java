@@ -12,6 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,7 +26,10 @@ import pl.edu.amu.wmi.reval.common.exception.HiddenElementException;
 import pl.edu.amu.wmi.reval.di.MyApplication;
 
 public class TaskActivity extends RevalActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, TaskServiceImpl.TaskAdapter {
+
+    @Inject
+    TaskServiceImpl taskService;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -33,8 +40,10 @@ public class TaskActivity extends RevalActivity
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
+    private TaskFragment taskFragment;
+
     @OnClick(R.id.add_task)
-    void onClick(View view) {
+    void onClick() {
         if (!userContext.getUser().isAdmin()) {
             throw new HiddenElementException();
         }
@@ -51,6 +60,8 @@ public class TaskActivity extends RevalActivity
         if (userContext.getUser().isAdmin()) {
             addButton.setVisibility(View.VISIBLE);
         }
+        taskService.getTasks(this);
+        taskFragment = (TaskFragment) getFragmentManager().findFragmentById(R.id.task_fragment);
     }
 
     //todo możliwe że do wyjebania
@@ -82,6 +93,11 @@ public class TaskActivity extends RevalActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void setTasks(List<Task> tasks) {
+        taskFragment.setData(tasks);
     }
 
 }
