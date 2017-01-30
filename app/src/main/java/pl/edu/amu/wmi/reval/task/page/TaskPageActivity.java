@@ -1,12 +1,15 @@
-package pl.edu.amu.wmi.reval;
+package pl.edu.amu.wmi.reval.task.page;
 
 import android.os.Bundle;
 
 import butterknife.ButterKnife;
+import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
 import pl.edu.amu.wmi.reval.di.MyApplication;
 
 public class TaskPageActivity extends RevalActivity {
+
+    public static final String TASK_PARAM = "TASK";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -47,7 +47,7 @@ public abstract class MyCallback<T> implements Callback<T> {
         if (response.errorBody() != null) {
             String errorMessage = errorMessageFromResponse(response);
             if (response.code() == UNAUTHORIZED_STATUS_CODE) {
-                hardLogout();
+                myCallbackInjectHelper.userContext.hardLogout();
             }
             Log.e(TAG, errorMessage);
         } else {
@@ -61,13 +61,6 @@ public abstract class MyCallback<T> implements Callback<T> {
             myCallbackInjectHelper.errorService.caughtException(throwable);
             Log.e(TAG, FAILURE_MESSAGE, throwable);
         }
-    }
-
-    public void hardLogout() {
-        myCallbackInjectHelper.userContext.setUser(null);
-        Intent signOutIntent = new Intent(getContext(), SignInActivity.class);
-        signOutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        getContext().startActivity(signOutIntent);
     }
 
     public static class MyCallbackInjectHelper {

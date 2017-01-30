@@ -8,7 +8,11 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.mockito.Mockito;
+
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 import javax.inject.Singleton;
 
@@ -18,11 +22,14 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import pl.edu.amu.wmi.reval.MockData;
 import pl.edu.amu.wmi.reval.common.error.ErrorService;
 import pl.edu.amu.wmi.reval.common.error.ErrorServiceImpl;
+import pl.edu.amu.wmi.reval.common.services.MyCallback;
 import pl.edu.amu.wmi.reval.common.services.PicassoCache;
 import pl.edu.amu.wmi.reval.subject.SubjectService;
 import pl.edu.amu.wmi.reval.subject.SubjectServiceImpl;
+import pl.edu.amu.wmi.reval.task.Task;
 import pl.edu.amu.wmi.reval.task.TaskService;
 import pl.edu.amu.wmi.reval.task.TaskServiceImpl;
 import pl.edu.amu.wmi.reval.topic.TopicService;
@@ -31,16 +38,17 @@ import pl.edu.amu.wmi.reval.user.PreferencesManager;
 import pl.edu.amu.wmi.reval.user.UserContext;
 import pl.edu.amu.wmi.reval.user.UserService;
 import pl.edu.amu.wmi.reval.user.UserServiceImpl;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
-public class MyApplicationModule {
+public class TestModule {
 
     private static final String API_URL = "http://reval.usermd.net/";
     private final Application mApplication;
 
-    public MyApplicationModule(Application application) {
+    public TestModule(Application application) {
         mApplication = application;
     }
 
@@ -66,8 +74,8 @@ public class MyApplicationModule {
 
     @Provides
     @Singleton
-    protected UserContext provideUserContext(PreferencesManager preferencesManager) {
-        return new UserContext(preferencesManager);
+    protected UserContext provideUserContext() {
+        return Mockito.mock(UserContext.class);
     }
 
     @Provides
@@ -126,7 +134,12 @@ public class MyApplicationModule {
     @Provides
     @Singleton
     protected TaskServiceImpl provideTaskService(Retrofit retrofit) {
-        return new TaskServiceImpl(retrofit.create(TaskService.class));
+        return new TaskServiceImpl(retrofit.create(TaskService.class)) {
+            @Override
+            public void getTasks(final TaskAdapter taskAdapter) {
+                taskAdapter.setTasks(MockData.mockedTasks());
+            }
+        };
     }
 
     @Provides

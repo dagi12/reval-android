@@ -9,9 +9,10 @@
         <item name="colorControlNormal">@color/textColorPrimary</item>
         <item name="colorControlHighlight">@color/colorAccent</item>
         <item name="buttonStyle">@style/AppTheme.ButtonStyle</item>
+        <item name="android:dropDownListViewStyle">@style/AppTheme.Spinner</item>
     </style>
 
-    <style name="EditTextLabel" parent="TextAppearance.AppCompat">
+    <style name="EditTextLabel">
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
@@ -49,6 +50,13 @@
         <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingTop">0dp</item>
+    </style>
+
+    <style name="AppTheme.PaddingWithoutBottom">
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingBottom">0dp</item>
     </style>
 
     <style name="AppTheme.DefaultActivityPadding.Login">
@@ -91,13 +99,65 @@
 
     <style name="AppTheme.FloatingButtonStyle" parent="Widget.Design.FloatingActionButton">
         <item name="android:tint">@color/textColorPrimary</item>
-        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="backgroundTint">@color/colorPrimaryLight</item>
     </style>
 
-    <style name="AppTheme.Well.ListItem" parent="TextAppearance.AppCompat.Large">
+    <style name="AppTheme.Well.ListItem">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/well_color_text</item>
         <item name="android:padding">@dimen/list_item_padding</item>
     </style>
+
+
+    <style name="AppTheme.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingBottom">@dimen/title_padding</item>
+    </style>
+
+    <style name="AppTheme.PageLabel">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Paragraph">
+        <item name="android:layout_margin">@dimen/well_padding</item>
+    </style>
+
+    <style name="AppTheme.Paragraph.Content">
+        <item name="android:layout_margin">@dimen/default_margin</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="AppTheme.Spinner">
+        <item name="android:divider">#000000</item>
+        <item name="android:dividerHeight">10dp</item>
+    </style>
+
+    <style name="AppTheme.Dialog">
+        <item name="android:tint">@color/textColorPrimary</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.SpinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/well_color_text</item>
+        <item name="android:textSize">@dimen/dropdown_text_size</item>
+        <item name="android:padding">@dimen/title_padding</item>
+    </style>
+
+    <style name="AppTheme.SpinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">@dimen/title_padding</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/well_color_text</item>
+        <item name="android:textSize">@dimen/dropdown_text_size</item>
+    </style>
+
 
 </resources>

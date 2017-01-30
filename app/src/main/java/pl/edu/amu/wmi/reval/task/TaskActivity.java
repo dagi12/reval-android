@@ -20,35 +20,30 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.edu.amu.wmi.reval.R;
-import pl.edu.amu.wmi.reval.TaskPageActivity;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
 import pl.edu.amu.wmi.reval.common.exception.HiddenElementException;
+import pl.edu.amu.wmi.reval.common.grid.OnListFragmentInteractionListener;
 import pl.edu.amu.wmi.reval.di.MyApplication;
+import pl.edu.amu.wmi.reval.task.filter.TaskFilterDialogFragment;
+import pl.edu.amu.wmi.reval.task.filter.TaskRequestAdapter;
+import pl.edu.amu.wmi.reval.task.filter.TaskRequestParameters;
+import pl.edu.amu.wmi.reval.task.page.TaskPageActivity;
 
-public class TaskActivity extends RevalActivity
-        implements NavigationView.OnNavigationItemSelectedListener, TaskServiceImpl.TaskAdapter {
+public class TaskActivity extends RevalActivity implements
+        NavigationView.OnNavigationItemSelectedListener,
+        TaskServiceImpl.TaskAdapter,
+        OnListFragmentInteractionListener<Task>,
+        TaskRequestAdapter {
 
+    private static final String TAG = TaskActivity.class.getName();
     @Inject
     TaskServiceImpl taskService;
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
-    @BindView(R.id.add_task)
-    FloatingActionButton addButton;
-
     @BindView(R.id.nav_view)
     NavigationView navigationView;
-
     private TaskFragment taskFragment;
-
-    @OnClick(R.id.add_task)
-    void onClick() {
-        if (!userContext.getUser().isAdmin()) {
-            throw new HiddenElementException();
-        }
-        startActivity(new Intent(this, TaskPageActivity.class));
-    }
+    private TaskFilterDialogFragment taskFilterDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,16 +51,23 @@ public class TaskActivity extends RevalActivity
         setContentView(R.layout.activity_task);
         MyApplication.getComponent().inject(this);
         ButterKnife.bind(this);
-        setNavigationDrawer();
+        taskFilterDialog = TaskFilterDialogFragment.getInstance();
+
+        // TODO username
         if (userContext.getUser().isAdmin()) {
-            addButton.setVisibility(View.VISIBLE);
+//            addButton.setVisibility(View.VISIBLE);
         }
         taskService.getTasks(this);
         taskFragment = (TaskFragment) getFragmentManager().findFragmentById(R.id.task_fragment);
+        setNavigationView();
     }
 
-    //todo możliwe że do wyjebania
-    private void setNavigationDrawer() {
+    @Override
+    protected void setActionBar() {
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    private void setNavigationView() {
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -87,9 +89,13 @@ public class TaskActivity extends RevalActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.nav_camera) {
-//        }
+        int id = item.getItemId();
+        if (id == R.id.nav_camera) {
+            if (!userContext.getUser().isAdmin()) {
+                throw new HiddenElementException();
+            }
+            startActivity(new Intent(this, TaskPageActivity.class));
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -100,4 +106,19 @@ public class TaskActivity extends RevalActivity
         taskFragment.setData(tasks);
     }
 
+    @Override
+    public void onListFragmentInteraction(Task item) {
+        startActivity(new Intent(this, TaskPageActivity.class).putExtra(TaskPageActivity.TASK_PARAM, item));
+    }
+
+    @OnClick(R.id.task_filter_button)
+    void taskFilterOnClick() {
+        taskFilterDialog.show(getSupportFragmentManager(), TAG);
+    }
+
+
+    @Override
+    public void populateFilter(TaskRequestParameters parameters) {
+
+    }
 }

@@ -4,7 +4,14 @@ public class AbstractRevalItem {
 
     private Integer id;
 
-    private String name;
+    protected String name;
+
+    public AbstractRevalItem() {
+    }
+
+    public AbstractRevalItem(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;

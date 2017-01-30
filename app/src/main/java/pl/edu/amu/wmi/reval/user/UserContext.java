@@ -1,6 +1,12 @@
 package pl.edu.amu.wmi.reval.user;
 
+import android.content.Intent;
+
 import javax.inject.Singleton;
+
+import pl.edu.amu.wmi.reval.SignInActivity;
+
+import static pl.edu.amu.wmi.reval.di.MyApplication.getContext;
 
 @Singleton
 public class UserContext {
@@ -11,6 +17,13 @@ public class UserContext {
     public UserContext(PreferencesManager preferencesManager) {
         this.preferencesManager = preferencesManager;
         this.user = preferencesManager.getDetailedUser();
+    }
+
+    public void hardLogout() {
+        setUser(null);
+        Intent signOutIntent = new Intent(getContext(), SignInActivity.class);
+        signOutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        getContext().startActivity(signOutIntent);
     }
 
     public User getUser() {
