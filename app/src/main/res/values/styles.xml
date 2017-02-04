@@ -132,13 +132,17 @@
     </style>
 
     <style name="AppTheme.Spinner">
-        <item name="android:divider">#000000</item>
-        <item name="android:dividerHeight">10dp</item>
+        <item name="android:divider">@color/well_color_text</item>
+        <item name="android:dividerHeight">0.5dp</item>
     </style>
 
     <style name="AppTheme.Dialog">
         <item name="android:tint">@color/textColorPrimary</item>
         <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.BottomSheet" parent="Theme.Design.BottomSheetDialog">
+        <item name="android:dropDownListViewStyle">@style/AppTheme.Spinner</item>
     </style>
 
     <style name="AppTheme.SpinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">

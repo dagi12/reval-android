@@ -83,7 +83,7 @@ public class TaskFilterDialogFragment extends MyBottomSheetDialogFragment implem
     public void search() {
         Subject subject = subjectAdapter.getItem(subjectSpinner.getSelectedItemPosition());
         if (subject == null) {
-            ErrorDialog.getInstance(getContext(), getString(R.string.select_subject)).show();
+            ErrorDialog.getInstance(getActivity(), getString(R.string.select_subject)).show();
             return;
         }
         TaskRequestParameters parameters = new TaskRequestParameters();
