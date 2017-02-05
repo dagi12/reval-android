@@ -14,10 +14,16 @@ import pl.edu.amu.wmi.reval.common.grid.AbstractViewHolder;
 public class TaskViewHolder extends AbstractViewHolder<Task> {
 
     @BindView(R.id.subject_name)
-    TextView subjectNameTextView;
+    TextView subjectName;
 
-    @BindView(R.id.task_name)
-    TextView taskNameTextView;
+    @BindView(R.id.topic_name)
+    TextView topicName;
+
+    @BindView(R.id.task_title)
+    TextView taskTitle;
+
+    @BindView(R.id.task_date)
+    TextView taskDate;
 
     public TaskViewHolder(View itemView) {
         super(itemView);
@@ -26,11 +32,13 @@ public class TaskViewHolder extends AbstractViewHolder<Task> {
 
     @Override
     public void setRow() {
-        subjectNameTextView.setText(item.getName());
+        taskDate.setText(DateFormat.getDateInstance().format(item.getLastActivityDate()));
+        subjectName.setText(item.getSubjectName());
+        topicName.setText(item.getTopicName());
+        taskTitle.setText(item.getTaskTitle());
         // todo do usunięcia gdy data ostatnie aktywności na API
         if (item.getLastActivityDate() == null) {
             item.setLastActivityDate(new Date());
         }
-        taskNameTextView.setText(DateFormat.getDateInstance().format(item.getLastActivityDate()));
     }
 }

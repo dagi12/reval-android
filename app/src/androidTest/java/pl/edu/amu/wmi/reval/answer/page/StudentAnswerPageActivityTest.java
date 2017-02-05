@@ -1,4 +1,4 @@
-package pl.edu.amu.wmi.reval.answer;
+package pl.edu.amu.wmi.reval.answer.page;
 
 import android.support.test.rule.ActivityTestRule;
 
@@ -12,13 +12,14 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
-public class AnswerPageActivityTest {
+public class StudentAnswerPageActivityTest {
+
 
     @Rule
     public MyDaggerMockRule myDaggerMockRule = new MyDaggerMockRule();
 
     @Rule
-    public ActivityTestRule activityRule = new ActivityTestRule<>(AnswerPageActivity.class, false, false);
+    public ActivityTestRule activityRule = new ActivityTestRule<>(StudentAnswerPageActivity.class, false, false);
 
     @Test
     public void simple() {

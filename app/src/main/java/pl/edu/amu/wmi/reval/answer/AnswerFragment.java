@@ -1,17 +1,17 @@
 package pl.edu.amu.wmi.reval.answer;
 
+import android.content.Intent;
 import android.view.View;
-import android.widget.TextView;
 
-import java.text.DateFormat;
 import java.util.List;
 
-import butterknife.BindView;
 import pl.edu.amu.wmi.reval.R;
+import pl.edu.amu.wmi.reval.answer.holder.FragmentAnswerViewHolder;
+import pl.edu.amu.wmi.reval.answer.page.AdminAnswerPageActivity;
 import pl.edu.amu.wmi.reval.common.grid.AbstractFragmentGrid;
-import pl.edu.amu.wmi.reval.common.grid.AbstractViewHolder;
+import pl.edu.amu.wmi.reval.common.grid.OnListFragmentInteractionListener;
 
-public class AnswerFragment extends AbstractFragmentGrid<Answer, AnswerFragment.AnswerViewHolder> {
+public class AnswerFragment extends AbstractFragmentGrid<Answer, FragmentAnswerViewHolder> implements OnListFragmentInteractionListener<Answer> {
 
     public static AnswerFragment getInstance(List<Answer> answers) {
         AnswerFragment fragment = new CheckedAnswerFragment();
@@ -29,8 +29,8 @@ public class AnswerFragment extends AbstractFragmentGrid<Answer, AnswerFragment.
     }
 
     @Override
-    public AnswerViewHolder createViewHolder(View view) {
-        return new AnswerViewHolder(view);
+    public FragmentAnswerViewHolder createViewHolder(View view) {
+        return new FragmentAnswerViewHolder(view);
     }
 
     @Override
@@ -38,26 +38,11 @@ public class AnswerFragment extends AbstractFragmentGrid<Answer, AnswerFragment.
         return R.layout.fragment_answer;
     }
 
-    public class AnswerViewHolder extends AbstractViewHolder<Answer> {
-
-        @BindView(R.id.subject_name)
-        TextView subjectName;
-
-        @BindView(R.id.task_name)
-        TextView taskName;
-
-        @BindView(R.id.answer_date)
-        TextView answerDate;
-
-        AnswerViewHolder(View itemView) {
-            super(itemView);
-        }
-
-        @Override
-        public void setRow() {
-            subjectName.setText(item.getSubjectName());
-            taskName.setText(item.getTaskName());
-            answerDate.setText(DateFormat.getDateInstance().format(item.getDate()));
-        }
+    @Override
+    public void onListFragmentInteraction(Answer item) {
+        startActivity(new Intent(getActivity(), AdminAnswerPageActivity.class)
+                .putExtra(AdminAnswerPageActivity.ANSWER, item));
     }
+
+
 }

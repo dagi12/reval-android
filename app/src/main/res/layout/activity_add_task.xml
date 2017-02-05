@@ -36,9 +36,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/question" />
-            <!--android:tint="@color/icon_tint"-->
-            <!--android:drawableLeft="@drawable/task_item_icon"-->
-            <!--android:drawableStart="@drawable/task_item_icon"-->
         </LinearLayout>
 
         <EditText

@@ -7,53 +7,75 @@
     android:theme="@style/AppTheme.Well.ListItem">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/icon_small"
+        android:layout_height="@dimen/icon_small"
         android:contentDescription="@string/task_item_icon"
         android:src="@drawable/task_item_icon"
         android:tint="@color/icon_tint" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            style="@style/AppTheme.PageLabel"
+        <LinearLayout
+            style="@style/AppTheme.Paragraph"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/task" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/task_name"
+            <TextView
+                style="@style/AppTheme.PageLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/task_title" />
+
+            <TextView
+                android:id="@+id/task_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/example_task_title" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/AppTheme.Paragraph"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/example_task_name" />
+            android:orientation="vertical">
 
-        <TextView
-            style="@style/AppTheme.PageLabel"
+            <TextView
+                style="@style/AppTheme.PageLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/date" />
+
+            <TextView
+                android:id="@+id/answer_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/example_date" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/index_container"
+            style="@style/AppTheme.Paragraph"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/date" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/answer_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/example_date" />
+            <TextView
+                style="@style/AppTheme.PageLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/student" />
 
-        <TextView
-            style="@style/AppTheme.PageLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/student" />
-
-        <TextView
-            android:id="@+id/index"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/example_student" />
-
+            <TextView
+                android:id="@+id/index"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/example_student" />
+        </LinearLayout>
     </LinearLayout>
 
 

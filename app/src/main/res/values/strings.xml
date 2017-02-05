@@ -20,8 +20,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="task_item_icon">Task item icon</string>
-    <string name="task">Zadanie</string>
-    <string name="task_name">Nazwa zadania</string>
+    <string name="task">Zadanie:</string>
     <string name="subject">Przedmiot:</string>
     <string name="topic">Temat:</string>
     <string name="last_activity">Ostatnia aktywność:</string>
@@ -32,11 +31,16 @@
     <string name="select_topic">Wybierz temat</string>
     <string name="add_task">Dodaj zadanie</string>
     <string name="check_unique">Sprawdź unikalność</string>
-    <string name="date">Data</string>
-    <string name="student">Uczeń</string>
-    <string name="similarity">Stopień podobieństwa</string>
+    <string name="date">Data:</string>
+    <string name="student">Uczeń:</string>
+    <string name="similarity">Stopień podobieństwa:</string>
     <string name="answers">Odpowiedzi</string>
     <string name="question">Pytanie:</string>
     <string name="write_question">Wpisz treść pytania</string>
+    <string name="task_title">Tytuł zadania:</string>
+    <string name="answer">Odpowiedź:</string>
+    <string name="answer_page">Strona odpowiedzi</string>
+    <string name="your_answer">Twoja odpowiedź:</string>
+    <string name="admin_label">ADMIN</string>
 
 </resources>

@@ -4,7 +4,8 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import pl.edu.amu.wmi.reval.CredentialsSignInActivity;
-import pl.edu.amu.wmi.reval.answer.AnswerPageActivity;
+import pl.edu.amu.wmi.reval.answer.page.AdminAnswerPageActivity;
+import pl.edu.amu.wmi.reval.answer.page.StudentAnswerPageActivity;
 import pl.edu.amu.wmi.reval.common.activity.SubjectTopicContainer;
 import pl.edu.amu.wmi.reval.common.services.MyCallback;
 import pl.edu.amu.wmi.reval.task.AddTaskActivity;
@@ -12,6 +13,7 @@ import pl.edu.amu.wmi.reval.task.TaskActivity;
 import pl.edu.amu.wmi.reval.task.TaskFragment;
 import pl.edu.amu.wmi.reval.task.filter.TaskFilterDialogFragment;
 import pl.edu.amu.wmi.reval.task.page.AdminTaskPageActivity;
+import pl.edu.amu.wmi.reval.task.page.StudentTaskPageActivity;
 import pl.edu.amu.wmi.reval.task.unique.CheckUniqueActivity;
 
 
@@ -36,6 +38,9 @@ public interface MyApplicationComponent {
 
     void inject(AddTaskActivity addTaskActivity);
 
-    void inject(AnswerPageActivity answerPageActivity);
+    void inject(AdminAnswerPageActivity adminAnswerPageActivity);
 
+    void inject(StudentTaskPageActivity studentTaskPageActivity);
+
+    void inject(StudentAnswerPageActivity studentAnswerPageActivity);
 }

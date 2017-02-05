@@ -51,6 +51,7 @@ public class TaskActivity extends RevalActivity implements
         setContentView(R.layout.activity_task);
         MyApplication.getComponent().inject(this);
         ButterKnife.bind(this);
+        setNavHeader();
         taskFilterDialog = TaskFilterDialogFragment.getInstance();
 
         // TODO username
@@ -60,6 +61,14 @@ public class TaskActivity extends RevalActivity implements
         taskService.getTasks(this);
         taskFragment = (TaskFragment) getFragmentManager().findFragmentById(R.id.task_fragment);
         setNavigationView();
+    }
+
+    private void setNavHeader() {
+        if (userContext.getUser().isAdmin()) {
+            navigationView.inflateHeaderView(R.layout.nav_header_admin);
+        } else {
+            navigationView.inflateHeaderView(R.layout.nav_header_student);
+        }
     }
 
     @Override

@@ -14,6 +14,8 @@ public class Answer extends AbstractRevalItem implements Serializable {
     private int similarity;
     private int subjectName;
     private int taskName;
+    private int index;
+    private int answerContent;
 
     public int getSimilarity() {
         return similarity;
@@ -27,7 +29,15 @@ public class Answer extends AbstractRevalItem implements Serializable {
         return subjectName;
     }
 
-    public int getTaskName() {
+    public int getTaskTitle() {
         return taskName;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public int getAnswerContent() {
+        return answerContent;
     }
 }

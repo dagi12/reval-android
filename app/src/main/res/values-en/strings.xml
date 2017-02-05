@@ -14,7 +14,7 @@
     <string name="sign_in_error_message">Wrong login or password</string>
     <string name="log_out">Log out</string>
     <string name="last_tasks">Last tasks</string>
-    <string name="task">Task</string>
+    <string name="task">Task:</string>
     <string name="task_name">Task name</string>
     <string name="subject">Subject</string>
     <string name="topic">Topic:</string>
@@ -27,10 +27,14 @@
     <string name="check_unique">Check uniqueness</string>
     <string name="select_topic">Select topic</string>
     <string name="date">Date</string>
-    <string name="student">Student</string>
-    <string name="similarity">Similarity</string>
+    <string name="student">Student:</string>
+    <string name="similarity">Similarity:</string>
     <string name="answers">Answers</string>
     <string name="question">Question:</string>
     <string name="write_question">Type your question</string>
+    <string name="task_title">Task title:</string>
+    <string name="answer">Odpowiedź</string>
+    <string name="answer_page">Answer page</string>
+    <string name="your_answer">Your answer:</string>
 
 </resources>

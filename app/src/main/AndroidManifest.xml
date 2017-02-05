@@ -36,8 +36,7 @@
         </activity>
         <activity
             android:name=".task.page.AdminTaskPageActivity"
-            android:label="@string/task"
-            android:parentActivityName=".task.TaskActivity" />
+            android:label="@string/task" />
         <activity
             android:name=".task.unique.CheckUniqueActivity"
             android:label="@string/check_unique"
@@ -48,9 +47,12 @@
         <activity
             android:name=".task.AddTaskActivity"
             android:label="@string/add_task" />
-        <activity android:name=".answer.StudentAnswerPageActivity" />
-        <activity android:name=".answer.AnswerPageActivity" />
-        <activity android:name=".task.page.StudentTaskPageActivity"></activity>
+        <activity
+            android:name=".answer.page.AdminAnswerPageActivity"
+            android:label="@string/answer_page" />
+        <activity
+            android:name=".task.page.StudentTaskPageActivity"
+            android:label="@string/task" />
     </application>
 
 </manifest>
