@@ -14,9 +14,6 @@ import pl.edu.amu.wmi.reval.task.TaskActivity;
 import pl.edu.amu.wmi.reval.task.TaskService;
 import pl.edu.amu.wmi.reval.user.UserContext;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
@@ -42,5 +39,6 @@ public class TaskActivityTest {
         activityRule.launchActivity(null);
 //        onView(withId(R.id.add_task)).perform(click());
     }
+
 
 }

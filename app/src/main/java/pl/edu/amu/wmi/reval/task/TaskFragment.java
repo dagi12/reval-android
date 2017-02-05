@@ -1,7 +1,6 @@
 package pl.edu.amu.wmi.reval.task;
 
-import android.app.Activity;
-import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 
 import pl.edu.amu.wmi.reval.R;
@@ -26,14 +25,9 @@ public class TaskFragment extends AbstractFragmentGrid<Task, TaskViewHolder> {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         MyApplication.getComponent().inject(this);
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        MyApplication.getComponent().inject(this);
-    }
 }

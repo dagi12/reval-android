@@ -35,9 +35,22 @@
                 android:value="pl.edu.amu.wmi.reval.SignInActivity" />
         </activity>
         <activity
-            android:name=".task.page.TaskPageActivity"
-            android:parentActivityName=".task.TaskActivity"
-            android:label="@string/task_page" />
+            android:name=".task.page.AdminTaskPageActivity"
+            android:label="@string/task"
+            android:parentActivityName=".task.TaskActivity" />
+        <activity
+            android:name=".task.unique.CheckUniqueActivity"
+            android:label="@string/check_unique"
+            android:parentActivityName=".task.TaskActivity" />
+        <activity
+            android:name=".answer.AnswerActivity"
+            android:label="@string/answers" />
+        <activity
+            android:name=".task.AddTaskActivity"
+            android:label="@string/add_task" />
+        <activity android:name=".answer.StudentAnswerPageActivity" />
+        <activity android:name=".answer.AnswerPageActivity" />
+        <activity android:name=".task.page.StudentTaskPageActivity"></activity>
     </application>
 
 </manifest>

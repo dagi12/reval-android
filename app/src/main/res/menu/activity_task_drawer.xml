@@ -3,9 +3,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/add_task"
             android:icon="@drawable/ic_add"
             android:title="@string/add_task" />
+        <item
+            android:id="@+id/check_unique"
+            android:icon="@drawable/ic_add"
+            android:title="@string/check_unique" />
     </group>
 
 </menu>

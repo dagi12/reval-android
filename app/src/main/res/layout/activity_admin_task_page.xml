@@ -4,7 +4,7 @@
     style="@style/AppTheme.PaddingWithoutBottom"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pl.edu.amu.wmi.reval.task.page.TaskPageActivity">
+    tools:context="pl.edu.amu.wmi.reval.task.page.AdminTaskPageActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

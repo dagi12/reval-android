@@ -3,14 +3,13 @@ package pl.edu.amu.wmi.reval.task;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import java.util.List;
 
@@ -27,7 +26,8 @@ import pl.edu.amu.wmi.reval.di.MyApplication;
 import pl.edu.amu.wmi.reval.task.filter.TaskFilterDialogFragment;
 import pl.edu.amu.wmi.reval.task.filter.TaskRequestAdapter;
 import pl.edu.amu.wmi.reval.task.filter.TaskRequestParameters;
-import pl.edu.amu.wmi.reval.task.page.TaskPageActivity;
+import pl.edu.amu.wmi.reval.task.page.AdminTaskPageActivity;
+import pl.edu.amu.wmi.reval.task.unique.CheckUniqueActivity;
 
 public class TaskActivity extends RevalActivity implements
         NavigationView.OnNavigationItemSelectedListener,
@@ -55,7 +55,7 @@ public class TaskActivity extends RevalActivity implements
 
         // TODO username
         if (userContext.getUser().isAdmin()) {
-//            addButton.setVisibility(View.VISIBLE);
+            //addButton.setVisibility(View.VISIBLE);
         }
         taskService.getTasks(this);
         taskFragment = (TaskFragment) getFragmentManager().findFragmentById(R.id.task_fragment);
@@ -64,7 +64,12 @@ public class TaskActivity extends RevalActivity implements
 
     @Override
     protected void setActionBar() {
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(false);
+        } else {
+            throw new ActionBarException();
+        }
     }
 
     private void setNavigationView() {
@@ -90,11 +95,13 @@ public class TaskActivity extends RevalActivity implements
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_camera) {
+        if (id == R.id.add_task) {
             if (!userContext.getUser().isAdmin()) {
                 throw new HiddenElementException();
             }
-            startActivity(new Intent(this, TaskPageActivity.class));
+            startActivity(new Intent(this, AdminTaskPageActivity.class));
+        } else if (id == R.id.check_unique) {
+            startActivity(new Intent(this, CheckUniqueActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -108,7 +115,7 @@ public class TaskActivity extends RevalActivity implements
 
     @Override
     public void onListFragmentInteraction(Task item) {
-        startActivity(new Intent(this, TaskPageActivity.class).putExtra(TaskPageActivity.TASK_PARAM, item));
+        startActivity(new Intent(this, AdminTaskPageActivity.class).putExtra(AdminTaskPageActivity.TASK_PARAM, item));
     }
 
     @OnClick(R.id.task_filter_button)
@@ -119,6 +126,14 @@ public class TaskActivity extends RevalActivity implements
 
     @Override
     public void populateFilter(TaskRequestParameters parameters) {
+        taskService.getFilteredTasks(this, parameters);
+    }
 
+    private class ActionBarException extends RuntimeException {
+        private static final String MESSAGE = "Support action bar is null";
+
+        public ActionBarException() {
+            super(MESSAGE);
+        }
     }
 }

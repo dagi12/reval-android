@@ -8,6 +8,10 @@ public class TaskRequestParameters {
         this.subjectId = subjectId;
     }
 
+    public int getTopicId() {
+        return topicId;
+    }
+
     public void setTopicId(int topicId) {
         this.topicId = topicId;
     }

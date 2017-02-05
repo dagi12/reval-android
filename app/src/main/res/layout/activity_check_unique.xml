@@ -1,19 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/AppTheme.Dialog"
+    android:id="@+id/activity_check_unique"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/well_padding"
-    tools:context=".task.filter.TaskFilterDialogFragment">
-
+    tools:context="pl.edu.amu.wmi.reval.task.unique.CheckUniqueActivity">
+    <!--style="@style/AppTheme.DefaultActivityPadding"-->
     <include layout="@layout/subject_topic_layout" />
 
     <Button
-        android:id="@+id/search_task"
-        style="@style/AppTheme.ButtonStyle"
+        android:id="@+id/check_unique"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/filter_search" />
+        android:text="@string/check_unique" />
 
 </LinearLayout>

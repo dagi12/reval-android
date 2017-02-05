@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/well_padding"
+    android:orientation="horizontal"
+    android:theme="@style/AppTheme.Well.ListItem">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/task_item_icon"
+        android:src="@drawable/task_item_icon"
+        android:tint="@color/icon_tint" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/AppTheme.PageLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/task" />
+
+        <TextView
+            android:id="@+id/task_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/example_task_name" />
+
+        <TextView
+            style="@style/AppTheme.PageLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/date" />
+
+        <TextView
+            android:id="@+id/answer_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/example_date" />
+
+        <TextView
+            style="@style/AppTheme.PageLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/student" />
+
+        <TextView
+            android:id="@+id/index"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/example_student" />
+
+        <TextView
+            style="@style/AppTheme.PageLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/similarity" />
+
+        <TextView
+            android:id="@+id/similarity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/example_similarity" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

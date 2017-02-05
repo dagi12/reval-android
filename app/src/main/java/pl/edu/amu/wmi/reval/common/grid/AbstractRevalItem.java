@@ -1,12 +1,14 @@
 package pl.edu.amu.wmi.reval.common.grid;
 
-public class AbstractRevalItem {
+import java.io.Serializable;
 
-    private Integer id;
+public class AbstractRevalItem implements Serializable {
 
     protected String name;
+    private Integer id;
 
     public AbstractRevalItem() {
+        // retrofit need
     }
 
     public AbstractRevalItem(String name) {
