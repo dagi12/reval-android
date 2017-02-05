@@ -104,7 +104,7 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
 
     @Override
     public void onSignInFailure() {
-        loginInProgress =   false;
+        loginInProgress = false;
         errorMessage.setVisibility(View.VISIBLE);
     }
 }

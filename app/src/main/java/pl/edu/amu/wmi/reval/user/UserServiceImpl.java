@@ -1,11 +1,6 @@
 package pl.edu.amu.wmi.reval.user;
 
-import android.content.Intent;
-
 import pl.edu.amu.wmi.reval.MockData;
-import pl.edu.amu.wmi.reval.SignInActivity;
-
-import static pl.edu.amu.wmi.reval.di.MyApplication.getContext;
 
 public class UserServiceImpl {
 

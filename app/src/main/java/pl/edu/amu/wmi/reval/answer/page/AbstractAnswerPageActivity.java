@@ -9,7 +9,7 @@ import pl.edu.amu.wmi.reval.common.exception.PageItemNullException;
 
 public abstract class AbstractAnswerPageActivity extends RevalActivity {
 
-    public static final String ANSWER = "ANSWER";
+    public static final String ANSWER_PARAM = "ANSWER_PARAM";
     protected Answer answer;
 
     @Override
@@ -19,7 +19,7 @@ public abstract class AbstractAnswerPageActivity extends RevalActivity {
     }
 
     private void setItem() {
-        answer = (Answer) getIntent().getSerializableExtra(ANSWER);
+        answer = (Answer) getIntent().getSerializableExtra(ANSWER_PARAM);
         if (answer == null) {
             throw new PageItemNullException();
         }

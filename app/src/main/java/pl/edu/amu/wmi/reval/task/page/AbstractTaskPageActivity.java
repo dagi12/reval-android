@@ -14,7 +14,7 @@ import pl.edu.amu.wmi.reval.common.exception.PageItemNullException;
 import pl.edu.amu.wmi.reval.task.Task;
 import pl.edu.amu.wmi.reval.task.TaskViewHolder;
 
-abstract class AbstractTaskPageActivity extends RevalActivity {
+public abstract class AbstractTaskPageActivity extends RevalActivity {
 
     public static final String TASK_PARAM = "TASK";
     protected Task task;

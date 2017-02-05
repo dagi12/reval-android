@@ -20,6 +20,6 @@ public class AdminAnswerViewHolder extends FragmentAnswerViewHolder {
     @Override
     public void setRow() {
         super.setRow();
-        answerContent.setText(item.getAnswerContent());
+        answerContent.setText(item.getAnswerText());
     }
 }

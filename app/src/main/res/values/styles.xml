@@ -152,9 +152,7 @@
         <item name="android:textColor">@color/well_color_text</item>
         <item name="android:gravity">center</item>
         <item name="android:paddingLeft">@dimen/title_padding</item>
-        <item name="android:paddingStart">@dimen/title_padding</item>
         <item name="android:paddingRight">@dimen/title_padding</item>
-        <item name="android:paddingEnd">@dimen/title_padding</item>
         <item name="android:paddingTop">@dimen/activity_margin</item>
         <item name="android:paddingBottom">@dimen/activity_margin</item>
     </style>

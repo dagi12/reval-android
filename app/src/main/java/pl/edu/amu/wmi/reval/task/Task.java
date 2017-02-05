@@ -5,20 +5,30 @@ import java.util.Date;
 
 import pl.edu.amu.wmi.reval.answer.Answer;
 import pl.edu.amu.wmi.reval.common.grid.AbstractRevalItem;
+import pl.edu.amu.wmi.reval.task.filter.TaskRequestParameters;
 
 public class Task extends AbstractRevalItem implements Serializable {
 
     private String questionText;
-    private Date lastActivityDate;
-    private int topic;
     private String title;
-    private String taskContent;
     private String subjectName;
     private String topicName;
-    private int taskTitle;
+
+    private Date lastActivityDate;
+    private int topic;
+    private int subject;
     private Answer answer;
+    private int maxPoints;
+
+    public Task(TaskRequestParameters parameters, String taskContent) {
+        super();
+        this.topic = parameters.getTopicId();
+        this.subject = parameters.getSubjectId();
+        this.questionText = taskContent;
+    }
 
     public Task(String title, String questionText, Date lastActivityDate) {
+        super();
         this.title = title;
         this.questionText = questionText;
         this.lastActivityDate = lastActivityDate;
@@ -33,7 +43,7 @@ public class Task extends AbstractRevalItem implements Serializable {
     }
 
     public String getTaskContent() {
-        return taskContent;
+        return questionText;
     }
 
     public String getSubjectName() {
@@ -44,8 +54,8 @@ public class Task extends AbstractRevalItem implements Serializable {
         return topicName;
     }
 
-    public int getTaskTitle() {
-        return taskTitle;
+    public String getTaskTitle() {
+        return title;
     }
 
     public Answer getAnswer() {

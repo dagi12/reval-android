@@ -1,14 +1,12 @@
 package pl.edu.amu.wmi.reval.common.services;
 
 
-import android.content.Intent;
 import android.util.Log;
 
 import java.io.IOException;
 
 import javax.inject.Inject;
 
-import pl.edu.amu.wmi.reval.SignInActivity;
 import pl.edu.amu.wmi.reval.common.error.ErrorServiceImpl;
 import pl.edu.amu.wmi.reval.common.error.NetworkContext;
 import pl.edu.amu.wmi.reval.di.MyApplication;
@@ -16,8 +14,6 @@ import pl.edu.amu.wmi.reval.user.UserContext;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static pl.edu.amu.wmi.reval.di.MyApplication.getContext;
 
 public abstract class MyCallback<T> implements Callback<T> {
 

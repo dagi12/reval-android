@@ -11,8 +11,6 @@ import com.google.gson.GsonBuilder;
 import org.mockito.Mockito;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
 
 import javax.inject.Singleton;
 
@@ -25,11 +23,9 @@ import okhttp3.Response;
 import pl.edu.amu.wmi.reval.MockData;
 import pl.edu.amu.wmi.reval.common.error.ErrorService;
 import pl.edu.amu.wmi.reval.common.error.ErrorServiceImpl;
-import pl.edu.amu.wmi.reval.common.services.MyCallback;
 import pl.edu.amu.wmi.reval.common.services.PicassoCache;
 import pl.edu.amu.wmi.reval.subject.SubjectService;
 import pl.edu.amu.wmi.reval.subject.SubjectServiceImpl;
-import pl.edu.amu.wmi.reval.task.Task;
 import pl.edu.amu.wmi.reval.task.TaskService;
 import pl.edu.amu.wmi.reval.task.TaskServiceImpl;
 import pl.edu.amu.wmi.reval.topic.TopicService;
@@ -38,7 +34,6 @@ import pl.edu.amu.wmi.reval.user.PreferencesManager;
 import pl.edu.amu.wmi.reval.user.UserContext;
 import pl.edu.amu.wmi.reval.user.UserService;
 import pl.edu.amu.wmi.reval.user.UserServiceImpl;
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

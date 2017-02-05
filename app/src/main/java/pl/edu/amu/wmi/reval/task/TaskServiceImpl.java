@@ -33,8 +33,21 @@ public class TaskServiceImpl {
         });
     }
 
+    public void addTask(final AddTaskAdapter adapter, Task task) {
+        taskService.addTask(task).enqueue(new MyCallback<Task>() {
+            @Override
+            protected void onHandledResponse(Call<Task> call, Response<Task> response) {
+                adapter.success(response.body());
+            }
+        });
+    }
+
     public interface TaskAdapter {
         void setTasks(List<Task> tasks);
+    }
+
+    public interface AddTaskAdapter {
+        void success(Task task);
     }
 
 }

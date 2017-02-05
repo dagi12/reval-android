@@ -41,7 +41,7 @@ public class AnswerFragment extends AbstractFragmentGrid<Answer, FragmentAnswerV
     @Override
     public void onListFragmentInteraction(Answer item) {
         startActivity(new Intent(getActivity(), AdminAnswerPageActivity.class)
-                .putExtra(AdminAnswerPageActivity.ANSWER, item));
+                .putExtra(AdminAnswerPageActivity.ANSWER_PARAM, item));
     }
 
 

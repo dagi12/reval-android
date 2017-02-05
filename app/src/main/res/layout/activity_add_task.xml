@@ -30,7 +30,6 @@
                 android:tint="@color/icon_tint" />
 
             <TextView
-                android:id="@+id/question"
                 style="@style/AppTheme.PageLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,11 +38,11 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/question_content"
+            android:id="@+id/task_content"
             style="@style/AppTheme.WellEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/write_question"
+            android:hint="@string/write_task_conent"
             android:inputType="textMultiLine"
             android:maxLength="@integer/long_text_length"
             android:text="@string/example_content" />
@@ -51,7 +50,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/task_filter_button"
+        android:id="@+id/add_task"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"

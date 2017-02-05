@@ -18,8 +18,7 @@ apply plugin: "org.sonarqube"
 
 sonarqube {
     properties {
-        property "sonar.projectName", "Reval"
-        property "sonar.projectKey", "org.sonarqube:android-simple-sq-scanner-gradle"
+        property "sonar.projectName", "reval-sonar"
 
         property "sonar.sourceEncoding", "UTF-8"
         property "sonar.sources", "src/main/java,src/main/res"

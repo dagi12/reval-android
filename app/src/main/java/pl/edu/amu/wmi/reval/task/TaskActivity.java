@@ -20,12 +20,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
-import pl.edu.amu.wmi.reval.common.exception.HiddenElementException;
 import pl.edu.amu.wmi.reval.common.grid.OnListFragmentInteractionListener;
 import pl.edu.amu.wmi.reval.di.MyApplication;
 import pl.edu.amu.wmi.reval.task.filter.TaskFilterDialogFragment;
 import pl.edu.amu.wmi.reval.task.filter.TaskRequestAdapter;
 import pl.edu.amu.wmi.reval.task.filter.TaskRequestParameters;
+import pl.edu.amu.wmi.reval.task.nav.HeaderViewHolder;
+import pl.edu.amu.wmi.reval.task.nav.NavigationAdapter;
 import pl.edu.amu.wmi.reval.task.page.AdminTaskPageActivity;
 import pl.edu.amu.wmi.reval.task.unique.CheckUniqueActivity;
 
@@ -43,6 +44,7 @@ public class TaskActivity extends RevalActivity implements
     @BindView(R.id.nav_view)
     NavigationView navigationView;
     private TaskFragment taskFragment;
+    private NavigationAdapter navigationAdapter;
     private TaskFilterDialogFragment taskFilterDialog;
 
     @Override
@@ -51,24 +53,24 @@ public class TaskActivity extends RevalActivity implements
         setContentView(R.layout.activity_task);
         MyApplication.getComponent().inject(this);
         ButterKnife.bind(this);
-        setNavHeader();
         taskFilterDialog = TaskFilterDialogFragment.getInstance();
-
-        // TODO username
-        if (userContext.getUser().isAdmin()) {
-            //addButton.setVisibility(View.VISIBLE);
-        }
+        setUserData();
         taskService.getTasks(this);
         taskFragment = (TaskFragment) getFragmentManager().findFragmentById(R.id.task_fragment);
         setNavigationView();
     }
 
-    private void setNavHeader() {
+    private void setUserData() {
         if (userContext.getUser().isAdmin()) {
             navigationView.inflateHeaderView(R.layout.nav_header_admin);
+            navigationAdapter = new AdminNavigationAdapter();
         } else {
             navigationView.inflateHeaderView(R.layout.nav_header_student);
         }
+        HeaderViewHolder holder =
+                new HeaderViewHolder(navigationView.getHeaderView(0));
+        holder.setItem(userContext.getUser());
+        holder.setRow();
     }
 
     @Override
@@ -103,14 +105,9 @@ public class TaskActivity extends RevalActivity implements
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.add_task) {
-            if (!userContext.getUser().isAdmin()) {
-                throw new HiddenElementException();
-            }
-            startActivity(new Intent(this, AdminTaskPageActivity.class));
-        } else if (id == R.id.check_unique) {
-            startActivity(new Intent(this, CheckUniqueActivity.class));
+        if (navigationAdapter != null) {
+            int id = item.getItemId();
+            navigationAdapter.handleMenutItem(id);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -138,11 +135,27 @@ public class TaskActivity extends RevalActivity implements
         taskService.getFilteredTasks(this, parameters);
     }
 
+    private TaskActivity getThis() {
+        return this;
+    }
+
     private class ActionBarException extends RuntimeException {
         private static final String MESSAGE = "Support action bar is null";
 
         public ActionBarException() {
             super(MESSAGE);
+        }
+    }
+
+    private class AdminNavigationAdapter implements NavigationAdapter {
+
+        @Override
+        public void handleMenutItem(int id) {
+            if (id == R.id.add_task) {
+                startActivity(new Intent(getThis(), AdminTaskPageActivity.class));
+            } else if (id == R.id.check_unique) {
+                startActivity(new Intent(getThis(), CheckUniqueActivity.class));
+            }
         }
     }
 }

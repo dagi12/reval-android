@@ -20,6 +20,6 @@ public class StudentAnswerViewHolder extends AbstractAnswerViewHolder {
     @Override
     public void setRow() {
         super.setRow();
-        answerContent.setText(item.getAnswerContent());
+        answerContent.setText(item.getAnswerText());
     }
 }

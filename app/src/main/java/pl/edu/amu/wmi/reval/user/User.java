@@ -4,7 +4,7 @@ import pl.edu.amu.wmi.reval.common.grid.AbstractRevalItem;
 
 public class User extends AbstractRevalItem {
     private String token;
-
+    private String index;
     private boolean admin;
 
     public boolean isAdmin() {
@@ -21,5 +21,9 @@ public class User extends AbstractRevalItem {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getIndex() {
+        return index;
     }
 }

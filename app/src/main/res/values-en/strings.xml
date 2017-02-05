@@ -15,7 +15,6 @@
     <string name="log_out">Log out</string>
     <string name="last_tasks">Last tasks</string>
     <string name="task">Task:</string>
-    <string name="task_name">Task name</string>
     <string name="subject">Subject</string>
     <string name="topic">Topic:</string>
     <string name="last_activity">Last activity:</string>
@@ -24,6 +23,7 @@
     <string name="filter_search">Search</string>
     <string name="select_subject">Select subject</string>
     <string name="add_task">Add task</string>
+    <string name="add_task_progress">Task add in progress&#8230;</string>
     <string name="check_unique">Check uniqueness</string>
     <string name="select_topic">Select topic</string>
     <string name="date">Date</string>
@@ -31,10 +31,13 @@
     <string name="similarity">Similarity:</string>
     <string name="answers">Answers</string>
     <string name="question">Question:</string>
-    <string name="write_question">Type your question</string>
+    <string name="write_task_conent">Type your task</string>
     <string name="task_title">Task title:</string>
     <string name="answer">Odpowiedź</string>
     <string name="answer_page">Answer page</string>
     <string name="your_answer">Your answer:</string>
-
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="task_item_icon">Task item icon</string>
+    <string name="admin_label">ADMIN</string>
 </resources>

@@ -18,6 +18,6 @@ public class FragmentAnswerViewHolder extends AbstractAnswerViewHolder {
     @Override
     public void setRow() {
         super.setRow();
-        index.setText(item.getIndex());
+        index.setText(item.getUser());
     }
 }

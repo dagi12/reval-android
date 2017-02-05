@@ -15,4 +15,7 @@ public interface TaskService {
 
     @POST("api/question_list/?format=json")
     Call<List<Task>> getFilteredTasks(@Body TaskRequestParameters parameters);
+
+    @POST("api/addTask")
+    Call<Task> addTask(Task task);
 }

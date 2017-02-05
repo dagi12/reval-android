@@ -13,7 +13,7 @@ public class MyApplication extends Application {
         return component;
     }
 
-    public void setComponent(MyApplicationComponent component) {
+    public static void setComponent(MyApplicationComponent component) {
         MyApplication.component = component;
     }
 
