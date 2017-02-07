@@ -1,11 +1,9 @@
 package pl.edu.amu.wmi.reval.task;
 
-import android.os.Bundle;
 import android.view.View;
 
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.common.grid.AbstractFragmentGrid;
-import pl.edu.amu.wmi.reval.di.MyApplication;
 
 public class TaskFragment extends AbstractFragmentGrid<Task, TaskViewHolder> {
 
@@ -24,10 +22,5 @@ public class TaskFragment extends AbstractFragmentGrid<Task, TaskViewHolder> {
         return R.layout.fragment_task;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        MyApplication.getComponent().inject(this);
-    }
 
 }

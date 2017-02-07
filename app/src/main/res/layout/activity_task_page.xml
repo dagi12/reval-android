@@ -72,5 +72,3 @@
         android:layout_height="wrap_content"
         android:text="@string/answers" />
 </FrameLayout>
-
-    <!--// przedmiot--><!--// temat--><!--// tytuł--><!--// data--><!--// treść-->

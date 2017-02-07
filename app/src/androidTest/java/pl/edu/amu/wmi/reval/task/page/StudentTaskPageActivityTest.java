@@ -1,5 +1,6 @@
 package pl.edu.amu.wmi.reval.task.page;
 
+import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -7,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import pl.edu.amu.wmi.reval.MockData;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 
@@ -20,10 +22,18 @@ public class StudentTaskPageActivityTest {
     public MyDaggerMockRule myDaggerMockRule = new MyDaggerMockRule();
 
     @Rule
-    public ActivityTestRule activityRule = new ActivityTestRule<>(StudentTaskPageActivity.class, false, false);
+    public ActivityTestRule activityRule = new ActivityTestRule<StudentTaskPageActivity>(StudentTaskPageActivity.class, false, false) {
+        @Override
+        protected Intent getActivityIntent() {
+            Intent intent = super.getActivityIntent();
+            intent.putExtra(AbstractTaskPageActivity.TASK_PARAM, MockData.mockedTask());
+            return intent;
+        }
+    };
 
     @Test
     public void simple() {
+        activityRule.launchActivity(null);
         onView(withId(R.id.actionbar_text_view)).perform(click());
     }
 }

@@ -32,13 +32,13 @@ public class TaskViewHolder extends AbstractViewHolder<Task> {
 
     @Override
     public void setRow() {
-        taskDate.setText(DateFormat.getDateInstance().format(item.getLastActivityDate()));
         subjectName.setText(item.getSubjectName());
         topicName.setText(item.getTopicName());
         taskTitle.setText(item.getTaskTitle());
         // todo do usunięcia gdy data ostatnie aktywności na API
         if (item.getLastActivityDate() == null) {
             item.setLastActivityDate(new Date());
+            taskDate.setText(DateFormat.getDateInstance().format(item.getLastActivityDate()));
         }
     }
 }

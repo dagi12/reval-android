@@ -1,10 +1,12 @@
 package pl.edu.amu.wmi.reval.answer.page;
 
+import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 
+import pl.edu.amu.wmi.reval.MockData;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 
@@ -18,10 +20,18 @@ public class AdminAnswerPageActivityTest {
     public MyDaggerMockRule myDaggerMockRule = new MyDaggerMockRule();
 
     @Rule
-    public ActivityTestRule activityRule = new ActivityTestRule<>(AdminAnswerPageActivity.class, false, false);
+    public ActivityTestRule activityRule = new ActivityTestRule(AdminAnswerPageActivity.class, false, false) {
+        @Override
+        protected Intent getActivityIntent() {
+            Intent intent = super.getActivityIntent();
+            intent.putExtra(AbstractAnswerPageActivity.ANSWER_PARAM, MockData.mockedAnswer());
+            return intent;
+        }
+    };
 
     @Test
     public void simple() {
+        activityRule.launchActivity(null);
         onView(withId(R.id.actionbar_text_view)).perform(click());
     }
 }

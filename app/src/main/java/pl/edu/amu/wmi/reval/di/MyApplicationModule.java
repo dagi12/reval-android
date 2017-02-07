@@ -139,7 +139,7 @@ public class MyApplicationModule {
 
     @Provides
     @Singleton
-    protected AnswerServiceImpl provideAnswerService(Retrofit retrofit) {
+    AnswerServiceImpl provideAnswerService(Retrofit retrofit) {
         return new AnswerServiceImpl(retrofit.create(AnswerService.class));
     }
 

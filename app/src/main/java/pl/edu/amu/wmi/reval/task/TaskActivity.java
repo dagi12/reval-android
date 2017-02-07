@@ -1,5 +1,6 @@
 package pl.edu.amu.wmi.reval.task;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -53,17 +54,17 @@ public class TaskActivity extends RevalActivity implements
         setContentView(R.layout.activity_task);
         MyApplication.getComponent().inject(this);
         ButterKnife.bind(this);
-        taskFilterDialog = TaskFilterDialogFragment.getInstance();
         setUserData();
-        taskService.getTasks(this);
-        taskFragment = (TaskFragment) getFragmentManager().findFragmentById(R.id.task_fragment);
         setNavigationView();
+        taskFragment = (TaskFragment) getFragmentManager().findFragmentById(R.id.task_fragment);
+        taskService.getTasks(this);
+        taskFilterDialog = TaskFilterDialogFragment.getInstance();
     }
 
     private void setUserData() {
         if (userContext.getUser().isAdmin()) {
             navigationView.inflateHeaderView(R.layout.nav_header_admin);
-            navigationAdapter = new AdminNavigationAdapter();
+            navigationAdapter = new AdminNavigationAdapter(this);
         } else {
             navigationView.inflateHeaderView(R.layout.nav_header_student);
         }
@@ -135,26 +136,28 @@ public class TaskActivity extends RevalActivity implements
         taskService.getFilteredTasks(this, parameters);
     }
 
-    private TaskActivity getThis() {
-        return this;
-    }
-
     private class ActionBarException extends RuntimeException {
         private static final String MESSAGE = "Support action bar is null";
 
-        public ActionBarException() {
+        ActionBarException() {
             super(MESSAGE);
         }
     }
 
     private class AdminNavigationAdapter implements NavigationAdapter {
 
+        private final Context context;
+
+        AdminNavigationAdapter(Context context) {
+            this.context = context;
+        }
+
         @Override
         public void handleMenutItem(int id) {
             if (id == R.id.add_task) {
-                startActivity(new Intent(getThis(), AdminTaskPageActivity.class));
+                startActivity(new Intent(context, AdminTaskPageActivity.class));
             } else if (id == R.id.check_unique) {
-                startActivity(new Intent(getThis(), CheckUniqueActivity.class));
+                startActivity(new Intent(context, CheckUniqueActivity.class));
             }
         }
     }

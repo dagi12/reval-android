@@ -44,6 +44,15 @@ public class AnswerServiceImpl {
         });
     }
 
+    void getAnswersByTaskId(final AnswerAdapter adapter, int id) {
+        answerService.getAnswersByTaskId(id).enqueue(new MyCallback<List<Answer>>() {
+            @Override
+            protected void onHandledResponse(Call<List<Answer>> call, Response<List<Answer>> response) {
+                adapter.setAnswers(response.body());
+            }
+        });
+    }
+
 
     public interface AnswerAdapter {
         void setAnswers(List<Answer> answers);

@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import pl.edu.amu.wmi.reval.CredentialsSignInActivity;
+import pl.edu.amu.wmi.reval.answer.AnswerActivity;
 import pl.edu.amu.wmi.reval.answer.page.AdminAnswerPageActivity;
 import pl.edu.amu.wmi.reval.answer.page.StudentAnswerPageActivity;
 import pl.edu.amu.wmi.reval.common.activity.SubjectTopicContainer;
@@ -43,4 +44,6 @@ public interface MyApplicationComponent {
     void inject(StudentTaskPageActivity studentTaskPageActivity);
 
     void inject(StudentAnswerPageActivity studentAnswerPageActivity);
+
+    void inject(AnswerActivity answerActivity);
 }

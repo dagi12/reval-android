@@ -1,8 +1,6 @@
 package pl.edu.amu.wmi.reval.common.grid;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,17 +11,10 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
-import pl.edu.amu.wmi.reval.common.services.PicassoCache;
-
 
 public abstract class AbstractFragmentGrid<T extends AbstractRevalItem, S extends AbstractViewHolder<T>> extends Fragment {
 
     protected static final String RECYCLER_VIEW_ID_PARAM = "RECYCLER_VIEW_ID";
-    @Inject
-    protected PicassoCache picassoCache;
-    protected ProgressDialog progressDialog;
     private OnListFragmentInteractionListener<T> mListener;
     private MyRecyclerViewAdapter<T, S> myRecyclerViewAdapter;
 
@@ -45,7 +36,6 @@ public abstract class AbstractFragmentGrid<T extends AbstractRevalItem, S extend
             if (view instanceof RecyclerView) {
                 initRecyclerView((RecyclerView) view);
             } else {
-
                 throw new WrongViewException();
             }
         } else {
@@ -57,28 +47,17 @@ public abstract class AbstractFragmentGrid<T extends AbstractRevalItem, S extend
     protected abstract int getListWrapperId();
 
     public void setData(List<T> items) {
-        progressDialog.dismiss();
         myRecyclerViewAdapter.setmValues(items);
         myRecyclerViewAdapter.notifyDataSetChanged();
     }
 
     public abstract S createViewHolder(View view);
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        initContext(activity);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        initContext(context);
-    }
-
     @SuppressWarnings("unchecked")
-    private void initContext(Context context) {
-        progressDialog = new ProgressDialog(context);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Context context = getActivity();
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         }
@@ -101,7 +80,6 @@ public abstract class AbstractFragmentGrid<T extends AbstractRevalItem, S extend
     }
 
     public void addData(T items) {
-        progressDialog.dismiss();
         myRecyclerViewAdapter.addValue(items);
         myRecyclerViewAdapter.notifyDataSetChanged();
     }

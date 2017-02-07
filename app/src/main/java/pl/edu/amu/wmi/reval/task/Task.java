@@ -27,8 +27,8 @@ public class Task extends AbstractRevalItem implements Serializable {
         this.questionText = taskContent;
     }
 
-    public Task(String title, String questionText, Date lastActivityDate) {
-        super();
+    public Task(int id, String title, String questionText, Date lastActivityDate) {
+        super(id);
         this.title = title;
         this.questionText = questionText;
         this.lastActivityDate = lastActivityDate;

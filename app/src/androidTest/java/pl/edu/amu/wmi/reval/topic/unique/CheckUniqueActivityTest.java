@@ -26,6 +26,7 @@ public class CheckUniqueActivityTest {
 
     @Test
     public void simple() {
+        activityRule.launchActivity(null);
         onView(withId(R.id.actionbar_text_view)).perform(click());
     }
 

@@ -17,4 +17,7 @@ public interface AnswerService {
     @GET("reports_analyzer/analyze_reports/topic={id}")
     Call<List<Answer>> checkUnique(@Path("id") int topicId);
 
+    @GET("api/answers/task/{id}")
+    Call<List<Answer>> getAnswersByTaskId(@Path("id") int taskId);
+
 }

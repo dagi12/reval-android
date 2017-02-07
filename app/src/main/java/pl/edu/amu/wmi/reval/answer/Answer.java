@@ -11,29 +11,45 @@ public class Answer extends AbstractRevalItem implements Serializable {
     private Date date;
     private int similarity;
     private int subjectName;
-    private int taskName;
+    private String taskName;
 
     public String getAnswerText() {
         return answerText;
+    }
+
+    public void setAnswerText(String answerText) {
+        this.answerText = answerText;
     }
 
     public int getSimilarity() {
         return similarity;
     }
 
+    public void setSimilarity(int similarity) {
+        this.similarity = similarity;
+    }
+
     public Date getDate() {
         return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getSubjectName() {
         return subjectName;
     }
 
-    public int getTaskTitle() {
+    public String getTaskTitle() {
         return taskName;
     }
 
     public String getUser() {
         return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

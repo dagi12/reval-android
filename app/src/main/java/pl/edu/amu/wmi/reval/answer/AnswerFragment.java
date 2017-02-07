@@ -3,8 +3,6 @@ package pl.edu.amu.wmi.reval.answer;
 import android.content.Intent;
 import android.view.View;
 
-import java.util.List;
-
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.answer.holder.FragmentAnswerViewHolder;
 import pl.edu.amu.wmi.reval.answer.page.AdminAnswerPageActivity;
@@ -12,12 +10,6 @@ import pl.edu.amu.wmi.reval.common.grid.AbstractFragmentGrid;
 import pl.edu.amu.wmi.reval.common.grid.OnListFragmentInteractionListener;
 
 public class AnswerFragment extends AbstractFragmentGrid<Answer, FragmentAnswerViewHolder> implements OnListFragmentInteractionListener<Answer> {
-
-    public static AnswerFragment getInstance(List<Answer> answers) {
-        AnswerFragment fragment = new CheckedAnswerFragment();
-        fragment.setData(answers);
-        return fragment;
-    }
 
     public static AnswerFragment getInstance() {
         return new AnswerFragment();

@@ -35,7 +35,10 @@ public class MySpinnerAdapter<T extends AbstractRevalItem> extends ArrayAdapter<
 
     @Override
     public T getItem(int position) {
-        return values.get(position);
+        if (values.size() > position && position > -1) {
+            return values.get(position);
+        }
+        return null;
     }
 
     @Override

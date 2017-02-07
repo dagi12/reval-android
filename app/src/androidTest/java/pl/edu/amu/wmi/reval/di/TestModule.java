@@ -21,6 +21,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import pl.edu.amu.wmi.reval.MockData;
+import pl.edu.amu.wmi.reval.answer.AnswerService;
+import pl.edu.amu.wmi.reval.answer.AnswerServiceImpl;
 import pl.edu.amu.wmi.reval.common.error.ErrorService;
 import pl.edu.amu.wmi.reval.common.error.ErrorServiceImpl;
 import pl.edu.amu.wmi.reval.common.services.PicassoCache;
@@ -142,5 +144,12 @@ public class TestModule {
     protected TopicServiceImpl provideTopicService(Retrofit retrofit) {
         return new TopicServiceImpl(retrofit.create(TopicService.class));
     }
+
+    @Provides
+    @Singleton
+    protected AnswerServiceImpl provideAnswerService(Retrofit retrofit) {
+        return new AnswerServiceImpl(retrofit.create(AnswerService.class));
+    }
+
 
 }

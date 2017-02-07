@@ -15,6 +15,10 @@ public class AbstractRevalItem implements Serializable {
         this.name = name;
     }
 
+    public AbstractRevalItem(int id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }

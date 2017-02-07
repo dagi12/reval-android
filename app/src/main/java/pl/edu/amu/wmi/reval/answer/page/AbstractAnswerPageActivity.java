@@ -2,6 +2,7 @@ package pl.edu.amu.wmi.reval.answer.page;
 
 import android.os.Bundle;
 
+import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.answer.Answer;
 import pl.edu.amu.wmi.reval.answer.holder.AbstractAnswerViewHolder;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
@@ -15,6 +16,7 @@ public abstract class AbstractAnswerPageActivity extends RevalActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_answer_page);
         setItem();
     }
 

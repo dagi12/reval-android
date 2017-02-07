@@ -13,7 +13,7 @@ public class UserServiceImpl {
     }
 
     public void signIn(SignInAdapter adapter, boolean asAdmin) {
-        userContext.setUser(MockData.mockedUser());
+        userContext.setUser(MockData.mockedAdmin());
         adapter.onSignInSuccess();
     }
 

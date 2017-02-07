@@ -14,6 +14,9 @@ import pl.edu.amu.wmi.reval.task.TaskActivity;
 import pl.edu.amu.wmi.reval.task.TaskService;
 import pl.edu.amu.wmi.reval.user.UserContext;
 
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
@@ -25,7 +28,7 @@ public class TaskActivityTest {
     public MyDaggerMockRule myDaggerMockRule = new MyDaggerMockRule();
 
     @Rule
-    public ActivityTestRule activityRule = new ActivityTestRule<>(TaskActivity.class, false, false);
+    public ActivityTestRule activityRule = new ActivityTestRule<TaskActivity>(TaskActivity.class, false, false);
 
     @Mock
     UserContext userContext;
@@ -34,10 +37,11 @@ public class TaskActivityTest {
     TaskService taskServiceImpl;
 
     @Test
-    public void clickSignIn() {
-        when(userContext.getUser()).thenReturn(MockData.mockedUser());
+    public void clickFilter() {
+        when(userContext.getUser()).thenReturn(MockData.mockedAdmin());
         activityRule.launchActivity(null);
-//        onView(withId(R.id.add_task)).perform(click());
+        onView(withId(R.id.task_filter_button)).perform(click());
+        onView(withId(R.id.search_task)).perform(click());
     }
 
 

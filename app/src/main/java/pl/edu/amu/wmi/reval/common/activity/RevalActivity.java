@@ -1,6 +1,8 @@
 package pl.edu.amu.wmi.reval.common.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.annotation.StringRes;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,7 @@ public class RevalActivity extends AppCompatActivity {
 
     @Inject
     protected UserContext userContext;
+    protected ProgressDialog progressDialog;
 
     protected void setActionBar() {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -35,6 +38,11 @@ public class RevalActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.default_menu, menu);
         setActionBar();
         return true;
+    }
+
+    protected void initProgressDialog(@StringRes int stringId) {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(stringId));
     }
 
     @Override

@@ -18,6 +18,7 @@ public abstract class AbstractTaskPageActivity extends RevalActivity {
 
     public static final String TASK_PARAM = "TASK";
     protected Task task;
+
     @BindView(R.id.answer_button)
     protected Button answerButton;
 
@@ -25,6 +26,7 @@ public abstract class AbstractTaskPageActivity extends RevalActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_page);
+        ButterKnife.bind(this);
         setItem();
     }
 

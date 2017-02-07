@@ -1,5 +1,6 @@
-package pl.edu.amu.wmi.reval.task;
+package pl.edu.amu.wmi.reval.answer;
 
+import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -15,18 +16,25 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 @RunWith(AndroidJUnit4.class)
-public class AddTaskActivityTest {
+public class TaskAnswerActivityTest {
 
     @Rule
     public MyDaggerMockRule myDaggerMockRule = new MyDaggerMockRule();
 
     @Rule
-    public ActivityTestRule activityRule = new ActivityTestRule<>(AddTaskActivity.class, false, false);
+    public ActivityTestRule activityRule = new ActivityTestRule<AnswerActivity>(AnswerActivity.class, false, false) {
+        @Override
+        protected Intent getActivityIntent() {
+            Intent intent = super.getActivityIntent();
+            intent.putExtra(AnswerActivity.TASK_PARAM, 0);
+            return intent;
+        }
+    };
 
     @Test
     public void simple() {
         activityRule.launchActivity(null);
-        onView(withId(R.id.actionbar_text_view)).perform(click());
+        onView(withId(R.id.task_title)).perform(click());
     }
 
 }

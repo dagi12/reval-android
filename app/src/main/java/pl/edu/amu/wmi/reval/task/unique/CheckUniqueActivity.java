@@ -30,9 +30,9 @@ public class CheckUniqueActivity extends RevalActivity implements AnswerServiceI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_check_unique);
         ButterKnife.bind(this);
         MyApplication.getComponent().inject(this);
-        setContentView(R.layout.activity_check_unique);
         container = new SubjectTopicContainer(this, this);
     }
 

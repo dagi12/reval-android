@@ -36,6 +36,11 @@ public class TaskFilterDialogFragment extends MyBottomSheetDialogFragment {
         } else {
             throw new AdapterLackException(context, TaskRequestAdapter.class);
         }
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         container = new SubjectTopicContainer(getActivity(), getView());
     }
 

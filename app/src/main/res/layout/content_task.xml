@@ -10,13 +10,11 @@
     tools:context="pl.edu.amu.wmi.reval.task.TaskActivity"
     tools:showIn="@layout/app_bar_task">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:id="@+id/task_fragment"
         android:name="pl.edu.amu.wmi.reval.task.TaskFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".task.TaskActivity"
         tools:layout="@layout/fragment_task_list" />
 
 </RelativeLayout>
