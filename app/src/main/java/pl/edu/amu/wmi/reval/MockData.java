@@ -10,6 +10,8 @@ import pl.edu.amu.wmi.reval.task.Task;
 import pl.edu.amu.wmi.reval.topic.Topic;
 import pl.edu.amu.wmi.reval.user.User;
 
+import static pl.edu.amu.wmi.reval.di.MyApplication.getContext;
+
 //TODO do usunięcia gdy gotowe API
 public final class MockData {
     private MockData() {
@@ -27,10 +29,12 @@ public final class MockData {
     public static User mockedStudent() {
         User user = new User();
         user.setId(0);
+        user.setIndex(getContext().getString(R.string.example_student));
         user.setName("Eryk Mariankowski");
         user.setToken("token");
         return user;
     }
+
 
     public static List<Task> mockedTasks() {
         List<Task> tasks = new LinkedList<>();

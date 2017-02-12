@@ -19,6 +19,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.mockito.Mockito.when;
 
@@ -48,4 +49,10 @@ public class AdminTaskPageActivityTest {
         onView(withId(R.id.answer_button)).perform(click());
         intended(hasComponent(AnswerActivity.class.getName()));
     }
+
+    @Test
+    public void homeButton() {
+        onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click());
+    }
+
 }

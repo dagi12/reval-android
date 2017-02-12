@@ -17,5 +17,5 @@ public interface TaskService {
     Call<List<Task>> getFilteredTasks(@Body TaskRequestParameters parameters);
 
     @POST("api/addTask")
-    Call<Task> addTask(Task task);
+    Call<Task> addTask(@Body Task task);
 }

@@ -13,6 +13,7 @@ import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 @RunWith(AndroidJUnit4.class)
@@ -35,6 +36,11 @@ public class TaskAnswerActivityTest {
     public void simple() {
         activityRule.launchActivity(null);
         onView(withId(R.id.task_title)).perform(click());
+    }
+
+    @Test
+    public void homeButton() {
+        onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click());
     }
 
 }

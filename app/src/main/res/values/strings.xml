@@ -42,5 +42,6 @@
     <string name="navigation_drawer_open">Otwórz panel nawigacji</string>
     <string name="navigation_drawer_close">Zamknij panel nawigacji</string>
     <string name="answer_progress">Ładowanie odpowiedzi&#8230;</string>
+    <string name="task_progress">Ładowanie zadań&#8230;</string>
     <string name="task_page">Strona zadania</string>
 </resources>

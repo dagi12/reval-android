@@ -163,7 +163,7 @@
         <item name="android:background">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/well_color_text</item>
         <item name="android:textSize">@dimen/dropdown_text_size</item>
-
+        <item name="android:padding">@dimen/default_margin</item>
     </style>
 
     <style name="AppTheme.SpinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">

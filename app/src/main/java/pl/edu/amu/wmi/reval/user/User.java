@@ -26,4 +26,9 @@ public class User extends AbstractRevalItem {
     public String getIndex() {
         return index;
     }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
 }

@@ -8,7 +8,7 @@
             android:title="@string/add_task" />
         <item
             android:id="@+id/check_unique"
-            android:icon="@drawable/ic_add"
+            android:icon="@drawable/ic_check_circle"
             android:title="@string/check_unique" />
     </group>
 

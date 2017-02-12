@@ -3,7 +3,6 @@ package pl.edu.amu.wmi.reval.common.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.StringRes;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -51,7 +50,7 @@ public class RevalActivity extends AppCompatActivity {
             userContext.hardLogout();
             startActivity(new Intent(this, SignInActivity.class));
         } else if (item.getItemId() == android.R.id.home) {
-            NavUtils.navigateUpFromSameTask(this);
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

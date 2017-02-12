@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.List;
@@ -56,12 +57,14 @@ public class TaskActivity extends RevalActivity implements
         ButterKnife.bind(this);
         setUserData();
         setNavigationView();
+        initProgressDialog(R.string.task_progress);
         taskFragment = (TaskFragment) getFragmentManager().findFragmentById(R.id.task_fragment);
         taskService.getTasks(this);
         taskFilterDialog = TaskFilterDialogFragment.getInstance();
     }
 
     private void setUserData() {
+
         if (userContext.getUser().isAdmin()) {
             navigationView.inflateHeaderView(R.layout.nav_header_admin);
             navigationAdapter = new AdminNavigationAdapter(this);
@@ -70,6 +73,11 @@ public class TaskActivity extends RevalActivity implements
         }
         HeaderViewHolder holder =
                 new HeaderViewHolder(navigationView.getHeaderView(0));
+        if (!userContext.getUser().isAdmin()) {
+            Menu menu = navigationView.getMenu();
+            menu.findItem(R.id.add_task).setVisible(false);
+            menu.findItem(R.id.check_unique).setVisible(false);
+        }
         holder.setItem(userContext.getUser());
         holder.setRow();
     }
@@ -88,7 +96,12 @@ public class TaskActivity extends RevalActivity implements
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this,
+                drawer,
+                toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+        );
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
@@ -108,7 +121,7 @@ public class TaskActivity extends RevalActivity implements
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (navigationAdapter != null) {
             int id = item.getItemId();
-            navigationAdapter.handleMenutItem(id);
+            navigationAdapter.handleMenuItem(id);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -118,6 +131,9 @@ public class TaskActivity extends RevalActivity implements
     @Override
     public void setTasks(List<Task> tasks) {
         taskFragment.setData(tasks);
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
     }
 
     @Override
@@ -133,6 +149,7 @@ public class TaskActivity extends RevalActivity implements
 
     @Override
     public void populateFilter(TaskRequestParameters parameters) {
+        progressDialog.show();
         taskService.getFilteredTasks(this, parameters);
     }
 
@@ -153,9 +170,9 @@ public class TaskActivity extends RevalActivity implements
         }
 
         @Override
-        public void handleMenutItem(int id) {
+        public void handleMenuItem(int id) {
             if (id == R.id.add_task) {
-                startActivity(new Intent(context, AdminTaskPageActivity.class));
+                startActivity(new Intent(context, AddTaskActivity.class));
             } else if (id == R.id.check_unique) {
                 startActivity(new Intent(context, CheckUniqueActivity.class));
             }

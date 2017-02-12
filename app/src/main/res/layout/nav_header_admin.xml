@@ -19,6 +19,7 @@
             android:background="@drawable/bg_circle">
 
             <ImageView
+                android:id="@+id/admin_logo"
                 android:layout_width="@dimen/logo_size"
                 android:layout_height="@dimen/logo_size"
                 android:contentDescription="@string/admin_label"

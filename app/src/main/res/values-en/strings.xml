@@ -41,5 +41,6 @@
     <string name="task_item_icon">Task item icon</string>
     <string name="admin_label">ADMIN</string>
     <string name="answer_progress">Loading answers&#8230;</string>
+    <string name="task_progress">Loading tasks&#8230;</string>
     <string name="task_page">Task page</string>
 </resources>
