@@ -11,14 +11,17 @@ public class Task extends AbstractRevalItem implements Serializable {
 
     private String questionText;
     private String title;
-    private String subjectName;
-    private String topicName;
 
     private Date lastActivityDate;
+    private String subjectName;
+    private String topicName;
+    private Answer answer;
+
+    // TODO do ustalenia z API
     private int topic;
     private int subject;
-    private Answer answer;
     private int maxPoints;
+
 
     public Task(TaskRequestParameters parameters, String taskContent) {
         super();

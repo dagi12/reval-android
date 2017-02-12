@@ -27,7 +27,6 @@ public class AddTaskActivity extends RevalActivity implements TaskServiceImpl.Ad
     @Inject
     TaskServiceImpl taskService;
     private SubjectTopicContainer container;
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

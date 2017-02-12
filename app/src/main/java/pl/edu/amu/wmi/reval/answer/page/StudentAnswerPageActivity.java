@@ -13,8 +13,6 @@ import pl.edu.amu.wmi.reval.di.MyApplication;
 
 public class StudentAnswerPageActivity extends AbstractAnswerPageActivity {
 
-    public static final String ANSWER_PARAM = "ANSWER_PARAM";
-
     @BindView(R.id.index_container)
     View indexContainer;
 
