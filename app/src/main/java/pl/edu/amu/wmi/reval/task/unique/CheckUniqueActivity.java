@@ -24,7 +24,7 @@ public class CheckUniqueActivity extends RevalActivity implements AnswerServiceI
 
     @OnClick(R.id.check_unique)
     public void onClick() {
-        answerService.checkUnique(this, container.getParameters());
+        answerService.checkUnique(this, container.getParameters().getTopicId());
     }
 
     @Override

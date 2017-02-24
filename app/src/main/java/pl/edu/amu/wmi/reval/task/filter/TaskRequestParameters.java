@@ -4,6 +4,14 @@ public class TaskRequestParameters {
     private int subjectId;
     private int topicId;
 
+    public TaskRequestParameters() {
+        // retrofit need
+    }
+
+    public TaskRequestParameters(int parameters) {
+        this.topicId = parameters;
+    }
+
     public int getTopicId() {
         return topicId;
     }

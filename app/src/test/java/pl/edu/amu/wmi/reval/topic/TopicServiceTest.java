@@ -25,7 +25,7 @@ public class TopicServiceTest extends AbstractDaggerServiceTest {
 
     @Test
     public void addTopics() throws IOException {
-        Response<Void> response = topicService.addTopic("Przykładowy temat").execute();
+        Response<Void> response = topicService.addTopic(new Topic("Przykładowy temat")).execute();
         Assert.assertEquals(201, response.code());
     }
 

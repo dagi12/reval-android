@@ -35,8 +35,8 @@ public class AnswerServiceImpl {
     }
 
 
-    public void checkUnique(final AnswerAdapter adapter, TaskRequestParameters parameters) {
-        answerService.checkUnique(parameters.getTopicId()).enqueue(new MyCallback<List<Answer>>() {
+    public void checkUnique(final AnswerAdapter adapter, int parameters) {
+        answerService.checkUnique(new TaskRequestParameters(parameters)).enqueue(new MyCallback<List<Answer>>() {
             @Override
             protected void onHandledResponse(Call<List<Answer>> call, Response<List<Answer>> response) {
                 adapter.setAnswers(response.body());
