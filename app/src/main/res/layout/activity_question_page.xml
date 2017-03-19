@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        style="@style/AppTheme.PaddingWithoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="pl.edu.amu.wmi.reval.question.page.AdminQuestionPageActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.Well.ListItem">
+
+            <ImageView
+                android:id="@+id/question_icon"
+                android:layout_width="@dimen/icon_small"
+                android:layout_height="@dimen/icon_small"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/question_item_icon"
+                android:src="@drawable/question_item_icon"
+                android:tint="@color/icon_tint" />
+
+            <include
+                android:id="@+id/question_wrapper"
+                layout="@layout/question_details_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@id/question_icon"
+                android:layout_toRightOf="@id/question_icon" />
+
+
+            <LinearLayout
+                android:id="@+id/question_content_wrapper"
+                style="@style/AppTheme.Paragraph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/question_wrapper"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/AppTheme.PageLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/icon_margin"
+                    android:layout_marginStart="@dimen/icon_margin"
+                    android:text="@string/question_content" />
+
+                <TextView
+                    android:id="@+id/question_content"
+                    style="@style/AppTheme.Paragraph.Content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/example_content" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/answer_button"
+        style="@style/AppTheme.ButtonStyle.Floating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/answers" />
+</FrameLayout>

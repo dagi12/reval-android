@@ -4,10 +4,10 @@
     <string name="example_topic">przykładowy temat</string>
     <string name="example_date">20.2.2017</string>
     <string name="example_content">Maecenas ornare vel purus ut sodales. Pellentesque finibus sagittis est, vitae fringilla dolor pharetra at. Integer sed consectetur dui. Phasellus ligula ligula, congue facilisis feugiat at, semper in ligula. Donec pulvinar feugiat rutrum. Etiam ante tellus, aliquam in pellentesque lacinia, viverra et urna. Nulla facilisi. Sed facilisis dui et interdum placerat. Nunc congue tellus sed augue sollicitudin, quis vulputate ex laoreet. Sed diam est, aliquam a augue quis, posuere luctus libero. Maecenas suscipit, felis et rhoncus suscipit, nibh ipsum condimentum metus, ut tincidunt erat neque auctor risus. Sed dictum mollis suscipit. Fusce placerat nunc ut diam scelerisque lacinia. Mauris aliquam diam vitae pretium vulputate.</string>
-    <string name="example_task_name">Zadanie nr 1</string>
+    <string name="example_question_name">Zadanie nr 1</string>
     <string name="example_student">s396374</string>
     <string name="example_similarity">13%</string>
-    <string name="example_task_title">Tytuł zadania 1</string>
+    <string name="example_question_title">Tytuł zadania 1</string>
     <string name="example_user_name">Eryk Mariankowski</string>
     <string name="example_role">Użytkownik</string>
 </resources>

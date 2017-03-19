@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Dialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/well_padding"
+    tools:context=".question.filter.QuestionFilterDialogFragment">
+
+    <include layout="@layout/subject_topic_layout" />
+
+    <Button
+        android:id="@+id/search_question"
+        style="@style/AppTheme.ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/filter_search" />
+
+</LinearLayout>

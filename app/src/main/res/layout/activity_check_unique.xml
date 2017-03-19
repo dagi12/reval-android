@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="pl.edu.amu.wmi.reval.task.unique.CheckUniqueActivity">
+    tools:context="pl.edu.amu.wmi.reval.question.unique.CheckUniqueActivity">
 
     <include layout="@layout/subject_topic_layout" />
 

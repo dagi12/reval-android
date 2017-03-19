@@ -13,8 +13,8 @@ import pl.edu.amu.wmi.reval.common.grid.AbstractViewHolder;
 
 public abstract class AbstractAnswerViewHolder extends AbstractViewHolder<Answer> {
 
-    @BindView(R.id.task_title)
-    protected TextView taskTitle;
+    @BindView(R.id.question_title)
+    protected TextView questionTitle;
 
     @BindView(R.id.answer_date)
     protected TextView answerDate;
@@ -26,7 +26,7 @@ public abstract class AbstractAnswerViewHolder extends AbstractViewHolder<Answer
 
     @Override
     public void setRow() {
-        taskTitle.setText(item.getTaskTitle());
+        questionTitle.setText(item.getQuestionTitle());
         answerDate.setText(DateFormat.getDateInstance().format(item.getDate()));
     }
 }

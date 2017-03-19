@@ -14,7 +14,7 @@ import pl.edu.amu.wmi.reval.di.MyApplication;
 public class AnswerActivity extends RevalActivity implements AnswerServiceImpl.AnswerAdapter {
 
     public static final String CHECKED_ANSWERS_PARAM = "CHECKED_ANSWERS_PARAM";
-    public static final String TASK_PARAM = "TASK_PARAM";
+    public static final String QUESTION_PARAM = "QUESTION_PARAM";
     @Inject
     AnswerServiceImpl answerService;
     private AnswerFragment answerFragment;
@@ -32,10 +32,10 @@ public class AnswerActivity extends RevalActivity implements AnswerServiceImpl.A
 
     @SuppressWarnings("unchecked")
     private void initExtra() {
-        int id = getIntent().getIntExtra(TASK_PARAM, -1);
+        int id = getIntent().getIntExtra(QUESTION_PARAM, -1);
         if (id > -1) {
             progressDialog.show();
-            answerService.getAnswersByTaskId(this, id);
+            answerService.getAnswersByQuestionId(this, id);
         } else {
             List<Answer> answers = (List<Answer>) getIntent().getSerializableExtra(CHECKED_ANSWERS_PARAM);
             if (answers != null) {

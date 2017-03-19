@@ -3,9 +3,9 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/add_task"
+            android:id="@+id/add_question"
             android:icon="@drawable/ic_add"
-            android:title="@string/add_task" />
+            android:title="@string/add_question" />
         <item
             android:id="@+id/check_unique"
             android:icon="@drawable/ic_check_circle"

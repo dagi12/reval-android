@@ -9,7 +9,7 @@ import junit.framework.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
-import pl.edu.amu.wmi.reval.task.TaskActivity;
+import pl.edu.amu.wmi.reval.question.QuestionActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -51,7 +51,7 @@ public class CredentialsSignInActivityTest {
         onView(withId(R.id.index)).perform(replaceText("Foo"));
         onView(withId(R.id.password)).perform(replaceText("FooBar"));
         onView(withId(R.id.sign_in_button)).perform(click());
-        intended(hasComponent(TaskActivity.class.getName()));
+        intended(hasComponent(QuestionActivity.class.getName()));
     }
 
 

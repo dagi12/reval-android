@@ -9,13 +9,13 @@ import pl.edu.amu.wmi.reval.answer.page.AdminAnswerPageActivity;
 import pl.edu.amu.wmi.reval.answer.page.StudentAnswerPageActivity;
 import pl.edu.amu.wmi.reval.common.activity.SubjectTopicContainer;
 import pl.edu.amu.wmi.reval.common.services.MyCallback;
-import pl.edu.amu.wmi.reval.task.AddTaskActivity;
-import pl.edu.amu.wmi.reval.task.TaskActivity;
-import pl.edu.amu.wmi.reval.task.TaskFragment;
-import pl.edu.amu.wmi.reval.task.filter.TaskFilterDialogFragment;
-import pl.edu.amu.wmi.reval.task.page.AdminTaskPageActivity;
-import pl.edu.amu.wmi.reval.task.page.StudentTaskPageActivity;
-import pl.edu.amu.wmi.reval.task.unique.CheckUniqueActivity;
+import pl.edu.amu.wmi.reval.question.AddQuestionActivity;
+import pl.edu.amu.wmi.reval.question.QuestionActivity;
+import pl.edu.amu.wmi.reval.question.QuestionFragment;
+import pl.edu.amu.wmi.reval.question.filter.QuestionFilterDialogFragment;
+import pl.edu.amu.wmi.reval.question.page.AdminQuestionPageActivity;
+import pl.edu.amu.wmi.reval.question.page.StudentQuestionPageActivity;
+import pl.edu.amu.wmi.reval.question.unique.CheckUniqueActivity;
 
 
 @Singleton
@@ -23,25 +23,25 @@ import pl.edu.amu.wmi.reval.task.unique.CheckUniqueActivity;
 public interface MyApplicationComponent {
     void inject(CredentialsSignInActivity credentialsSignInActivity);
 
-    void inject(TaskActivity taskActivity);
+    void inject(QuestionActivity questionActivity);
 
-    void inject(AdminTaskPageActivity adminTaskPageActivity);
+    void inject(AdminQuestionPageActivity adminQuestionPageActivity);
 
-    void inject(TaskFragment taskFragment);
+    void inject(QuestionFragment questionFragment);
 
     void inject(MyCallback.MyCallbackInjectHelper myCallbackInjectHelper);
 
-    void inject(TaskFilterDialogFragment taskFilterDialogFragment);
+    void inject(QuestionFilterDialogFragment questionFilterDialogFragment);
 
     void inject(CheckUniqueActivity checkUniqueActivity);
 
     void inject(SubjectTopicContainer subjectTopicContainer);
 
-    void inject(AddTaskActivity addTaskActivity);
+    void inject(AddQuestionActivity addQuestionActivity);
 
     void inject(AdminAnswerPageActivity adminAnswerPageActivity);
 
-    void inject(StudentTaskPageActivity studentTaskPageActivity);
+    void inject(StudentQuestionPageActivity studentQuestionPageActivity);
 
     void inject(StudentAnswerPageActivity studentAnswerPageActivity);
 

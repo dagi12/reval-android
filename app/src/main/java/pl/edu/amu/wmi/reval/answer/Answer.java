@@ -11,7 +11,7 @@ public class Answer extends AbstractRevalItem implements Serializable {
     private Date date;
     private int similarity;
     private int subjectName;
-    private String taskName;
+    private String questionName;
 
     public String getAnswerText() {
         return answerText;
@@ -41,8 +41,8 @@ public class Answer extends AbstractRevalItem implements Serializable {
         return subjectName;
     }
 
-    public String getTaskTitle() {
-        return taskName;
+    public String getQuestionTitle() {
+        return questionName;
     }
 
     public String getUser() {

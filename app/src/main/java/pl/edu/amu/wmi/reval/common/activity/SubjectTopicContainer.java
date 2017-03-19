@@ -15,9 +15,9 @@ import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.common.dialog.ErrorDialog;
 import pl.edu.amu.wmi.reval.common.spinner.MySpinnerAdapter;
 import pl.edu.amu.wmi.reval.di.MyApplication;
+import pl.edu.amu.wmi.reval.question.filter.QuestionRequestParameters;
 import pl.edu.amu.wmi.reval.subject.Subject;
 import pl.edu.amu.wmi.reval.subject.SubjectServiceImpl;
-import pl.edu.amu.wmi.reval.task.filter.TaskRequestParameters;
 import pl.edu.amu.wmi.reval.topic.Topic;
 import pl.edu.amu.wmi.reval.topic.TopicServiceImpl;
 
@@ -74,13 +74,13 @@ public class SubjectTopicContainer implements SubjectServiceImpl.SubjectListAdap
         topicAdapter.setValues(topics);
     }
 
-    public TaskRequestParameters getParameters() {
+    public QuestionRequestParameters getParameters() {
         Subject subject = subjectAdapter.getItem(subjectSpinner.getSelectedItemPosition());
         if (subject == null) {
             ErrorDialog.getInstance(context, context.getString(R.string.select_subject)).show();
             return null;
         }
-        TaskRequestParameters parameters = new TaskRequestParameters();
+        QuestionRequestParameters parameters = new QuestionRequestParameters();
         parameters.setSubjectId(subject.getId());
         Topic topic = topicAdapter.getItem(topicSpinner.getSelectedItemPosition());
         if (topic != null) {

@@ -26,10 +26,10 @@ import pl.edu.amu.wmi.reval.answer.AnswerServiceImpl;
 import pl.edu.amu.wmi.reval.common.error.ErrorService;
 import pl.edu.amu.wmi.reval.common.error.ErrorServiceImpl;
 import pl.edu.amu.wmi.reval.common.services.PicassoCache;
+import pl.edu.amu.wmi.reval.question.QuestionService;
+import pl.edu.amu.wmi.reval.question.QuestionServiceImpl;
 import pl.edu.amu.wmi.reval.subject.SubjectService;
 import pl.edu.amu.wmi.reval.subject.SubjectServiceImpl;
-import pl.edu.amu.wmi.reval.task.TaskService;
-import pl.edu.amu.wmi.reval.task.TaskServiceImpl;
 import pl.edu.amu.wmi.reval.topic.TopicService;
 import pl.edu.amu.wmi.reval.topic.TopicServiceImpl;
 import pl.edu.amu.wmi.reval.user.PreferencesManager;
@@ -130,11 +130,11 @@ public class TestModule {
 
     @Provides
     @Singleton
-    protected TaskServiceImpl provideTaskService(Retrofit retrofit) {
-        return new TaskServiceImpl(retrofit.create(TaskService.class)) {
+    protected QuestionServiceImpl provideQuestionService(Retrofit retrofit) {
+        return new QuestionServiceImpl(retrofit.create(QuestionService.class)) {
             @Override
-            public void getTasks(final TaskAdapter taskAdapter) {
-                taskAdapter.setTasks(MockData.mockedTasks());
+            public void getQuestions(final QuestionAdapter questionAdapter) {
+                questionAdapter.setQuestions(MockData.mockedQuestions());
             }
         };
     }

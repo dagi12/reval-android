@@ -13,28 +13,27 @@
     <string name="sign_in">Sign in</string>
     <string name="sign_in_error_message">Błędny login lub hasło</string>
     <string name="log_out">Wyloguj</string>
-    <string name="last_tasks">Ostatnie zadania</string>
+    <string name="last_questions">Ostatnie zadania</string>
 
-    <string name="task_item_icon">Ikona zadania</string>
-    <string name="task">Zadanie:</string>
+    <string name="question_item_icon">Ikona zadania</string>
+    <string name="question">Zadanie:</string>
     <string name="subject">Przedmiot:</string>
     <string name="topic">Temat:</string>
     <string name="last_activity">Ostatnia aktywność:</string>
-    <string name="task_content">Treść zadania:</string>
+    <string name="question_content">Treść zadania:</string>
     <string name="apply_filter">Zastosuj filtry</string>
     <string name="filter_search">Szukaj</string>
     <string name="select_subject">Wybierz przedmiot</string>
     <string name="select_topic">Wybierz temat</string>
-    <string name="add_task">Dodaj zadanie</string>
-    <string name="add_task_progress">Dodawanie zadania&#8230;</string>
+    <string name="add_question">Dodaj zadanie</string>
+    <string name="add_question_progress">Dodawanie zadania&#8230;</string>
     <string name="check_unique">Sprawdź unikalność</string>
     <string name="date">Data:</string>
     <string name="student">Uczeń:</string>
     <string name="similarity">Stopień podobieństwa:</string>
     <string name="answers">Odpowiedzi</string>
-    <string name="question">Pytanie:</string>
-    <string name="write_task_conent">Wpisz treść zadania</string>
-    <string name="task_title">Tytuł zadania:</string>
+    <string name="write_question_conent">Wpisz treść zadania</string>
+    <string name="question_title">Tytuł zadania:</string>
     <string name="answer">Odpowiedź:</string>
     <string name="answer_page">Strona odpowiedzi</string>
     <string name="your_answer">Twoja odpowiedź:</string>
@@ -42,6 +41,6 @@
     <string name="navigation_drawer_open">Otwórz panel nawigacji</string>
     <string name="navigation_drawer_close">Zamknij panel nawigacji</string>
     <string name="answer_progress">Ładowanie odpowiedzi&#8230;</string>
-    <string name="task_progress">Ładowanie zadań&#8230;</string>
-    <string name="task_page">Strona zadania</string>
+    <string name="question_progress">Ładowanie zadań&#8230;</string>
+    <string name="question_page">Strona zadania</string>
 </resources>

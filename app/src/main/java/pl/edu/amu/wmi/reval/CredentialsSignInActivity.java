@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnEditorAction;
 import pl.edu.amu.wmi.reval.di.MyApplication;
-import pl.edu.amu.wmi.reval.task.TaskActivity;
+import pl.edu.amu.wmi.reval.question.QuestionActivity;
 import pl.edu.amu.wmi.reval.user.Credentials;
 import pl.edu.amu.wmi.reval.user.UserServiceImpl;
 
@@ -104,7 +104,7 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
     @Override
     public void onSignInSuccess() {
         loginInProgress = false;
-        startActivity(new Intent(this, TaskActivity.class));
+        startActivity(new Intent(this, QuestionActivity.class));
     }
 
     @Override

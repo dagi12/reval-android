@@ -2,7 +2,7 @@ package pl.edu.amu.wmi.reval.answer;
 
 import java.util.List;
 
-import pl.edu.amu.wmi.reval.task.filter.TaskRequestParameters;
+import pl.edu.amu.wmi.reval.question.filter.QuestionRequestParameters;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -17,9 +17,9 @@ public interface AnswerService {
     Call<List<Answer>> getSimilarAnswers();
 
     @GET("api/run_antiplagiarism")
-    Call<List<Answer>> checkUnique(@Body TaskRequestParameters topic);
+    Call<List<Answer>> checkUnique(@Body QuestionRequestParameters topic);
 
-    @GET("api/answers/task/{id}")
-    Call<List<Answer>> getAnswersByTaskId(@Path("id") int taskId);
+    @GET("api/answers/question/{id}")
+    Call<List<Answer>> getAnswersByQuestionId(@Path("id") int questionId);
 
 }

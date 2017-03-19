@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
-import pl.edu.amu.wmi.reval.task.unique.CheckUniqueActivity;
+import pl.edu.amu.wmi.reval.question.unique.CheckUniqueActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
