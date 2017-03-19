@@ -12,7 +12,7 @@ public interface TopicService {
     @POST("api/add_topic")
     Call<Void> addTopic(@Body Topic topic);
 
-    @GET("api/topic_list/?format=json")
+    @GET("api/topic_list")
     Call<List<Topic>> getTopics();
 
 }

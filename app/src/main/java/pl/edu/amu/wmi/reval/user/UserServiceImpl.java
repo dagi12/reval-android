@@ -1,6 +1,8 @@
 package pl.edu.amu.wmi.reval.user;
 
-import pl.edu.amu.wmi.reval.MockData;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UserServiceImpl {
 
@@ -12,13 +14,25 @@ public class UserServiceImpl {
         this.userContext = userContext;
     }
 
-    public void signIn(SignInAdapter adapter, boolean asAdmin) {
-        if (asAdmin) {
-            userContext.setUser(MockData.mockedAdmin());
-        } else {
-            userContext.setUser(MockData.mockedStudent());
-        }
-        adapter.onSignInSuccess();
+    public void signIn(final SignInAdapter adapter, final Credentials credentials) {
+        userService.signIn(credentials).enqueue(new Callback<SignInResponse>() {
+            @Override
+            public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
+                SignInResponse signInResponse = response.body();
+                if (signInResponse != null &&
+                        signInResponse.getStatus() == SignInResponse.SignInStatus.success) {
+                    userContext.setUser(signInResponse.getUserFromResponse(credentials.isAsAdmin()));
+                    adapter.onSignInSuccess();
+                } else {
+                    adapter.onSignInFailure();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SignInResponse> call, Throwable t) {
+                adapter.onSignInFailure();
+            }
+        });
     }
 
     public interface SignInAdapter {

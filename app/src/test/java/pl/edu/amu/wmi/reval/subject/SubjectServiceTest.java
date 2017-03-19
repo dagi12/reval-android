@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
-import pl.edu.amu.wmi.reval.di.AbstractDaggerServiceTest;
+import pl.edu.amu.wmi.reval.SignedDaggerServiceTest;
 import retrofit2.Response;
 
-public class SubjectServiceTest extends AbstractDaggerServiceTest {
+public class SubjectServiceTest extends SignedDaggerServiceTest {
 
     SubjectService subjectService;
 
@@ -27,7 +27,7 @@ public class SubjectServiceTest extends AbstractDaggerServiceTest {
     @Test
     public void getSubjectsTest() throws InterruptedException, TimeoutException, IOException {
         Response<List<Subject>> response = subjectService.getSubjects().execute();
-        Assert.assertNull(response.errorBody());
+        Assert.assertTrue(response.body().size() > 0);
     }
 
     @Test

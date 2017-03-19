@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 
 public interface TaskService {
 
-    @GET("api/question_list/?format=json")
+    @GET("api/question_list/")
     Call<List<Task>> getTasks();
 
     @POST("api/question_list/?format=json")

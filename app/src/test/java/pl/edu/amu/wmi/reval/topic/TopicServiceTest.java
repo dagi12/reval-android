@@ -8,13 +8,12 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
 
-import pl.edu.amu.wmi.reval.di.AbstractDaggerServiceTest;
+import pl.edu.amu.wmi.reval.SignedDaggerServiceTest;
 import retrofit2.Response;
 
-public class TopicServiceTest extends AbstractDaggerServiceTest {
+public class TopicServiceTest extends SignedDaggerServiceTest {
 
-
-    TopicService topicService;
+    private TopicService topicService;
 
     @Before
     @Override
@@ -32,7 +31,7 @@ public class TopicServiceTest extends AbstractDaggerServiceTest {
     @Test
     public void getTopicsTest() throws IOException {
         Response<List<Topic>> topics = topicService.getTopics().execute();
-        Assert.assertNotNull(topics.body());
+        Assert.assertTrue(topics.body().size() > 0);
     }
 
 }

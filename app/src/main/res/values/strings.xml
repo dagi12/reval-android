@@ -6,7 +6,7 @@
     <string name="admin_login">ZALOGUJ SIĘ JAKO ADMIN</string>
     <string name="empty_index">Nr indeksu nie może być pusty</string>
     <string name="empty_password">Hasło nie może być puste</string>
-    <string name="short_password">Hasło musi mieć przynajmniej 6 znaków</string>
+    <string name="short_password">Hasło musi mieć przynajmniej 8 znaków</string>
     <string name="prompt_index">Wpisz swój indeks</string>
     <string name="prompt_login">Wpisz swój login</string>
     <string name="prompt_password">Wpisz hasło</string>

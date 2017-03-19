@@ -18,6 +18,7 @@ import butterknife.OnClick;
 import butterknife.OnEditorAction;
 import pl.edu.amu.wmi.reval.di.MyApplication;
 import pl.edu.amu.wmi.reval.task.TaskActivity;
+import pl.edu.amu.wmi.reval.user.Credentials;
 import pl.edu.amu.wmi.reval.user.UserServiceImpl;
 
 /**
@@ -63,7 +64,11 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
         }
         if (verify()) {
             loginInProgress = true;
-            userService.signIn(this, getIntent().getBooleanExtra(ADMIN_MODE, false));
+            userService.signIn(this, new Credentials(
+                    loginView.getText().toString(),
+                    passwordView.getText().toString(),
+                    getIntent().getBooleanExtra(ADMIN_MODE, false)
+            ));
         }
     }
 
@@ -89,7 +94,7 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
             passwordView.setError(getString(R.string.empty_password));
             return false;
         }
-        if (passwordView.getText().toString().length() < 6) {
+        if (passwordView.getText().toString().length() < 8) {
             passwordView.setError(getString(R.string.short_password));
             return false;
         }

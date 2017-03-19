@@ -81,7 +81,7 @@ public class MyApplicationModule {
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
                 if (userContext.getUser() != null) {
-                    request = request.newBuilder().addHeader("Authorization", userContext.getUser().getToken()).build();
+                    request = request.newBuilder().addHeader("token", userContext.getUser().getToken()).build();
                 }
                 return chain.proceed(request);
             }

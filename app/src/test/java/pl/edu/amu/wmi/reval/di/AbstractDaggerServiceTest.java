@@ -4,14 +4,16 @@ import org.junit.Before;
 
 import javax.inject.Inject;
 
+import pl.edu.amu.wmi.reval.user.UserContext;
 import retrofit2.Retrofit;
 
 public abstract class AbstractDaggerServiceTest {
 
+    @Inject
+    public UserContext userContext;
 
     @Inject
     public Retrofit retrofit;
-
 
     @Before
     public void setUp() {
