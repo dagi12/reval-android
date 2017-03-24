@@ -1,5 +1,6 @@
 package pl.edu.amu.wmi.reval.question;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -15,19 +16,26 @@ public class Question extends AbstractRevalItem implements Serializable {
 
     private String questionText;
     private String title;
+    private Answer answer;
 
     @SerializedName("pub_date")
     private Date lastActivityDate;
 
+    @Expose(deserialize = false)
+    private int topicId;
+
+    @Expose(deserialize = false)
+    private int subjectId;
+
+    @Expose(serialize = false)
     private Topic topic;
-    private Subject subject;
-    private Answer answer;
+
     private int maxPoints;
 
     public Question(QuestionRequestParameters parameters, String questionContent) {
         super();
-        this.topic = new Topic(parameters.getTopicId());
-        this.subject = new Subject(parameters.getSubjectId());
+        this.topicId = parameters.getTopicId();
+        this.subjectId = parameters.getSubjectId();
         this.questionText = questionContent;
     }
 
@@ -62,14 +70,6 @@ public class Question extends AbstractRevalItem implements Serializable {
         this.topic = topic;
     }
 
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
-
     public int getMaxPoints() {
         return maxPoints;
     }
@@ -91,7 +91,13 @@ public class Question extends AbstractRevalItem implements Serializable {
     }
 
     public String getSubjectName() {
-        return subject.getName();
+        if (topic != null) {
+            Subject subject = topic.getSubject();
+            if (subject != null) {
+                return subject.getName();
+            }
+        }
+        return null;
     }
 
     public String getTopicName() {

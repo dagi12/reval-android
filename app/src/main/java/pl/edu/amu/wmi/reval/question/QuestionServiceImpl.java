@@ -3,7 +3,6 @@ package pl.edu.amu.wmi.reval.question;
 import java.util.List;
 
 import pl.edu.amu.wmi.reval.common.services.MyCallback;
-import pl.edu.amu.wmi.reval.question.filter.QuestionRequestParameters;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -24,8 +23,8 @@ public class QuestionServiceImpl {
         });
     }
 
-    public void getFilteredQuestions(final QuestionAdapter adapter, final QuestionRequestParameters parameters) {
-        questionService.getFilteredQuestions(parameters).enqueue(new MyCallback<List<Question>>() {
+    public void getFilteredQuestions(final QuestionAdapter adapter, final int topicId) {
+        questionService.getFilteredQuestions(topicId).enqueue(new MyCallback<List<Question>>() {
             @Override
             protected void onHandledResponse(Call<List<Question>> call, Response<List<Question>> response) {
                 adapter.setQuestions(response.body());

@@ -1,8 +1,11 @@
 package pl.edu.amu.wmi.reval.di;
 
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 
 import java.io.IOException;
 
@@ -14,7 +17,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import pl.edu.amu.wmi.reval.user.UserContext;
+import pl.edu.amu.wmi.reval.user.service.UserContext;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -27,9 +30,32 @@ public class JUnitTestModule {
     @Provides
     @Singleton
     Gson provideGson() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-        return gsonBuilder.create();
+        return new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).addSerializationExclusionStrategy(new ExclusionStrategy() {
+                    @Override
+                    public boolean shouldSkipField(FieldAttributes fieldAttributes) {
+                        final Expose expose = fieldAttributes.getAnnotation(Expose.class);
+                        return expose != null && !expose.serialize();
+                    }
+
+                    @Override
+                    public boolean shouldSkipClass(Class<?> aClass) {
+                        return false;
+                    }
+                })
+                .addDeserializationExclusionStrategy(new ExclusionStrategy() {
+                    @Override
+                    public boolean shouldSkipField(FieldAttributes fieldAttributes) {
+                        final Expose expose = fieldAttributes.getAnnotation(Expose.class);
+                        return expose != null && !expose.deserialize();
+                    }
+
+                    @Override
+                    public boolean shouldSkipClass(Class<?> aClass) {
+                        return false;
+                    }
+                })
+                .create();
     }
 
     @Provides

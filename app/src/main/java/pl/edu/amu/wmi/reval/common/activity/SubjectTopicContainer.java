@@ -3,8 +3,10 @@ package pl.edu.amu.wmi.reval.common.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -54,6 +56,9 @@ public class SubjectTopicContainer implements SubjectServiceImpl.SubjectListAdap
         setAdapters();
     }
 
+    final SubjectTopicContainer getThis() {
+        return this;
+    }
 
     private void setAdapters() {
         topicAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
@@ -61,7 +66,20 @@ public class SubjectTopicContainer implements SubjectServiceImpl.SubjectListAdap
         subjectSpinner.setAdapter(subjectAdapter);
         topicSpinner.setAdapter(topicAdapter);
         subjectService.getSubjects(this);
-        topicService.getTopics(this);
+        subjectSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Subject subject = subjectAdapter.getItem(position);
+                if (subject != null) {
+                    topicService.getTopics(getThis(), subject.getId());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                topicAdapter.setValues(Collections.<Topic>emptyList());
+            }
+        });
     }
 
     @Override

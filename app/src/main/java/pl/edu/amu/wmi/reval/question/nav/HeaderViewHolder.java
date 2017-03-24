@@ -8,7 +8,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.common.grid.AbstractViewHolder;
-import pl.edu.amu.wmi.reval.user.User;
+import pl.edu.amu.wmi.reval.user.model.User;
 
 public class HeaderViewHolder extends AbstractViewHolder<User> {
 
@@ -25,7 +25,7 @@ public class HeaderViewHolder extends AbstractViewHolder<User> {
 
     @Override
     public void setRow() {
-        userName.setText(item.getName());
+        userName.setText(item.getFullName());
         if (index != null) {
             index.setText(item.getIndex());
         }

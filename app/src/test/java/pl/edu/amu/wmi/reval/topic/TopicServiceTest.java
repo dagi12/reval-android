@@ -29,8 +29,9 @@ public class TopicServiceTest extends SignedDaggerServiceTest {
     }
 
     @Test
-    public void getTopicsTest() throws IOException {
-        Response<List<Topic>> topics = topicService.getTopics().execute();
+    public void getTopicsBySubjectId() throws IOException {
+        super.setUpAdmin();
+        Response<List<Topic>> topics = topicService.getTopicsBySubject(1).execute();
         Assert.assertTrue(topics.body().size() > 0);
     }
 

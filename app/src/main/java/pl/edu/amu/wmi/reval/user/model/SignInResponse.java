@@ -1,12 +1,12 @@
-package pl.edu.amu.wmi.reval.user;
+package pl.edu.amu.wmi.reval.user.model;
 
-class SignInResponse {
+public class SignInResponse {
     private SignInStatus status;
     private String fullName;
     private String index;
     private String token;
 
-    User getUserFromResponse(boolean admin) {
+    public User getUserFromResponse(boolean admin) {
         User user = new User();
         user.setName(fullName);
         user.setIndex(index);
@@ -15,11 +15,11 @@ class SignInResponse {
         return user;
     }
 
-    SignInStatus getStatus() {
+    public SignInStatus getStatus() {
         return status;
     }
 
-    enum SignInStatus {
+    public enum SignInStatus {
         success, failed
     }
 }

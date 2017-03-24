@@ -1,10 +1,12 @@
-package pl.edu.amu.wmi.reval.user;
+package pl.edu.amu.wmi.reval.user.service;
 
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
 import javax.inject.Singleton;
+
+import pl.edu.amu.wmi.reval.user.model.User;
 
 @Singleton
 public class PreferencesManager {
@@ -24,7 +26,7 @@ public class PreferencesManager {
             @Override
             public void run() {
                 SharedPreferences.Editor prefsEditor = mPrefs.edit();
-                if (myObject == null) {
+                if (myObject != null) {
                     String json = gson.toJson(myObject);
                     prefsEditor.putString(prefName, json);
                     prefsEditor.apply();

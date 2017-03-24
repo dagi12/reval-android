@@ -1,7 +1,7 @@
 package pl.edu.amu.wmi.reval.di;
 
-import pl.edu.amu.wmi.reval.user.PreferencesManager;
-import pl.edu.amu.wmi.reval.user.User;
+import pl.edu.amu.wmi.reval.user.model.User;
+import pl.edu.amu.wmi.reval.user.service.PreferencesManager;
 
 public class PreferencesManagerMock extends PreferencesManager {
 

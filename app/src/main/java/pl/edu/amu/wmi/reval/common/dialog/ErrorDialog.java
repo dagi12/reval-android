@@ -18,13 +18,13 @@ public class ErrorDialog {
     private static Dialog buildDialog(Context context, String errorMessage) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder
-                .setTitle(errorMessage)
-                .setCancelable(false)
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setMessage(errorMessage)
+//                .setCancelable(false)
+//                .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //niepotrzebne
+                        dialog.dismiss();
                     }
                 });
 

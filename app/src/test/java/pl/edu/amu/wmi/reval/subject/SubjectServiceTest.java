@@ -25,7 +25,15 @@ public class SubjectServiceTest extends SignedDaggerServiceTest {
 
 
     @Test
-    public void getSubjectsTest() throws InterruptedException, TimeoutException, IOException {
+    public void getSubjectsTestAdmin() throws InterruptedException, TimeoutException, IOException {
+        super.setUpAdmin();
+        Response<List<Subject>> response = subjectService.getSubjects().execute();
+        Assert.assertTrue(response.body().size() > 0);
+    }
+
+    @Test
+    public void getSubjectsTestStudent() throws InterruptedException, TimeoutException, IOException {
+        super.setUpStudent();
         Response<List<Subject>> response = subjectService.getSubjects().execute();
         Assert.assertTrue(response.body().size() > 0);
     }

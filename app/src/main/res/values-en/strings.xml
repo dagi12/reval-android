@@ -42,4 +42,5 @@
     <string name="answer_progress">Loading answers&#8230;</string>
     <string name="question_progress">Loading questions&#8230;</string>
     <string name="question_page">Question page</string>
+    <string name="sign_progress">Signing&#8230;</string>
 </resources>

@@ -10,7 +10,7 @@ import org.mockito.Mock;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 import pl.edu.amu.wmi.reval.question.QuestionActivity;
 import pl.edu.amu.wmi.reval.question.QuestionService;
-import pl.edu.amu.wmi.reval.user.UserContext;
+import pl.edu.amu.wmi.reval.user.service.UserContext;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
@@ -26,7 +26,7 @@ public class QuestionActivityTest {
     public MyDaggerMockRule myDaggerMockRule = new MyDaggerMockRule();
 
     @Rule
-    public ActivityTestRule activityRule = new ActivityTestRule<QuestionActivity>(QuestionActivity.class, false, false);
+    public ActivityTestRule activityRule = new ActivityTestRule<>(QuestionActivity.class, false, false);
 
     @Mock
     UserContext userContext;

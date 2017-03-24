@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 
 public interface SubjectService {
 
-    @GET("api/subject_list/?format=json")
+    @GET("api/subject_list")
     Call<List<Subject>> getSubjects();
 
     @POST("api/add_subject")

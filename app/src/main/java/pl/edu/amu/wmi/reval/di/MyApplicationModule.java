@@ -4,9 +4,12 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 
 import java.io.IOException;
 
@@ -29,10 +32,10 @@ import pl.edu.amu.wmi.reval.subject.SubjectService;
 import pl.edu.amu.wmi.reval.subject.SubjectServiceImpl;
 import pl.edu.amu.wmi.reval.topic.TopicService;
 import pl.edu.amu.wmi.reval.topic.TopicServiceImpl;
-import pl.edu.amu.wmi.reval.user.PreferencesManager;
-import pl.edu.amu.wmi.reval.user.UserContext;
-import pl.edu.amu.wmi.reval.user.UserService;
-import pl.edu.amu.wmi.reval.user.UserServiceImpl;
+import pl.edu.amu.wmi.reval.user.service.PreferencesManager;
+import pl.edu.amu.wmi.reval.user.service.UserContext;
+import pl.edu.amu.wmi.reval.user.service.UserService;
+import pl.edu.amu.wmi.reval.user.service.UserServiceImpl;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -41,6 +44,7 @@ public class MyApplicationModule {
 
     private static final String API_URL = "http://reval.usermd.net/";
     private final Application mApplication;
+
 
     public MyApplicationModule(Application application) {
         mApplication = application;
@@ -55,9 +59,32 @@ public class MyApplicationModule {
     @Provides
     @Singleton
     protected Gson provideGson() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-        return gsonBuilder.create();
+        return new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).addSerializationExclusionStrategy(new ExclusionStrategy() {
+                    @Override
+                    public boolean shouldSkipField(FieldAttributes fieldAttributes) {
+                        final Expose expose = fieldAttributes.getAnnotation(Expose.class);
+                        return expose != null && !expose.serialize();
+                    }
+
+                    @Override
+                    public boolean shouldSkipClass(Class<?> aClass) {
+                        return false;
+                    }
+                })
+                .addDeserializationExclusionStrategy(new ExclusionStrategy() {
+                    @Override
+                    public boolean shouldSkipField(FieldAttributes fieldAttributes) {
+                        final Expose expose = fieldAttributes.getAnnotation(Expose.class);
+                        return expose != null && !expose.deserialize();
+                    }
+
+                    @Override
+                    public boolean shouldSkipClass(Class<?> aClass) {
+                        return false;
+                    }
+                })
+                .create();
     }
 
     @Provides

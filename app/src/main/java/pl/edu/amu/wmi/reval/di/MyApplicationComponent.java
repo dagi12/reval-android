@@ -3,7 +3,6 @@ package pl.edu.amu.wmi.reval.di;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import pl.edu.amu.wmi.reval.CredentialsSignInActivity;
 import pl.edu.amu.wmi.reval.answer.AnswerActivity;
 import pl.edu.amu.wmi.reval.answer.page.AdminAnswerPageActivity;
 import pl.edu.amu.wmi.reval.answer.page.StudentAnswerPageActivity;
@@ -16,6 +15,7 @@ import pl.edu.amu.wmi.reval.question.filter.QuestionFilterDialogFragment;
 import pl.edu.amu.wmi.reval.question.page.AdminQuestionPageActivity;
 import pl.edu.amu.wmi.reval.question.page.StudentQuestionPageActivity;
 import pl.edu.amu.wmi.reval.question.unique.CheckUniqueActivity;
+import pl.edu.amu.wmi.reval.user.activity.CredentialsSignInActivity;
 
 
 @Singleton

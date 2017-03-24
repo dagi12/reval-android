@@ -1,8 +1,8 @@
 package pl.edu.amu.wmi.reval.question.filter;
 
 public class QuestionRequestParameters {
-    private int subjectId;
-    private int topicId;
+    private Integer subjectId;
+    private Integer topicId;
 
     public QuestionRequestParameters() {
         // retrofit need
@@ -12,19 +12,19 @@ public class QuestionRequestParameters {
         this.topicId = parameters;
     }
 
-    public int getTopicId() {
+    public Integer getTopicId() {
         return topicId;
     }
 
-    public void setTopicId(int topicId) {
+    public void setTopicId(Integer topicId) {
         this.topicId = topicId;
     }
 
-    public int getSubjectId() {
+    public Integer getSubjectId() {
         return subjectId;
     }
 
-    public void setSubjectId(int subjectId) {
+    public void setSubjectId(Integer subjectId) {
         this.subjectId = subjectId;
     }
 }

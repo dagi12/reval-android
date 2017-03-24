@@ -43,4 +43,5 @@
     <string name="answer_progress">Ładowanie odpowiedzi&#8230;</string>
     <string name="question_progress">Ładowanie zadań&#8230;</string>
     <string name="question_page">Strona zadania</string>
+    <string name="sign_progress">Logowanie&#8230;</string>
 </resources>

@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import pl.edu.amu.wmi.reval.common.error.ErrorServiceImpl;
 import pl.edu.amu.wmi.reval.common.error.NetworkContext;
 import pl.edu.amu.wmi.reval.di.MyApplication;
-import pl.edu.amu.wmi.reval.user.UserContext;
+import pl.edu.amu.wmi.reval.user.service.UserContext;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

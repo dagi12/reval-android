@@ -10,6 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import pl.edu.amu.wmi.reval.question.QuestionActivity;
+import pl.edu.amu.wmi.reval.user.activity.CredentialsSignInActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -19,7 +20,6 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.hasCom
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 public class CredentialsSignInActivityTest {
-
 
     @Rule
     public ActivityTestRule mActivityRule = new ActivityTestRule<>(

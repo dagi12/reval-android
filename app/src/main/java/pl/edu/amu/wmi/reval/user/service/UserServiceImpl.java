@@ -1,5 +1,7 @@
-package pl.edu.amu.wmi.reval.user;
+package pl.edu.amu.wmi.reval.user.service;
 
+import pl.edu.amu.wmi.reval.user.model.Credentials;
+import pl.edu.amu.wmi.reval.user.model.SignInResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,6 +28,7 @@ public class UserServiceImpl {
                 } else {
                     adapter.onSignInFailure();
                 }
+                adapter.onSignInCommon();
             }
 
             @Override
@@ -37,6 +40,8 @@ public class UserServiceImpl {
 
     public interface SignInAdapter {
         void onSignInSuccess();
+
+        void onSignInCommon();
 
         void onSignInFailure();
     }

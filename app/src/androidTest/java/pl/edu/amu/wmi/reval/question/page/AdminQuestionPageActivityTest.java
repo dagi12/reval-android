@@ -13,7 +13,7 @@ import pl.edu.amu.wmi.reval.MockData;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.answer.AnswerActivity;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
-import pl.edu.amu.wmi.reval.user.UserContext;
+import pl.edu.amu.wmi.reval.user.service.UserContext;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;

@@ -8,7 +8,7 @@ import java.util.List;
 import pl.edu.amu.wmi.reval.answer.Answer;
 import pl.edu.amu.wmi.reval.question.Question;
 import pl.edu.amu.wmi.reval.topic.Topic;
-import pl.edu.amu.wmi.reval.user.User;
+import pl.edu.amu.wmi.reval.user.model.User;
 
 import static pl.edu.amu.wmi.reval.di.MyApplication.getContext;
 

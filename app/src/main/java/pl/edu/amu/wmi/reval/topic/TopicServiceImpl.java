@@ -14,9 +14,8 @@ public class TopicServiceImpl {
         this.topicService = topicService;
     }
 
-    // todo gdy tematy zostaną zrobione na API
-    public void getTopics(final TopicAdapter adapter) {
-        topicService.getTopics().enqueue(new MyCallback<List<Topic>>() {
+    public void getTopics(final TopicAdapter adapter, final int subjectId) {
+        topicService.getTopicsBySubject(subjectId).enqueue(new MyCallback<List<Topic>>() {
             @Override
             protected void onHandledResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
                 adapter.populateTopics(response.body());

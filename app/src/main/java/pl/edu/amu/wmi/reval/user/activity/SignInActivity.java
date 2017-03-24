@@ -1,4 +1,4 @@
-package pl.edu.amu.wmi.reval;
+package pl.edu.amu.wmi.reval.user.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import pl.edu.amu.wmi.reval.R;
 
 public class SignInActivity extends Activity {
 

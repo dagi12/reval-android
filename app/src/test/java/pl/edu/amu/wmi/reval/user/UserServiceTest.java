@@ -8,6 +8,9 @@ import org.junit.Test;
 import java.io.IOException;
 
 import pl.edu.amu.wmi.reval.di.AbstractDaggerServiceTest;
+import pl.edu.amu.wmi.reval.user.model.Credentials;
+import pl.edu.amu.wmi.reval.user.model.SignInResponse;
+import pl.edu.amu.wmi.reval.user.service.UserService;
 import retrofit2.Response;
 
 public class UserServiceTest extends AbstractDaggerServiceTest {
@@ -22,8 +25,20 @@ public class UserServiceTest extends AbstractDaggerServiceTest {
     }
 
     @Test
-    public void signIn() throws IOException {
-        Response<SignInResponse> response = userService.signIn(new Credentials("s375195", "91122103872", true)).execute();
+    public void signInAdmin() throws IOException {
+        Credentials credentials = new Credentials("s375195", "91122103872", true);
+        Response<SignInResponse> response = userService
+                .signIn(credentials)
+                .execute();
+        Assert.assertEquals(SignInResponse.SignInStatus.success, response.body().getStatus());
+    }
+
+    @Test
+    public void signInStudent() throws IOException {
+        Credentials credentials = new Credentials("s396374", "d9x8asd", true);
+        Response<SignInResponse> response = userService
+                .signIn(credentials)
+                .execute();
         Assert.assertEquals(SignInResponse.SignInStatus.success, response.body().getStatus());
     }
 

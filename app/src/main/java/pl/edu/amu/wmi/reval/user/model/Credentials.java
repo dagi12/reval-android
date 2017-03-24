@@ -1,21 +1,19 @@
-package pl.edu.amu.wmi.reval.user;
+package pl.edu.amu.wmi.reval.user.model;
 
-import com.google.gson.annotations.Expose;
+import java.io.Serializable;
 
-public class Credentials {
+public class Credentials implements Serializable {
 
     private String username;
     private String password;
 
-    @Expose(serialize = false, deserialize = false)
-    private boolean asAdmin;
+    private transient boolean asAdmin;
 
     public Credentials() {
         // retrofit need
     }
 
     public Credentials(String username, String password, boolean asAdmin) {
-
         this.username = username;
         this.password = password;
         this.asAdmin = asAdmin;

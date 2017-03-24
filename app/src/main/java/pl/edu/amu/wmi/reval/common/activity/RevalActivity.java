@@ -13,8 +13,8 @@ import android.widget.TextView;
 import javax.inject.Inject;
 
 import pl.edu.amu.wmi.reval.R;
-import pl.edu.amu.wmi.reval.SignInActivity;
-import pl.edu.amu.wmi.reval.user.UserContext;
+import pl.edu.amu.wmi.reval.user.activity.SignInActivity;
+import pl.edu.amu.wmi.reval.user.service.UserContext;
 
 public class RevalActivity extends AppCompatActivity {
 

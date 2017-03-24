@@ -52,8 +52,16 @@ public class QuestionActivity extends RevalActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question);
         MyApplication.getComponent().inject(this);
+        if (userContext.isSignedIn()) {
+            initActivity();
+        } else {
+            userContext.hardLogout();
+        }
+    }
+
+    private void initActivity() {
+        setContentView(R.layout.activity_question);
         ButterKnife.bind(this);
         setUserData();
         setNavigationView();
@@ -149,8 +157,11 @@ public class QuestionActivity extends RevalActivity implements
 
     @Override
     public void populateFilter(QuestionRequestParameters parameters) {
-        progressDialog.show();
-        questionService.getFilteredQuestions(this, parameters);
+        if (parameters.getTopicId() != null) {
+            questionService.getFilteredQuestions(this, parameters.getTopicId());
+            progressDialog.show();
+        }
+
     }
 
     private class ActionBarException extends RuntimeException {

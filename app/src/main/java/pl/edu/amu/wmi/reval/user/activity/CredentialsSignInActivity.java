@@ -1,6 +1,7 @@
-package pl.edu.amu.wmi.reval;
+package pl.edu.amu.wmi.reval.user.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,10 +17,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnEditorAction;
+import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.di.MyApplication;
 import pl.edu.amu.wmi.reval.question.QuestionActivity;
-import pl.edu.amu.wmi.reval.user.Credentials;
-import pl.edu.amu.wmi.reval.user.UserServiceImpl;
+import pl.edu.amu.wmi.reval.user.model.Credentials;
+import pl.edu.amu.wmi.reval.user.service.UserServiceImpl;
 
 /**
  * A login screen that offers login via index/password.
@@ -34,9 +36,6 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
     @BindView(R.id.password)
     EditText passwordView;
 
-    @BindView(R.id.login_progress)
-    View progressView;
-
     @BindView(R.id.login_form)
     View loginFormView;
 
@@ -47,6 +46,7 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
     UserServiceImpl userService;
 
     private boolean loginInProgress = false;
+    private ProgressDialog progressDialog;
 
     @OnEditorAction(R.id.password)
     public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -64,6 +64,7 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
         }
         if (verify()) {
             loginInProgress = true;
+            progressDialog.show();
             userService.signIn(this, new Credentials(
                     loginView.getText().toString(),
                     passwordView.getText().toString(),
@@ -78,6 +79,8 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
         MyApplication.getComponent().inject(this);
         setContentView(R.layout.activity_credentials_sign_in);
         ButterKnife.bind(this);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.sign_progress));
         if (getIntent().getBooleanExtra(ADMIN_MODE, false)) {
             loginView.setHint(R.string.prompt_index);
         }
@@ -103,13 +106,19 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
 
     @Override
     public void onSignInSuccess() {
+        Intent intent = new Intent(this, QuestionActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onSignInCommon() {
         loginInProgress = false;
-        startActivity(new Intent(this, QuestionActivity.class));
+        progressDialog.dismiss();
     }
 
     @Override
     public void onSignInFailure() {
-        loginInProgress = false;
         errorMessage.setVisibility(View.VISIBLE);
     }
 }

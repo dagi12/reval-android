@@ -13,27 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SignInActivity"
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:name=".question.QuestionActivity"
+            android:parentActivityName=".user.activity.SignInActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".CredentialsSignInActivity"
+            android:name=".user.activity.SignInActivity"
+            android:theme="@android:style/Theme.NoTitleBar"></activity>
+        <activity
+            android:name=".user.activity.CredentialsSignInActivity"
             android:label="@string/sign_in"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".question.QuestionActivity"
-            android:parentActivityName=".SignInActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="pl.edu.amu.wmi.reval.SignInActivity" />
-        </activity>
         <activity
             android:name=".question.page.AdminQuestionPageActivity"
             android:label="@string/question_page" />
