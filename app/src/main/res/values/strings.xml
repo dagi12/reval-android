@@ -28,7 +28,7 @@
     <string name="add_question">Dodaj zadanie</string>
     <string name="add_question_progress">Dodawanie zadania&#8230;</string>
     <string name="check_unique">Sprawdź unikalność</string>
-    <string name="date">Data:</string>
+    <string name="pubDate">Data:</string>
     <string name="student">Uczeń:</string>
     <string name="similarity">Stopień podobieństwa:</string>
     <string name="answers">Odpowiedzi</string>

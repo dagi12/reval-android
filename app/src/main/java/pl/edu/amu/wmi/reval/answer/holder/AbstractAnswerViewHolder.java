@@ -27,6 +27,9 @@ public abstract class AbstractAnswerViewHolder extends AbstractViewHolder<Answer
     @Override
     public void setRow() {
         questionTitle.setText(item.getQuestionTitle());
-        answerDate.setText(DateFormat.getDateInstance().format(item.getDate()));
+        // TODO pubDate dla odpowiedzi
+        if (item.getPubDate() != null) {
+            answerDate.setText(DateFormat.getDateInstance().format(item.getPubDate()));
+        }
     }
 }

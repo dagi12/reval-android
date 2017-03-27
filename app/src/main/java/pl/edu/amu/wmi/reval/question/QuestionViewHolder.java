@@ -34,7 +34,7 @@ public class QuestionViewHolder extends AbstractViewHolder<Question> {
     public void setRow() {
         subjectName.setText(item.getSubjectName());
         topicName.setText(item.getTopicName());
-        questionTitle.setText(item.getQuestionTitle());
+        questionTitle.setText(item.getTitle());
         // todo do usunięcia gdy data ostatnie aktywności na API
         if (item.getLastActivityDate() == null) {
             item.setLastActivityDate(new Date());

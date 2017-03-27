@@ -25,7 +25,7 @@
     <string name="add_question_progress">Question add in progress&#8230;</string>
     <string name="check_unique">Check uniqueness</string>
     <string name="select_topic">Select topic</string>
-    <string name="date">Date</string>
+    <string name="pubDate">Date</string>
     <string name="student">Student:</string>
     <string name="similarity">Similarity:</string>
     <string name="answers">Answers</string>

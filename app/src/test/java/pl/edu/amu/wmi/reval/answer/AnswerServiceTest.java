@@ -31,7 +31,7 @@ public class AnswerServiceTest extends AbstractDaggerServiceTest {
 
     @Test
     public void getSimilarAnswersTest() throws IOException {
-        Response<List<Answer>> answers = answerService.getSimilarAnswers().execute();
+        Response<List<Answer>> answers = answerService.getSimilarAnswers(0).execute();
         Assert.assertNotNull(answers.body());
     }
 

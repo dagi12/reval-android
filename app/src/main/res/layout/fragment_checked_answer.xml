@@ -34,7 +34,7 @@
             style="@style/AppTheme.PageLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/date" />
+            android:text="@string/pubDate" />
 
         <TextView
             android:id="@+id/answer_date"

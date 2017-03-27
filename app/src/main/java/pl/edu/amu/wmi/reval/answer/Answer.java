@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 import pl.edu.amu.wmi.reval.common.grid.AbstractRevalItem;
+import pl.edu.amu.wmi.reval.question.Question;
 
 public class Answer extends AbstractRevalItem implements Serializable {
     private String user;
     private String answerText;
-    private Date date;
+    private Date pubDate;
     private int similarity;
-    private int subjectName;
-    private String questionName;
+    private Question question;
 
     public String getAnswerText() {
         return answerText;
@@ -29,20 +29,16 @@ public class Answer extends AbstractRevalItem implements Serializable {
         this.similarity = similarity;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getPubDate() {
+        return pubDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public int getSubjectName() {
-        return subjectName;
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
     }
 
     public String getQuestionTitle() {
-        return questionName;
+        return question.getTitle();
     }
 
     public String getUser() {

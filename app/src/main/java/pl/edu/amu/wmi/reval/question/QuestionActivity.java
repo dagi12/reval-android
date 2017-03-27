@@ -158,8 +158,8 @@ public class QuestionActivity extends RevalActivity implements
     @Override
     public void populateFilter(QuestionRequestParameters parameters) {
         if (parameters.getTopicId() != null) {
-            questionService.getFilteredQuestions(this, parameters.getTopicId());
             progressDialog.show();
+            questionService.getFilteredQuestions(this, parameters.getTopicId());
         }
 
     }

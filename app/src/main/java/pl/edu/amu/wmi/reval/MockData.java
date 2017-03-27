@@ -60,7 +60,7 @@ public final class MockData {
     public static Answer mockedAnswer() {
         Answer answer = new Answer();
         answer.setAnswerText("Treść odpowiedzi 1");
-        answer.setDate(new Date());
+        answer.setPubDate(new Date());
         answer.setUser("s396374");
         answer.setSimilarity(53);
         return answer;
@@ -69,7 +69,7 @@ public final class MockData {
     public static List<Answer> mockedAnswers() {
         Answer answer = new Answer();
         answer.setAnswerText("Treść odpowiedzi 1");
-        answer.setDate(new Date());
+        answer.setPubDate(new Date());
         answer.setUser("s396374");
         answer.setSimilarity(53);
         return Arrays.asList(answer, answer, answer, answer, answer, answer);

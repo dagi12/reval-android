@@ -104,10 +104,6 @@ public class Question extends AbstractRevalItem implements Serializable {
         return topic.getName();
     }
 
-    public String getQuestionTitle() {
-        return title;
-    }
-
     public Answer getAnswer() {
         return answer;
     }

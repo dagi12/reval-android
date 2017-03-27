@@ -10,16 +10,19 @@ import retrofit2.http.Path;
 
 public interface AnswerService {
 
-    @GET("api/answer_list/?format=json")
+    @GET("api/answer_list")
     Call<List<Answer>> getAnswers();
 
-    @GET("api/similaranswer_list/?format=json")
-    Call<List<Answer>> getSimilarAnswers();
+    @GET("api/similaranswer_list/{id}")
+    Call<List<Answer>> getSimilarAnswers(@Path("id") int topicId);
 
-    @GET("api/run_antiplagiarism")
+    @GET("api/similar_report_list/{id}")
+    Call<List<Answer>> getSimilarReport(@Path("id") int topicId);
+
+    @GET("api/run_antiplagiarism/{id}")
     Call<List<Answer>> checkUnique(@Body QuestionRequestParameters topic);
 
-    @GET("api/answers/question/{id}")
+    @GET("api/answer_list_by_question/{id}")
     Call<List<Answer>> getAnswersByQuestionId(@Path("id") int questionId);
 
 }
