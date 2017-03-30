@@ -39,11 +39,12 @@ public class Question extends AbstractRevalItem implements Serializable {
         this.questionText = questionContent;
     }
 
-    public Question(int id, String title, String questionText, Date lastActivityDate) {
+    public Question(int id, String title, String questionText, Date lastActivityDate, Topic topic) {
         super(id);
         this.title = title;
         this.questionText = questionText;
         this.lastActivityDate = lastActivityDate;
+        this.topic = topic;
     }
 
     public String getQuestionText() {

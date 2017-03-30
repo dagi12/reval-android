@@ -36,7 +36,8 @@ public class QuestionActivityTest {
 
     @Test
     public void clickFilter() {
-        when(userContext.getUser()).thenReturn(MockData.mockedAdmin());
+        when(userContext.getUser()).thenReturn(StubData.stubAdmin());
+        when(userContext.isSignedIn()).thenReturn(true);
         activityRule.launchActivity(null);
         onView(withId(R.id.question_filter_button)).perform(click());
         onView(withId(R.id.search_question)).perform(click());
@@ -44,7 +45,8 @@ public class QuestionActivityTest {
 
     @Test
     public void checkStudentNav() {
-        when(userContext.getUser()).thenReturn(MockData.mockedStudent());
+        when(userContext.getUser()).thenReturn(StubData.stubStudent());
+        when(userContext.isSignedIn()).thenReturn(true);
         activityRule.launchActivity(null);
         onView(withContentDescription(getString(R.string.navigation_drawer_open))).perform(click());
         onView(withId(R.id.user_role)).perform(click());
@@ -52,7 +54,8 @@ public class QuestionActivityTest {
 
     @Test
     public void checkAdminNav() {
-        when(userContext.getUser()).thenReturn(MockData.mockedAdmin());
+        when(userContext.getUser()).thenReturn(StubData.stubAdmin());
+        when(userContext.isSignedIn()).thenReturn(true);
         activityRule.launchActivity(null);
         onView(withContentDescription(getString(R.string.navigation_drawer_open))).perform(click());
         onView(withId(R.id.admin_logo)).perform(click());

@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
-import pl.edu.amu.wmi.reval.MockData;
 import pl.edu.amu.wmi.reval.R;
+import pl.edu.amu.wmi.reval.StubData;
 import pl.edu.amu.wmi.reval.answer.AnswerActivity;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 import pl.edu.amu.wmi.reval.user.service.UserContext;
@@ -34,7 +34,7 @@ public class AdminQuestionPageActivityTest {
         @Override
         protected Intent getActivityIntent() {
             Intent intent = super.getActivityIntent();
-            intent.putExtra(AdminQuestionPageActivity.QUESTION_PARAM, MockData.mockedQuestion());
+            intent.putExtra(AdminQuestionPageActivity.QUESTION_PARAM, StubData.stubQuestion());
             return intent;
         }
     };
@@ -44,7 +44,7 @@ public class AdminQuestionPageActivityTest {
 
     @Test
     public void goToAnswers() {
-        when(userContext.getUser()).thenReturn(MockData.mockedAdmin());
+        when(userContext.getUser()).thenReturn(StubData.stubAdmin());
         activityRule.launchActivity(null);
         onView(withId(R.id.answer_button)).perform(click());
         intended(hasComponent(AnswerActivity.class.getName()));

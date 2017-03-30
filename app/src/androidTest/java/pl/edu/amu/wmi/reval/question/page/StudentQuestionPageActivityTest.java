@@ -8,8 +8,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import pl.edu.amu.wmi.reval.MockData;
 import pl.edu.amu.wmi.reval.R;
+import pl.edu.amu.wmi.reval.StubData;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -26,7 +26,7 @@ public class StudentQuestionPageActivityTest {
         @Override
         protected Intent getActivityIntent() {
             Intent intent = super.getActivityIntent();
-            intent.putExtra(AbstractQuestionPageActivity.QUESTION_PARAM, MockData.mockedQuestion());
+            intent.putExtra(AbstractQuestionPageActivity.QUESTION_PARAM, StubData.stubQuestion());
             return intent;
         }
     };

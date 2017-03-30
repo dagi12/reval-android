@@ -6,8 +6,8 @@ import android.support.test.rule.ActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-import pl.edu.amu.wmi.reval.MockData;
 import pl.edu.amu.wmi.reval.R;
+import pl.edu.amu.wmi.reval.StubData;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -24,7 +24,7 @@ public class AdminAnswerPageActivityTest {
         @Override
         protected Intent getActivityIntent() {
             Intent intent = super.getActivityIntent();
-            intent.putExtra(AbstractAnswerPageActivity.ANSWER_PARAM, MockData.mockedAnswer());
+            intent.putExtra(AbstractAnswerPageActivity.ANSWER_PARAM, StubData.stubAnswer());
             return intent;
         }
     };

@@ -15,4 +15,8 @@ public class Subject extends AbstractRevalItem {
     public Subject(int subjectId) {
         setId(subjectId);
     }
+
+    public Subject(String name, int subjectId) {
+        super(name, subjectId);
+    }
 }

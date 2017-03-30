@@ -7,8 +7,6 @@ import pl.edu.amu.wmi.reval.subject.Subject;
 
 public class Topic extends AbstractRevalItem {
 
-    private int subjectId;
-
     @Expose(serialize = false)
     private Subject subject;
 
@@ -16,20 +14,12 @@ public class Topic extends AbstractRevalItem {
         super(name);
     }
 
-    public Topic(String name, int subjectId) {
-        this.name = name;
-        this.subjectId = subjectId;
+    public Topic(String name, int id) {
+        super(name, id);
     }
 
     public Subject getSubject() {
         return subject;
     }
 
-    public int getSubjectId() {
-        return subjectId;
-    }
-
-    public void setSubjectId(int subjectId) {
-        this.subjectId = subjectId;
-    }
 }

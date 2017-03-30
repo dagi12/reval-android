@@ -9,6 +9,7 @@ import junit.framework.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
+import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 import pl.edu.amu.wmi.reval.question.QuestionActivity;
 import pl.edu.amu.wmi.reval.user.activity.CredentialsSignInActivity;
 
@@ -22,15 +23,17 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class CredentialsSignInActivityTest {
 
     @Rule
-    public ActivityTestRule mActivityRule = new ActivityTestRule<>(
-            CredentialsSignInActivity.class);
+    public ActivityTestRule activityRule = new ActivityTestRule<>(CredentialsSignInActivity.class);
+
+    @Rule
+    public MyDaggerMockRule myDaggerMockRule = new MyDaggerMockRule();
 
     @Test
     public void clickIndex() {
         onView(withId(R.id.index)).perform(click());
         onView(withId(R.id.index)).perform(replaceText("Foo"));
         onView(withId(R.id.sign_in_button)).perform(click());
-        EditText editText = (EditText) mActivityRule.getActivity().findViewById(R.id.password);
+        EditText editText = (EditText) activityRule.getActivity().findViewById(R.id.password);
         Assert.assertNotNull(editText.getError());
     }
 
@@ -41,7 +44,7 @@ public class CredentialsSignInActivityTest {
         onView(withId(R.id.password)).perform(click());
         onView(withId(R.id.password)).perform(replaceText("FooBa"));
         onView(withId(R.id.sign_in_button)).perform(click());
-        EditText editText = (EditText) mActivityRule.getActivity().findViewById(R.id.password);
+        EditText editText = (EditText) activityRule.getActivity().findViewById(R.id.password);
         Assert.assertNotNull(editText.getError());
     }
 
@@ -49,7 +52,7 @@ public class CredentialsSignInActivityTest {
     public void clickSignIn() {
         Intents.init();
         onView(withId(R.id.index)).perform(replaceText("Foo"));
-        onView(withId(R.id.password)).perform(replaceText("FooBar"));
+        onView(withId(R.id.password)).perform(replaceText("FooBar13"));
         onView(withId(R.id.sign_in_button)).perform(click());
         intended(hasComponent(QuestionActivity.class.getName()));
     }

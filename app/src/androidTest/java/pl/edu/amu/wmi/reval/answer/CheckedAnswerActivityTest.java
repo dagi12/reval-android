@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
 
 import java.io.Serializable;
 
-import pl.edu.amu.wmi.reval.MockData;
 import pl.edu.amu.wmi.reval.R;
+import pl.edu.amu.wmi.reval.StubData;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -29,7 +29,7 @@ public class CheckedAnswerActivityTest {
         @Override
         protected Intent getActivityIntent() {
             Intent intent = super.getActivityIntent();
-            intent.putExtra(AnswerActivity.CHECKED_ANSWERS_PARAM, (Serializable) MockData.mockedAnswers());
+            intent.putExtra(AnswerActivity.CHECKED_ANSWERS_PARAM, (Serializable) StubData.stubAnswers());
             return intent;
         }
     };
