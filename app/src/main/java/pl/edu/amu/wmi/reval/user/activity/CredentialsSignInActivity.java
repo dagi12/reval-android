@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -42,10 +44,13 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
     @BindView(R.id.error_message)
     TextView errorMessage;
 
+    Animation shakeAnimation;
+
     @Inject
     UserServiceImpl userService;
 
     private boolean loginInProgress = false;
+    private boolean firstErrorAttempt = true;
     private ProgressDialog progressDialog;
 
     @OnEditorAction(R.id.password)
@@ -59,10 +64,7 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
 
     @OnClick(R.id.sign_in_button)
     public void onSignInClick() {
-        if (loginInProgress) {
-            return;
-        }
-        if (verify()) {
+        if (!loginInProgress && verify()) {
             loginInProgress = true;
             progressDialog.show();
             userService.signIn(this, new Credentials(
@@ -81,6 +83,7 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
         ButterKnife.bind(this);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.sign_progress));
+        shakeAnimation = AnimationUtils.loadAnimation(this, R.anim.shake_animation);
         if (getIntent().getBooleanExtra(ADMIN_MODE, false)) {
             loginView.setHint(R.string.prompt_index);
         }
@@ -119,7 +122,12 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
 
     @Override
     public void onSignInFailure() {
-        errorMessage.setVisibility(View.VISIBLE);
+        loginInProgress = false;
+        if (firstErrorAttempt) {
+            errorMessage.setVisibility(View.VISIBLE);
+            firstErrorAttempt = false;
+        } else {
+            errorMessage.startAnimation(shakeAnimation);
+        }
     }
 }
-

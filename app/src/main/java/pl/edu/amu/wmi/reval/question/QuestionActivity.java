@@ -30,6 +30,7 @@ import pl.edu.amu.wmi.reval.question.filter.QuestionRequestParameters;
 import pl.edu.amu.wmi.reval.question.nav.HeaderViewHolder;
 import pl.edu.amu.wmi.reval.question.nav.NavigationAdapter;
 import pl.edu.amu.wmi.reval.question.page.AdminQuestionPageActivity;
+import pl.edu.amu.wmi.reval.question.page.StudentQuestionPageActivity;
 import pl.edu.amu.wmi.reval.question.unique.CheckUniqueActivity;
 
 public class QuestionActivity extends RevalActivity implements
@@ -146,7 +147,13 @@ public class QuestionActivity extends RevalActivity implements
 
     @Override
     public void onListFragmentInteraction(Question item) {
-        startActivity(new Intent(this, AdminQuestionPageActivity.class).putExtra(AdminQuestionPageActivity.QUESTION_PARAM, item));
+        if (userContext.getUser().isAdmin()) {
+            startActivity(new Intent(this, AdminQuestionPageActivity.class)
+                    .putExtra(AdminQuestionPageActivity.QUESTION_PARAM, item));
+        } else {
+            startActivity(new Intent(this, StudentQuestionPageActivity.class)
+                    .putExtra(StudentQuestionPageActivity.QUESTION_PARAM, item));
+        }
     }
 
     @OnClick(R.id.question_filter_button)

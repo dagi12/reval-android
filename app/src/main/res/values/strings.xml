@@ -36,7 +36,7 @@
     <string name="question_title">Tytuł zadania:</string>
     <string name="answer">Odpowiedź:</string>
     <string name="answer_page">Strona odpowiedzi</string>
-    <string name="your_answer">Twoja odpowiedź:</string>
+    <string name="your_answer">Twoja odpowiedź</string>
     <string name="admin_label">ADMIN</string>
     <string name="navigation_drawer_open">Otwórz panel nawigacji</string>
     <string name="navigation_drawer_close">Zamknij panel nawigacji</string>
