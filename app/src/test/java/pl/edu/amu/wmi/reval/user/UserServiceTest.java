@@ -35,7 +35,7 @@ public class UserServiceTest extends AbstractDaggerServiceTest {
 
     @Test
     public void signInStudent() throws IOException {
-        Credentials credentials = new Credentials("s396374", "d9x8asd", true);
+        Credentials credentials = new Credentials("s396419", "prusio13", true);
         Response<SignInResponse> response = userService
                 .signIn(credentials)
                 .execute();

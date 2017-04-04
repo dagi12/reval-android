@@ -23,12 +23,6 @@ public class TopicServiceTest extends SignedDaggerServiceTest {
     }
 
     @Test
-    public void addTopics() throws IOException {
-        Response<Void> response = topicService.addTopic(new Topic("Przykładowy temat", 18)).execute();
-        Assert.assertEquals(201, response.code());
-    }
-
-    @Test
     public void getTopicsBySubjectId() throws IOException {
         super.setUpAdmin();
         Response<List<Topic>> topics = topicService.getTopicsBySubject(1).execute();

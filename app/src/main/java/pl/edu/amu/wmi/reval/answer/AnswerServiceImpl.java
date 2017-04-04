@@ -3,7 +3,6 @@ package pl.edu.amu.wmi.reval.answer;
 import java.util.List;
 
 import pl.edu.amu.wmi.reval.common.services.MyCallback;
-import pl.edu.amu.wmi.reval.question.filter.QuestionRequestParameters;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -36,7 +35,7 @@ public class AnswerServiceImpl {
 
 
     public void checkUnique(final AnswerAdapter adapter, int parameters) {
-        answerService.checkUnique(new QuestionRequestParameters(parameters)).enqueue(new MyCallback<List<Answer>>() {
+        answerService.checkUnique(parameters).enqueue(new MyCallback<List<Answer>>() {
             @Override
             protected void onHandledResponse(Call<List<Answer>> call, Response<List<Answer>> response) {
                 adapter.setAnswers(response.body());

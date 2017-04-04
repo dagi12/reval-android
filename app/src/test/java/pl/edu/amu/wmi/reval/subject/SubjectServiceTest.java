@@ -38,11 +38,4 @@ public class SubjectServiceTest extends SignedDaggerServiceTest {
         Assert.assertTrue(response.body().size() > 0);
     }
 
-    @Test
-    public void addSubjectTest() throws InterruptedException, TimeoutException, IOException {
-        Response<Void> response = subjectService.addSubject(new Subject("Temat testowy")).execute();
-        Assert.assertEquals(201, response.code());
-    }
-
-
 }
