@@ -51,7 +51,8 @@
         style="@style/AppTheme.ButtonStyle.Floating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/rate_answer" />
+        android:text="@string/rate_answer"
+        android:visibility="gone" />
 
 </LinearLayout>
 

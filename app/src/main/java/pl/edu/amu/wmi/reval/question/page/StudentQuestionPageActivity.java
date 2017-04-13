@@ -2,29 +2,42 @@ package pl.edu.amu.wmi.reval.question.page;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
 
-import butterknife.BindView;
+import javax.inject.Inject;
+
 import pl.edu.amu.wmi.reval.R;
-import pl.edu.amu.wmi.reval.answer.Answer;
+import pl.edu.amu.wmi.reval.answer.AnswerServiceImpl;
+import pl.edu.amu.wmi.reval.answer.basic.Answer;
 import pl.edu.amu.wmi.reval.answer.page.StudentAnswerPageActivity;
 
-public class StudentQuestionPageActivity extends AbstractQuestionPageActivity {
+public class StudentQuestionPageActivity extends AbstractQuestionPageActivity implements AnswerServiceImpl.StudentAnswerAdapter {
 
-    @BindView(R.id.answer_button)
-    Button answerButton;
+    @Inject
+    AnswerServiceImpl answerService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getComponent().inject(this);
-        answerButton.setText(R.string.your_answer);
+        if (question.getAnswered()) {
+            answerButton.setText(R.string.your_answer);
+            answerButton.setVisibility(View.VISIBLE);
+            initProgressDialog(R.string.answer_progress);
+        }
     }
 
     @Override
     void answerClick() {
-        //TODO odpowiedź studenta
-        startActivity(new Intent(this, StudentAnswerPageActivity.class)
-                .putExtra(StudentAnswerPageActivity.ANSWER_PARAM, new Answer()));
+        progressDialog.show();
+        answerService.getAnswerByStudent(this, question.getId());
+
     }
+
+    @Override
+    public void setAnswer(Answer answer) {
+        startActivity(new Intent(this, StudentAnswerPageActivity.class)
+                .putExtra(StudentAnswerPageActivity.ANSWER_PARAM, answer));
+    }
+
 }

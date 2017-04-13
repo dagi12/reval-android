@@ -15,33 +15,33 @@ public class Question extends AbstractRevalItem implements Serializable {
     private static final String SUCCESS_MESSAGE = "created";
     private String questionText;
     private String title;
-    private Boolean answered;
 
+    @Expose(serialize = false)
+    private Boolean answered;
     @Expose(serialize = false)
     private Integer questionId;
-
     @Expose(serialize = false)
     private String status;
-
     @SerializedName("pub_date")
     private Date lastActivityDate;
 
     @Expose(deserialize = false)
-    private int topicId;
+    private Integer topicId;
 
     @Expose(deserialize = false)
-    private int subjectId;
+    private Integer subjectId;
 
     @Expose(serialize = false)
     private Topic topic;
-
-    private int maxPoints;
+    private Integer maxPoints;
 
     public Question(Topic parameters, String questionText) {
         super();
         this.topic = parameters;
         this.topicId = parameters.getId();
-        this.subjectId = parameters.getSubjectId();
+        if (parameters.getSubject() != null) {
+            this.subjectId = parameters.getSubjectId();
+        }
         this.questionText = questionText;
     }
 
@@ -51,6 +51,10 @@ public class Question extends AbstractRevalItem implements Serializable {
         this.questionText = questionText;
         this.lastActivityDate = lastActivityDate;
         this.topic = topic;
+    }
+
+    public Boolean getAnswered() {
+        return answered;
     }
 
     public String getTitle() {
@@ -65,16 +69,8 @@ public class Question extends AbstractRevalItem implements Serializable {
         this.topic = topic;
     }
 
-    int getMaxPoints() {
-        return maxPoints;
-    }
-
     Date getLastActivityDate() {
         return lastActivityDate;
-    }
-
-    void setLastActivityDate(Date lastActivityDate) {
-        this.lastActivityDate = lastActivityDate;
     }
 
     public String getQuestionText() {
@@ -101,6 +97,10 @@ public class Question extends AbstractRevalItem implements Serializable {
 
     private Integer getQuestionId() {
         return questionId;
+    }
+
+    public Integer getMaxPoints() {
+        return maxPoints;
     }
 
     void addSuccess(Question question) {

@@ -10,7 +10,6 @@ import dagger.Module;
 import dagger.Provides;
 import pl.edu.amu.wmi.reval.StubData;
 import pl.edu.amu.wmi.reval.answer.AnswerServiceImpl;
-import pl.edu.amu.wmi.reval.common.error.ErrorServiceImpl;
 import pl.edu.amu.wmi.reval.question.QuestionServiceImpl;
 import pl.edu.amu.wmi.reval.subject.SubjectServiceImpl;
 import pl.edu.amu.wmi.reval.topic.TopicServiceImpl;
@@ -42,12 +41,6 @@ public class TestModule {
                 adapter.onSignInSuccess();
             }
         };
-    }
-
-    @Provides
-    @Singleton
-    protected ErrorServiceImpl provideErrorService() {
-        return new ErrorServiceImpl(null, null, null);
     }
 
     @Provides

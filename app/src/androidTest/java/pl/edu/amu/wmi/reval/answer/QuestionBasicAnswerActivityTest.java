@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import pl.edu.amu.wmi.reval.R;
+import pl.edu.amu.wmi.reval.answer.basic.BasicAnswerActivity;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -17,17 +18,17 @@ import static android.support.test.espresso.matcher.ViewMatchers.withContentDesc
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 @RunWith(AndroidJUnit4.class)
-public class QuestionAnswerActivityTest {
+public class QuestionBasicAnswerActivityTest {
 
     @Rule
     public MyDaggerMockRule myDaggerMockRule = new MyDaggerMockRule();
 
     @Rule
-    public ActivityTestRule activityRule = new ActivityTestRule<AnswerActivity>(AnswerActivity.class, false, false) {
+    public ActivityTestRule activityRule = new ActivityTestRule<BasicAnswerActivity>(BasicAnswerActivity.class, false, false) {
         @Override
         protected Intent getActivityIntent() {
             Intent intent = super.getActivityIntent();
-            intent.putExtra(AnswerActivity.QUESTION_PARAM, 0);
+            intent.putExtra(BasicAnswerActivity.QUESTION_PARAM, 0);
             return intent;
         }
     };

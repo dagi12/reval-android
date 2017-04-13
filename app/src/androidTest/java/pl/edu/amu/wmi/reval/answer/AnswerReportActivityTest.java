@@ -12,6 +12,8 @@ import java.io.Serializable;
 
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.StubData;
+import pl.edu.amu.wmi.reval.answer.basic.BasicAnswerActivity;
+import pl.edu.amu.wmi.reval.answer.report.AnswerReportActivity;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -19,17 +21,17 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 @RunWith(AndroidJUnit4.class)
-public class CheckedAnswerActivityTest {
+public class AnswerReportActivityTest {
 
     @Rule
     public MyDaggerMockRule myDaggerMockRule = new MyDaggerMockRule();
 
     @Rule
-    public ActivityTestRule activityRule = new ActivityTestRule<AnswerActivity>(AnswerActivity.class, false, false) {
+    public ActivityTestRule activityRule = new ActivityTestRule<BasicAnswerActivity>(BasicAnswerActivity.class, false, false) {
         @Override
         protected Intent getActivityIntent() {
             Intent intent = super.getActivityIntent();
-            intent.putExtra(AnswerActivity.CHECKED_ANSWERS_PARAM, (Serializable) StubData.stubAnswers());
+            intent.putExtra(AnswerReportActivity.CHECKED_ANSWERS_PARAM, (Serializable) StubData.stubAnswers());
             return intent;
         }
     };

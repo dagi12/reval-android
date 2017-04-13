@@ -23,8 +23,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import pl.edu.amu.wmi.reval.answer.AnswerService;
 import pl.edu.amu.wmi.reval.answer.AnswerServiceImpl;
-import pl.edu.amu.wmi.reval.common.error.ErrorService;
-import pl.edu.amu.wmi.reval.common.error.ErrorServiceImpl;
 import pl.edu.amu.wmi.reval.common.services.PicassoCache;
 import pl.edu.amu.wmi.reval.question.QuestionService;
 import pl.edu.amu.wmi.reval.question.QuestionServiceImpl;
@@ -124,13 +122,6 @@ public class MyApplicationModule {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(API_URL)
                 .build();
-    }
-
-    @Provides
-    @Singleton
-    protected ErrorServiceImpl provideErrorService(Retrofit retrofit) {
-        ErrorService errorService = retrofit.create(ErrorService.class);
-        return new ErrorServiceImpl(errorService, Thread.getDefaultUncaughtExceptionHandler(), mApplication);
     }
 
     @Provides

@@ -10,12 +10,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.edu.amu.wmi.reval.R;
-import pl.edu.amu.wmi.reval.answer.Answer;
 import pl.edu.amu.wmi.reval.answer.AnswerServiceImpl;
+import pl.edu.amu.wmi.reval.answer.basic.Answer;
 import pl.edu.amu.wmi.reval.answer.holder.AbstractAnswerViewHolder;
 import pl.edu.amu.wmi.reval.answer.rate.AdminAnswerViewHolder;
 import pl.edu.amu.wmi.reval.answer.rate.RateAnswerRequest;
 import pl.edu.amu.wmi.reval.answer.rate.RateDialogFragment;
+import pl.edu.amu.wmi.reval.answer.rate.RateResult;
 
 public class AdminAnswerPageActivity extends AbstractAnswerPageActivity implements AnswerServiceImpl.RateAnswerAdapter, RateDialogFragment.RateResultAdapter {
 
@@ -39,6 +40,7 @@ public class AdminAnswerPageActivity extends AbstractAnswerPageActivity implemen
         View view = findViewById(android.R.id.content);
         ButterKnife.bind(this, view);
         rateButton.setVisibility(View.VISIBLE);
+        rateSuccess(new RateResult(answer));
         getRateButtonLabel(answer);
         return new AdminAnswerViewHolder(view);
     }
@@ -56,8 +58,8 @@ public class AdminAnswerPageActivity extends AbstractAnswerPageActivity implemen
 
 
     @Override
-    public void rateSuccess(Answer answer) {
-        rateButton.setText(getRateButtonLabel(answer));
+    public void rateSuccess(RateResult rateResult) {
+        rateButton.setText(getRateButtonLabel(rateResult.getAnswer()));
     }
 
     private String getRateButtonLabel(Answer answer) {

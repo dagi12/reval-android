@@ -1,4 +1,6 @@
-package pl.edu.amu.wmi.reval.answer;
+package pl.edu.amu.wmi.reval.answer.basic;
+
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,8 +13,10 @@ public class Answer extends AbstractRevalItem implements Serializable {
     private String user;
     private String answerText;
     private Date pubDate;
-    private Integer similarity;
+
+    @SerializedName("points")
     private Integer rate;
+
     private Question question;
 
     public Integer getRate() {
@@ -27,14 +31,6 @@ public class Answer extends AbstractRevalItem implements Serializable {
         this.answerText = answerText;
     }
 
-    public Integer getSimilarity() {
-        return similarity;
-    }
-
-    public void setSimilarity(int similarity) {
-        this.similarity = similarity;
-    }
-
     public Date getPubDate() {
         return pubDate;
     }
@@ -44,7 +40,10 @@ public class Answer extends AbstractRevalItem implements Serializable {
     }
 
     public String getQuestionTitle() {
-        return question.getTitle();
+        if (question != null) {
+            return question.getTitle();
+        }
+        return null;
     }
 
     public String getUser() {

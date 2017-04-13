@@ -46,4 +46,6 @@
     <string name="sign_progress">Logowanie&#8230;</string>
     <string name="rate_answer">Oceń odpowiedź</string>
     <string name="current_rating">Oceniono na: </string>
+    <string name="no_data">Brak danych</string>
+    <string name="answers_report">Raport odpowiedzi</string>
 </resources>

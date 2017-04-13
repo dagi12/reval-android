@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import pl.edu.amu.wmi.reval.answer.Answer;
+import pl.edu.amu.wmi.reval.answer.basic.Answer;
 import pl.edu.amu.wmi.reval.question.Question;
 import pl.edu.amu.wmi.reval.subject.Subject;
 import pl.edu.amu.wmi.reval.topic.Topic;
@@ -53,7 +53,6 @@ public final class StubData {
         answer.setAnswerText("Treść odpowiedzi 1");
         answer.setPubDate(new Date());
         answer.setUser("s396374");
-        answer.setSimilarity(53);
         return answer;
     }
 
@@ -62,7 +61,6 @@ public final class StubData {
         answer.setAnswerText("Treść odpowiedzi 1");
         answer.setPubDate(new Date());
         answer.setUser("s396374");
-        answer.setSimilarity(53);
         return Arrays.asList(answer, answer, answer, answer, answer, answer);
     }
 

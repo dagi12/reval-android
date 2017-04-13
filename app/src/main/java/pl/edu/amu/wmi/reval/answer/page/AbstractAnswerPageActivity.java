@@ -3,7 +3,7 @@ package pl.edu.amu.wmi.reval.answer.page;
 import android.os.Bundle;
 
 import pl.edu.amu.wmi.reval.R;
-import pl.edu.amu.wmi.reval.answer.Answer;
+import pl.edu.amu.wmi.reval.answer.basic.Answer;
 import pl.edu.amu.wmi.reval.answer.holder.AbstractAnswerViewHolder;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
 import pl.edu.amu.wmi.reval.common.exception.PageItemNullException;

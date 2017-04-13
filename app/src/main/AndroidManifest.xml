@@ -36,8 +36,11 @@
             android:label="@string/check_unique"
             android:parentActivityName=".question.QuestionActivity" />
         <activity
-            android:name=".answer.AnswerActivity"
+            android:name=".answer.basic.BasicAnswerActivity"
             android:label="@string/answers" />
+        <activity
+            android:name=".answer.report.AnswerReportActivity"
+            android:label="@string/answers_report" />
         <activity
             android:name=".question.AddQuestionActivity"
             android:label="@string/add_question" />

@@ -3,10 +3,11 @@ package pl.edu.amu.wmi.reval.di;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import pl.edu.amu.wmi.reval.answer.AnswerActivity;
+import pl.edu.amu.wmi.reval.answer.basic.BasicAnswerActivity;
 import pl.edu.amu.wmi.reval.answer.page.AdminAnswerPageActivity;
 import pl.edu.amu.wmi.reval.answer.page.StudentAnswerPageActivity;
 import pl.edu.amu.wmi.reval.answer.rate.AdminAnswerViewHolder;
+import pl.edu.amu.wmi.reval.answer.report.AnswerReportActivity;
 import pl.edu.amu.wmi.reval.common.activity.SubjectTopicContainer;
 import pl.edu.amu.wmi.reval.common.services.MyCallback;
 import pl.edu.amu.wmi.reval.question.AddQuestionActivity;
@@ -46,7 +47,9 @@ public interface MyApplicationComponent {
 
     void inject(StudentAnswerPageActivity studentAnswerPageActivity);
 
-    void inject(AnswerActivity answerActivity);
+    void inject(BasicAnswerActivity basicAnswerActivity);
 
     void inject(AdminAnswerViewHolder adminAnswerViewHolder);
+
+    void inject(AnswerReportActivity answerReportActivity);
 }

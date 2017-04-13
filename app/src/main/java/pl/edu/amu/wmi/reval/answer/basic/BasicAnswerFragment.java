@@ -1,4 +1,4 @@
-package pl.edu.amu.wmi.reval.answer;
+package pl.edu.amu.wmi.reval.answer.basic;
 
 import android.view.View;
 
@@ -6,10 +6,10 @@ import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.answer.holder.FragmentAnswerViewHolder;
 import pl.edu.amu.wmi.reval.common.grid.AbstractFragmentGrid;
 
-public class AnswerFragment extends AbstractFragmentGrid<Answer, FragmentAnswerViewHolder> {
+public class BasicAnswerFragment extends AbstractFragmentGrid<Answer, FragmentAnswerViewHolder> {
 
-    public static AnswerFragment getInstance() {
-        return new AnswerFragment();
+    public static BasicAnswerFragment getInstance() {
+        return new BasicAnswerFragment();
     }
 
     @Override

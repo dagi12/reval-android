@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="pl.edu.amu.wmi.reval.answer.basic.BasicAnswerActivity">
+    tools:context="pl.edu.amu.wmi.reval.answer.report.AnswerReportActivity">
 
     <fragment
-        android:id="@+id/answer_fragment"
-        android:name="pl.edu.amu.wmi.reval.answer.basic.BasicAnswerFragment"
+        android:id="@+id/answer_report_fragment"
+        android:name="pl.edu.amu.wmi.reval.answer.report.AnswerReportFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_answer_list" />
+        tools:layout="@layout/fragment_answer_report_list" />
 
 </LinearLayout>

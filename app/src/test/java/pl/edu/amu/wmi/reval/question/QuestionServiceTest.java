@@ -11,10 +11,12 @@ import java.util.List;
 
 import pl.edu.amu.wmi.reval.SignedDaggerServiceTest;
 import pl.edu.amu.wmi.reval.common.util.ListUtils;
+import pl.edu.amu.wmi.reval.topic.Topic;
 import retrofit2.Response;
 
 public class QuestionServiceTest extends SignedDaggerServiceTest {
 
+    private static final int TOPIC_ID = 3;
     private QuestionService questionService;
 
     @Before
@@ -45,6 +47,13 @@ public class QuestionServiceTest extends SignedDaggerServiceTest {
         verifyQuestions(response);
     }
 
+    @Test
+    public void addQuestion() throws IOException {
+        super.setUpAdmin();
+        Response<Question> response = questionService.addQuestion(new Question(new Topic("Jakiś topic", 3), "dupa")).execute();
+        Assert.assertNotNull(response.body());
+    }
+
     private void verifyQuestions(Response<List<Question>> response) {
         Assert.assertFalse(ListUtils.isEmpty(response.body()));
         Question question = response.body().get(0);
@@ -54,4 +63,5 @@ public class QuestionServiceTest extends SignedDaggerServiceTest {
         Assert.assertNotNull(question.getLastActivityDate());
         Assert.assertTrue(question.getMaxPoints() > 0);
     }
+
 }

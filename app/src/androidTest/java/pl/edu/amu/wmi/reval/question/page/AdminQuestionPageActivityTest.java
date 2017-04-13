@@ -11,7 +11,7 @@ import org.mockito.Mock;
 
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.StubData;
-import pl.edu.amu.wmi.reval.answer.AnswerActivity;
+import pl.edu.amu.wmi.reval.answer.basic.BasicAnswerActivity;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
 import pl.edu.amu.wmi.reval.user.service.UserContext;
 
@@ -47,7 +47,7 @@ public class AdminQuestionPageActivityTest {
         when(userContext.getUser()).thenReturn(StubData.stubAdmin());
         activityRule.launchActivity(null);
         onView(withId(R.id.answer_button)).perform(click());
-        intended(hasComponent(AnswerActivity.class.getName()));
+        intended(hasComponent(BasicAnswerActivity.class.getName()));
     }
 
     @Test

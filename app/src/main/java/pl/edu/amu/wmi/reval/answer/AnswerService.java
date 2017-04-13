@@ -2,7 +2,10 @@ package pl.edu.amu.wmi.reval.answer;
 
 import java.util.List;
 
+import pl.edu.amu.wmi.reval.answer.basic.Answer;
 import pl.edu.amu.wmi.reval.answer.rate.RateAnswerRequest;
+import pl.edu.amu.wmi.reval.answer.rate.RateResult;
+import pl.edu.amu.wmi.reval.answer.report.AnswerReport;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -21,9 +24,12 @@ public interface AnswerService {
     Call<List<AnswerReport>> getSimilarAnswers(@Path("id") int topicId);
 
     @GET("api/run_antiplagiarism/{id}")
-    Call<List<Answer>> checkUnique(@Path("id") int topicId);
+    Call<List<AnswerReport>> checkUnique(@Path("id") int topicId);
+
+    @GET("api/answer_by_id/{id}")
+    Call<Answer> getAnswerByUser(@Path("id") int questionId);
 
     @POST("api/rate_answer")
-    Call<Answer> rateAnswer(@Body RateAnswerRequest request);
+    Call<RateResult> rateAnswer(@Body RateAnswerRequest request);
 
 }

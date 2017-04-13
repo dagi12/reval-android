@@ -8,8 +8,6 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import pl.edu.amu.wmi.reval.common.error.ErrorServiceImpl;
-import pl.edu.amu.wmi.reval.common.error.NetworkContext;
 import pl.edu.amu.wmi.reval.di.MyApplication;
 import pl.edu.amu.wmi.reval.user.service.UserContext;
 import retrofit2.Call;
@@ -56,16 +54,10 @@ public abstract class MyCallback<T> implements Callback<T> {
 
     @Override
     public void onFailure(Call<T> call, Throwable throwable) {
-        if (!NetworkContext.isOffline(application)) {
-            myCallbackInjectHelper.errorService.caughtException(throwable);
-            Log.e(TAG, FAILURE_MESSAGE, throwable);
-        }
+        Log.e(TAG, FAILURE_MESSAGE, throwable);
     }
 
     public static class MyCallbackInjectHelper {
-
-        @Inject
-        ErrorServiceImpl errorService;
 
         @Inject
         UserContext userContext;

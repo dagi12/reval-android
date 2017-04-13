@@ -11,14 +11,14 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.edu.amu.wmi.reval.R;
-import pl.edu.amu.wmi.reval.answer.Answer;
-import pl.edu.amu.wmi.reval.answer.AnswerActivity;
 import pl.edu.amu.wmi.reval.answer.AnswerServiceImpl;
+import pl.edu.amu.wmi.reval.answer.report.AnswerReport;
+import pl.edu.amu.wmi.reval.answer.report.AnswerReportActivity;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
 import pl.edu.amu.wmi.reval.common.activity.SubjectTopicContainer;
 import pl.edu.amu.wmi.reval.topic.Topic;
 
-public class CheckUniqueActivity extends RevalActivity implements AnswerServiceImpl.AnswerAdapter {
+public class CheckUniqueActivity extends RevalActivity implements AnswerServiceImpl.AnswerReportAdapter {
 
     @Inject
     AnswerServiceImpl answerService;
@@ -28,6 +28,7 @@ public class CheckUniqueActivity extends RevalActivity implements AnswerServiceI
     @OnClick(R.id.check_unique)
     public void onClick() {
         Topic topic = container.getParameters();
+        progressDialog.show();
         answerService.checkUnique(this, topic.getId());
     }
 
@@ -38,10 +39,12 @@ public class CheckUniqueActivity extends RevalActivity implements AnswerServiceI
         ButterKnife.bind(this);
         getComponent().inject(this);
         container = new SubjectTopicContainer(this, this);
+        initProgressDialog(R.string.answer_progress);
     }
 
     @Override
-    public void setAnswers(List<Answer> answers) {
-        startActivity(new Intent(this, AnswerActivity.class).putExtra(AnswerActivity.CHECKED_ANSWERS_PARAM, (Serializable) answers));
+    public void setAnswerReports(List<AnswerReport> answerReports) {
+        startActivity(new Intent(this, AnswerReportActivity.class).putExtra(AnswerReportActivity.CHECKED_ANSWERS_PARAM, (Serializable) answerReports));
+        progressDialog.dismiss();
     }
 }

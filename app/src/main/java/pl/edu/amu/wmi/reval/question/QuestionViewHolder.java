@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.text.DateFormat;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,9 +34,7 @@ public class QuestionViewHolder extends AbstractViewHolder<Question> {
         subjectName.setText(item.getSubjectName());
         topicName.setText(item.getTopicName());
         questionTitle.setText(item.getTitle());
-        // todo do usunięcia gdy data ostatnie aktywności na API
-        if (item.getLastActivityDate() == null) {
-            item.setLastActivityDate(new Date());
+        if (item.getLastActivityDate() != null) {
             questionDate.setText(DateFormat.getDateInstance().format(item.getLastActivityDate()));
         }
     }
