@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import pl.edu.amu.wmi.reval.answer.AnswerActivity;
-import pl.edu.amu.wmi.reval.di.MyApplication;
 
 public class AdminQuestionPageActivity extends AbstractQuestionPageActivity {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyApplication.getComponent().inject(this);
+        getComponent().inject(this);
     }
 
     @Override

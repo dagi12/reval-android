@@ -34,7 +34,7 @@
     <string name="question_title">Question title:</string>
     <string name="answer">Odpowiedź</string>
     <string name="answer_page">Answer page</string>
-    <string name="your_answer">Your answer:</string>
+    <string name="your_answer">Your answer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="question_item_icon">Question item icon</string>
@@ -43,4 +43,6 @@
     <string name="question_progress">Loading questions&#8230;</string>
     <string name="question_page">Question page</string>
     <string name="sign_progress">Signing&#8230;</string>
+    <string name="rate_answer">Rate answer</string>
+    <string name="current_rating">Current rating: </string>
 </resources>

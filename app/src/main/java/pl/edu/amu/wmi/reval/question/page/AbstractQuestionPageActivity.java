@@ -60,7 +60,7 @@ public abstract class AbstractQuestionPageActivity extends RevalActivity {
         @Override
         public void setRow() {
             super.setRow();
-            questionContent.setText(item.getQuestionContent());
+            questionContent.setText(item.getQuestionText());
         }
     }
 

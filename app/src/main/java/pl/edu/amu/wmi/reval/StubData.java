@@ -11,8 +11,6 @@ import pl.edu.amu.wmi.reval.subject.Subject;
 import pl.edu.amu.wmi.reval.topic.Topic;
 import pl.edu.amu.wmi.reval.user.model.User;
 
-import static pl.edu.amu.wmi.reval.di.MyApplication.getContext;
-
 public final class StubData {
     private StubData() {
     }
@@ -29,7 +27,7 @@ public final class StubData {
     public static User stubStudent() {
         User user = new User();
         user.setId(0);
-        user.setIndex(getContext().getString(R.string.example_student));
+        user.setIndex("s396374");
         user.setName("Eryk Mariankowski");
         user.setToken("token");
         return user;

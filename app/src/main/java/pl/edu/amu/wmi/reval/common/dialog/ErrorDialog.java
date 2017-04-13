@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import pl.edu.amu.wmi.reval.R;
+
 
 public class ErrorDialog {
 
@@ -16,7 +18,7 @@ public class ErrorDialog {
     }
 
     private static Dialog buildDialog(Context context, String errorMessage) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AppTheme_MyAlertDialogStyle);
         builder
                 .setMessage(errorMessage)
 //                .setCancelable(false)

@@ -14,10 +14,9 @@ import butterknife.OnClick;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
 import pl.edu.amu.wmi.reval.common.activity.SubjectTopicContainer;
-import pl.edu.amu.wmi.reval.di.MyApplication;
-import pl.edu.amu.wmi.reval.question.filter.QuestionRequestParameters;
 import pl.edu.amu.wmi.reval.question.page.AbstractQuestionPageActivity;
 import pl.edu.amu.wmi.reval.question.page.AdminQuestionPageActivity;
+import pl.edu.amu.wmi.reval.topic.Topic;
 
 public class AddQuestionActivity extends RevalActivity implements QuestionServiceImpl.AddQuestionAdapter {
 
@@ -31,7 +30,8 @@ public class AddQuestionActivity extends RevalActivity implements QuestionServic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyApplication.getComponent().inject(this);
+
+        getComponent().inject(this);
         setContentView(R.layout.activity_add_question);
         ButterKnife.bind(this);
         progressDialog = new ProgressDialog(this);
@@ -40,7 +40,7 @@ public class AddQuestionActivity extends RevalActivity implements QuestionServic
 
     @OnClick(R.id.add_question)
     public void onClick() {
-        QuestionRequestParameters parameters = container.getParameters();
+        Topic parameters = container.getParameters();
         if (parameters != null) {
             String questionContentText = questionContent.getText().toString();
             if (TextUtils.isEmpty(questionContentText)) {
@@ -49,7 +49,7 @@ public class AddQuestionActivity extends RevalActivity implements QuestionServic
                 progressDialog.setMessage(getString(R.string.add_question));
                 progressDialog.show();
                 questionService.addQuestion(this,
-                        new Question(parameters, getString(R.string.question_content)));
+                        new Question(parameters, questionContent.getText().toString()));
             }
         }
     }

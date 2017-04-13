@@ -13,6 +13,8 @@ import android.widget.TextView;
 import javax.inject.Inject;
 
 import pl.edu.amu.wmi.reval.R;
+import pl.edu.amu.wmi.reval.common.util.DaggerUtil;
+import pl.edu.amu.wmi.reval.di.MyApplicationComponent;
 import pl.edu.amu.wmi.reval.user.activity.SignInActivity;
 import pl.edu.amu.wmi.reval.user.service.UserContext;
 
@@ -23,9 +25,14 @@ public class RevalActivity extends AppCompatActivity {
     protected ProgressDialog progressDialog;
 
     protected void setActionBar() {
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setCustomView(R.layout.action_bar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setCustomView(R.layout.action_bar);
+        } else {
+            throw new NullPointerException("Action bar is null");
+        }
         if (!TextUtils.isEmpty(getTitle())) {
             TextView title = (TextView) findViewById(R.id.actionbar_text_view);
             title.setText(getTitle());
@@ -54,6 +61,10 @@ public class RevalActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public MyApplicationComponent getComponent() {
+        return DaggerUtil.getComponent(this);
     }
 
 }

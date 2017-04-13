@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnEditorAction;
 import pl.edu.amu.wmi.reval.R;
-import pl.edu.amu.wmi.reval.di.MyApplication;
+import pl.edu.amu.wmi.reval.common.util.DaggerUtil;
 import pl.edu.amu.wmi.reval.question.QuestionActivity;
 import pl.edu.amu.wmi.reval.user.model.Credentials;
 import pl.edu.amu.wmi.reval.user.service.UserServiceImpl;
@@ -78,7 +78,7 @@ public class CredentialsSignInActivity extends Activity implements UserServiceIm
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyApplication.getComponent().inject(this);
+        DaggerUtil.getComponent(this).inject(this);
         setContentView(R.layout.activity_credentials_sign_in);
         ButterKnife.bind(this);
         progressDialog = new ProgressDialog(this);

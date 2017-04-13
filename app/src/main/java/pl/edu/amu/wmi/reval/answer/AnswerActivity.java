@@ -1,5 +1,6 @@
 package pl.edu.amu.wmi.reval.answer;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.List;
@@ -7,11 +8,13 @@ import java.util.List;
 import javax.inject.Inject;
 
 import pl.edu.amu.wmi.reval.R;
+import pl.edu.amu.wmi.reval.answer.page.AdminAnswerPageActivity;
+import pl.edu.amu.wmi.reval.answer.page.StudentAnswerPageActivity;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
 import pl.edu.amu.wmi.reval.common.exception.NoParamException;
-import pl.edu.amu.wmi.reval.di.MyApplication;
+import pl.edu.amu.wmi.reval.common.grid.OnListFragmentInteractionListener;
 
-public class AnswerActivity extends RevalActivity implements AnswerServiceImpl.AnswerAdapter {
+public class AnswerActivity extends RevalActivity implements AnswerServiceImpl.AnswerAdapter, OnListFragmentInteractionListener<Answer> {
 
     public static final String CHECKED_ANSWERS_PARAM = "CHECKED_ANSWERS_PARAM";
     public static final String QUESTION_PARAM = "QUESTION_PARAM";
@@ -24,7 +27,7 @@ public class AnswerActivity extends RevalActivity implements AnswerServiceImpl.A
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
-        MyApplication.getComponent().inject(this);
+        getComponent().inject(this);
         answerFragment = (AnswerFragment) getFragmentManager().findFragmentById(R.id.answer_fragment);
         initProgressDialog(R.string.answer_progress);
         initExtra();
@@ -54,4 +57,16 @@ public class AnswerActivity extends RevalActivity implements AnswerServiceImpl.A
             progressDialog.dismiss();
         }
     }
+
+    @Override
+    public void onListFragmentInteraction(Answer item) {
+        if (userContext.getUser().isAdmin()) {
+            startActivity(new Intent(this, AdminAnswerPageActivity.class)
+                    .putExtra(AdminAnswerPageActivity.ANSWER_PARAM, item));
+        } else {
+            startActivity(new Intent(this, StudentAnswerPageActivity.class)
+                    .putExtra(AdminAnswerPageActivity.ANSWER_PARAM, item));
+        }
+    }
+
 }

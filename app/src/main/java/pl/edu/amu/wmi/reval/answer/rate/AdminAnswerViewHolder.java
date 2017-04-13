@@ -1,4 +1,4 @@
-package pl.edu.amu.wmi.reval.answer.holder;
+package pl.edu.amu.wmi.reval.answer.rate;
 
 import android.view.View;
 import android.widget.TextView;
@@ -6,6 +6,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import pl.edu.amu.wmi.reval.R;
+import pl.edu.amu.wmi.reval.answer.holder.FragmentAnswerViewHolder;
 
 public class AdminAnswerViewHolder extends FragmentAnswerViewHolder {
 
@@ -22,4 +23,5 @@ public class AdminAnswerViewHolder extends FragmentAnswerViewHolder {
         super.setRow();
         answerContent.setText(item.getAnswerText());
     }
+
 }

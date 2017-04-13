@@ -1,6 +1,7 @@
 package pl.edu.amu.wmi.reval.common.services;
 
 
+import android.app.Application;
 import android.util.Log;
 
 import java.io.IOException;
@@ -21,10 +22,12 @@ public abstract class MyCallback<T> implements Callback<T> {
     private static final String FAILURE_MESSAGE = "Network failure";
     private static final int UNAUTHORIZED_STATUS_CODE = 401;
     private final MyCallbackInjectHelper myCallbackInjectHelper;
+    private final Application application;
 
-    public MyCallback() {
+    protected MyCallback(Application application) {
+        this.application = application;
         this.myCallbackInjectHelper = new MyCallbackInjectHelper();
-        myCallbackInjectHelper.inject();
+        myCallbackInjectHelper.inject(application);
     }
 
     private static String errorMessageFromResponse(Response response) {
@@ -53,7 +56,7 @@ public abstract class MyCallback<T> implements Callback<T> {
 
     @Override
     public void onFailure(Call<T> call, Throwable throwable) {
-        if (!NetworkContext.isOffline()) {
+        if (!NetworkContext.isOffline(application)) {
             myCallbackInjectHelper.errorService.caughtException(throwable);
             Log.e(TAG, FAILURE_MESSAGE, throwable);
         }
@@ -67,8 +70,8 @@ public abstract class MyCallback<T> implements Callback<T> {
         @Inject
         UserContext userContext;
 
-        private void inject() {
-            MyApplication.getComponent().inject(this);
+        private void inject(Application application) {
+            ((MyApplication) application).getComponent().inject(this);
         }
 
     }

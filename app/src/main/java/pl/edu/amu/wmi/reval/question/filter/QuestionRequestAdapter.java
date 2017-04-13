@@ -1,5 +1,7 @@
 package pl.edu.amu.wmi.reval.question.filter;
 
+import pl.edu.amu.wmi.reval.topic.Topic;
+
 public interface QuestionRequestAdapter {
-    void populateFilter(QuestionRequestParameters parameters);
+    void populateFilter(Topic parameters);
 }

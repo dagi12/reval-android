@@ -14,6 +14,7 @@ import pl.edu.amu.wmi.reval.common.activity.SubjectTopicContainer;
 import pl.edu.amu.wmi.reval.common.dialog.MyBottomSheetDialogFragment;
 import pl.edu.amu.wmi.reval.common.exception.AdapterLackException;
 import pl.edu.amu.wmi.reval.di.MyApplication;
+import pl.edu.amu.wmi.reval.topic.Topic;
 
 
 public class QuestionFilterDialogFragment extends MyBottomSheetDialogFragment {
@@ -29,7 +30,7 @@ public class QuestionFilterDialogFragment extends MyBottomSheetDialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyApplication.getComponent().inject(this);
+        ((MyApplication) getActivity().getApplication()).getComponent().inject(this);
         Context context = getActivity();
         if (context instanceof QuestionRequestAdapter) {
             adapter = (QuestionRequestAdapter) context;
@@ -54,7 +55,7 @@ public class QuestionFilterDialogFragment extends MyBottomSheetDialogFragment {
 
     @OnClick(R.id.search_question)
     public void search() {
-        QuestionRequestParameters parameters = container.getParameters();
+        Topic parameters = container.getParameters();
         if (parameters != null) {
             adapter.populateFilter(parameters);
             dismiss();

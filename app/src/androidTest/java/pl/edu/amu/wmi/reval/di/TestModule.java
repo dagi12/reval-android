@@ -47,13 +47,13 @@ public class TestModule {
     @Provides
     @Singleton
     protected ErrorServiceImpl provideErrorService() {
-        return new ErrorServiceImpl(null, null);
+        return new ErrorServiceImpl(null, null, null);
     }
 
     @Provides
     @Singleton
     protected SubjectServiceImpl provideSubjectServiceImpl() {
-        return new SubjectServiceImpl(null) {
+        return new SubjectServiceImpl(null, mApplication) {
             @Override
             public void getSubjects(SubjectListAdapter adapter) {
                 adapter.populateSubjects(StubData.stubSubjects());
@@ -64,14 +64,14 @@ public class TestModule {
     @Provides
     @Singleton
     protected QuestionServiceImpl provideQuestionService() {
-        return new QuestionServiceImpl(null) {
+        return new QuestionServiceImpl(null, mApplication) {
             @Override
-            public void getFilteredQuestions(QuestionAdapter adapter, int topicId) {
+            public void getFilteredQuestions(QuestionServiceImpl.QuestionAdapter adapter, int topicId) {
                 adapter.setQuestions(StubData.stubQuestions());
             }
 
             @Override
-            public void getQuestions(final QuestionAdapter questionAdapter) {
+            public void getQuestions(final QuestionServiceImpl.QuestionAdapter questionAdapter) {
                 questionAdapter.setQuestions(StubData.stubQuestions());
             }
         };
@@ -80,7 +80,7 @@ public class TestModule {
     @Provides
     @Singleton
     protected TopicServiceImpl provideTopicService() {
-        return new TopicServiceImpl(null) {
+        return new TopicServiceImpl(null, mApplication) {
             @Override
             public void getTopics(TopicAdapter adapter, int subjectId) {
                 adapter.populateTopics(StubData.stubTopics());
@@ -91,7 +91,7 @@ public class TestModule {
     @Provides
     @Singleton
     protected AnswerServiceImpl provideAnswerService() {
-        return new AnswerServiceImpl(null);
+        return new AnswerServiceImpl(null, mApplication);
     }
 
 }

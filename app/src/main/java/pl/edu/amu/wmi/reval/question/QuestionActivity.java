@@ -23,15 +23,14 @@ import butterknife.OnClick;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
 import pl.edu.amu.wmi.reval.common.grid.OnListFragmentInteractionListener;
-import pl.edu.amu.wmi.reval.di.MyApplication;
 import pl.edu.amu.wmi.reval.question.filter.QuestionFilterDialogFragment;
 import pl.edu.amu.wmi.reval.question.filter.QuestionRequestAdapter;
-import pl.edu.amu.wmi.reval.question.filter.QuestionRequestParameters;
 import pl.edu.amu.wmi.reval.question.nav.HeaderViewHolder;
 import pl.edu.amu.wmi.reval.question.nav.NavigationAdapter;
 import pl.edu.amu.wmi.reval.question.page.AdminQuestionPageActivity;
 import pl.edu.amu.wmi.reval.question.page.StudentQuestionPageActivity;
 import pl.edu.amu.wmi.reval.question.unique.CheckUniqueActivity;
+import pl.edu.amu.wmi.reval.topic.Topic;
 
 public class QuestionActivity extends RevalActivity implements
         NavigationView.OnNavigationItemSelectedListener,
@@ -53,7 +52,7 @@ public class QuestionActivity extends RevalActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyApplication.getComponent().inject(this);
+        getComponent().inject(this);
         if (userContext.isSignedIn()) {
             initActivity();
         } else {
@@ -163,10 +162,10 @@ public class QuestionActivity extends RevalActivity implements
 
 
     @Override
-    public void populateFilter(QuestionRequestParameters parameters) {
-        if (parameters.getTopicId() != null) {
+    public void populateFilter(Topic parameters) {
+        if (parameters.getId() != null) {
             progressDialog.show();
-            questionService.getFilteredQuestions(this, parameters.getTopicId());
+            questionService.getFilteredQuestions(this, parameters.getId());
         }
 
     }

@@ -9,7 +9,6 @@ import butterknife.ButterKnife;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.answer.holder.AbstractAnswerViewHolder;
 import pl.edu.amu.wmi.reval.answer.holder.StudentAnswerViewHolder;
-import pl.edu.amu.wmi.reval.di.MyApplication;
 
 public class StudentAnswerPageActivity extends AbstractAnswerPageActivity {
 
@@ -22,7 +21,7 @@ public class StudentAnswerPageActivity extends AbstractAnswerPageActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyApplication.getComponent().inject(this);
+        getComponent().inject(this);
         ButterKnife.bind(this);
         indexContainer.setVisibility(View.GONE);
         question.setText(getString(R.string.your_answer));

@@ -44,8 +44,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/write_question_conent"
             android:inputType="textMultiLine"
-            android:maxLength="@integer/long_text_length"
-            android:text="@string/example_content" />
+            android:maxLength="@integer/long_text_length" />
 
     </LinearLayout>
 

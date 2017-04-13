@@ -6,6 +6,8 @@ import android.os.Bundle;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.edu.amu.wmi.reval.R;
@@ -14,17 +16,19 @@ import pl.edu.amu.wmi.reval.answer.AnswerActivity;
 import pl.edu.amu.wmi.reval.answer.AnswerServiceImpl;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
 import pl.edu.amu.wmi.reval.common.activity.SubjectTopicContainer;
-import pl.edu.amu.wmi.reval.di.MyApplication;
+import pl.edu.amu.wmi.reval.topic.Topic;
 
 public class CheckUniqueActivity extends RevalActivity implements AnswerServiceImpl.AnswerAdapter {
 
-    private AnswerServiceImpl answerService;
+    @Inject
+    AnswerServiceImpl answerService;
 
     private SubjectTopicContainer container;
 
     @OnClick(R.id.check_unique)
     public void onClick() {
-        answerService.checkUnique(this, container.getParameters().getTopicId());
+        Topic topic = container.getParameters();
+        answerService.checkUnique(this, topic.getId());
     }
 
     @Override
@@ -32,7 +36,7 @@ public class CheckUniqueActivity extends RevalActivity implements AnswerServiceI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_unique);
         ButterKnife.bind(this);
-        MyApplication.getComponent().inject(this);
+        getComponent().inject(this);
         container = new SubjectTopicContainer(this, this);
     }
 

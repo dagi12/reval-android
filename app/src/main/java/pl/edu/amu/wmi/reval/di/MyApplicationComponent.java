@@ -6,6 +6,7 @@ import dagger.Component;
 import pl.edu.amu.wmi.reval.answer.AnswerActivity;
 import pl.edu.amu.wmi.reval.answer.page.AdminAnswerPageActivity;
 import pl.edu.amu.wmi.reval.answer.page.StudentAnswerPageActivity;
+import pl.edu.amu.wmi.reval.answer.rate.AdminAnswerViewHolder;
 import pl.edu.amu.wmi.reval.common.activity.SubjectTopicContainer;
 import pl.edu.amu.wmi.reval.common.services.MyCallback;
 import pl.edu.amu.wmi.reval.question.AddQuestionActivity;
@@ -46,4 +47,6 @@ public interface MyApplicationComponent {
     void inject(StudentAnswerPageActivity studentAnswerPageActivity);
 
     void inject(AnswerActivity answerActivity);
+
+    void inject(AdminAnswerViewHolder adminAnswerViewHolder);
 }

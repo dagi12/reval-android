@@ -32,5 +32,4 @@ public abstract class AbstractAnswerPageActivity extends RevalActivity {
 
     abstract AbstractAnswerViewHolder getHolder();
 
-
 }

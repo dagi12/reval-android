@@ -1,41 +1,25 @@
 package pl.edu.amu.wmi.reval.di;
 
 import android.app.Application;
-import android.content.Context;
 
 public class MyApplication extends Application {
 
+    private MyApplicationComponent component;
 
-    private static MyApplicationComponent component;
-    private static Context context;
-
-    public static MyApplicationComponent getComponent() {
+    public MyApplicationComponent getComponent() {
         return component;
     }
 
-    public static void setComponent(MyApplicationComponent component) {
-        MyApplication.component = component;
-    }
-
-    public static Context getContext() {
-        return context;
-    }
-
-    private static void assignComponent(Application application) {
-        component = DaggerMyApplicationComponent
-                .builder()
-                .myApplicationModule(new MyApplicationModule(application))
-                .build();
-    }
-
-    private static void setApplicationContext(MyApplication context) {
-        MyApplication.context = context;
+    public void setComponent(MyApplicationComponent component) {
+        this.component = component;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        setApplicationContext(this);
-        assignComponent(this);
+        this.component = DaggerMyApplicationComponent
+                .builder()
+                .myApplicationModule(new MyApplicationModule(this))
+                .build();
     }
 }

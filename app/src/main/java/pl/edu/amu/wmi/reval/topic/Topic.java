@@ -22,4 +22,11 @@ public class Topic extends AbstractRevalItem {
         return subject;
     }
 
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    public Integer getSubjectId() {
+        return subject.getId();
+    }
 }

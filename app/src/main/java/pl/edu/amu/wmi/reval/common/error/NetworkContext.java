@@ -4,22 +4,20 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import static pl.edu.amu.wmi.reval.di.MyApplication.getContext;
-
 
 public class NetworkContext {
 
     private NetworkContext() {
     }
 
-    public static boolean isOffline() {
+    public static boolean isOffline(Context application) {
         ConnectivityManager cm =
-                (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager) application.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return !(netInfo != null && netInfo.isConnectedOrConnecting());
     }
 
-    public static boolean isOnline() {
-        return !isOffline();
+    public static boolean isOnline(Context application) {
+        return !isOffline(application);
     }
 }

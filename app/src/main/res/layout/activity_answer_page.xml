@@ -42,10 +42,16 @@
             android:id="@+id/answer_content"
             style="@style/AppTheme.WellEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/example_content" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/rate_button"
+        style="@style/AppTheme.ButtonStyle.Floating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rate_answer" />
 
 </LinearLayout>
 

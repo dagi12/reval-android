@@ -6,17 +6,22 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.Date;
 
-import pl.edu.amu.wmi.reval.answer.Answer;
 import pl.edu.amu.wmi.reval.common.grid.AbstractRevalItem;
-import pl.edu.amu.wmi.reval.question.filter.QuestionRequestParameters;
 import pl.edu.amu.wmi.reval.subject.Subject;
 import pl.edu.amu.wmi.reval.topic.Topic;
 
 public class Question extends AbstractRevalItem implements Serializable {
 
+    private static final String SUCCESS_MESSAGE = "created";
     private String questionText;
     private String title;
-    private Answer answer;
+    private Boolean answered;
+
+    @Expose(serialize = false)
+    private Integer questionId;
+
+    @Expose(serialize = false)
+    private String status;
 
     @SerializedName("pub_date")
     private Date lastActivityDate;
@@ -32,11 +37,12 @@ public class Question extends AbstractRevalItem implements Serializable {
 
     private int maxPoints;
 
-    public Question(QuestionRequestParameters parameters, String questionContent) {
+    public Question(Topic parameters, String questionText) {
         super();
-        this.topicId = parameters.getTopicId();
+        this.topic = parameters;
+        this.topicId = parameters.getId();
         this.subjectId = parameters.getSubjectId();
-        this.questionText = questionContent;
+        this.questionText = questionText;
     }
 
     public Question(int id, String title, String questionText, Date lastActivityDate, Topic topic) {
@@ -47,20 +53,8 @@ public class Question extends AbstractRevalItem implements Serializable {
         this.topic = topic;
     }
 
-    public String getQuestionText() {
-        return questionText;
-    }
-
-    public void setQuestionText(String questionText) {
-        this.questionText = questionText;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Topic getTopic() {
@@ -71,27 +65,23 @@ public class Question extends AbstractRevalItem implements Serializable {
         this.topic = topic;
     }
 
-    public int getMaxPoints() {
+    int getMaxPoints() {
         return maxPoints;
     }
 
-    public void setMaxPoints(int maxPoints) {
-        this.maxPoints = maxPoints;
-    }
-
-    public Date getLastActivityDate() {
+    Date getLastActivityDate() {
         return lastActivityDate;
     }
 
-    public void setLastActivityDate(Date lastActivityDate) {
+    void setLastActivityDate(Date lastActivityDate) {
         this.lastActivityDate = lastActivityDate;
     }
 
-    public String getQuestionContent() {
+    public String getQuestionText() {
         return questionText;
     }
 
-    public String getSubjectName() {
+    String getSubjectName() {
         if (topic != null) {
             Subject subject = topic.getSubject();
             if (subject != null) {
@@ -101,15 +91,21 @@ public class Question extends AbstractRevalItem implements Serializable {
         return null;
     }
 
-    public String getTopicName() {
+    String getTopicName() {
         return topic.getName();
     }
 
-    public Answer getAnswer() {
-        return answer;
+    boolean success() {
+        return SUCCESS_MESSAGE.equals(status);
     }
 
-    public void setAnswer(Answer answer) {
-        this.answer = answer;
+    private Integer getQuestionId() {
+        return questionId;
+    }
+
+    void addSuccess(Question question) {
+        this.maxPoints = question.getMaxPoints();
+        this.questionText = question.getQuestionText();
+        this.setId(question.getQuestionId());
     }
 }

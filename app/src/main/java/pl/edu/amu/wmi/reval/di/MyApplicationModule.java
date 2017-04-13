@@ -96,7 +96,7 @@ public class MyApplicationModule {
     @Provides
     @Singleton
     protected UserContext provideUserContext(PreferencesManager preferencesManager) {
-        return new UserContext(preferencesManager);
+        return new UserContext(preferencesManager, mApplication);
     }
 
     @Provides
@@ -130,20 +130,20 @@ public class MyApplicationModule {
     @Singleton
     protected ErrorServiceImpl provideErrorService(Retrofit retrofit) {
         ErrorService errorService = retrofit.create(ErrorService.class);
-        return new ErrorServiceImpl(errorService, Thread.getDefaultUncaughtExceptionHandler());
+        return new ErrorServiceImpl(errorService, Thread.getDefaultUncaughtExceptionHandler(), mApplication);
     }
 
     @Provides
     @Singleton
     protected PicassoCache provideCachedImageManager() {
-        return new PicassoCache();
+        return new PicassoCache(mApplication);
     }
 
 
     @Provides
     @Singleton
     protected SubjectServiceImpl provideSubjectServiceImpl(Retrofit retrofit) {
-        return new SubjectServiceImpl(retrofit.create(SubjectService.class));
+        return new SubjectServiceImpl(retrofit.create(SubjectService.class), mApplication);
     }
 
     @Provides
@@ -155,19 +155,19 @@ public class MyApplicationModule {
     @Provides
     @Singleton
     protected QuestionServiceImpl provideQuestionService(Retrofit retrofit) {
-        return new QuestionServiceImpl(retrofit.create(QuestionService.class));
+        return new QuestionServiceImpl(retrofit.create(QuestionService.class), mApplication);
     }
 
     @Provides
     @Singleton
     protected TopicServiceImpl provideTopicService(Retrofit retrofit) {
-        return new TopicServiceImpl(retrofit.create(TopicService.class));
+        return new TopicServiceImpl(retrofit.create(TopicService.class), mApplication);
     }
 
     @Provides
     @Singleton
     AnswerServiceImpl provideAnswerService(Retrofit retrofit) {
-        return new AnswerServiceImpl(retrofit.create(AnswerService.class));
+        return new AnswerServiceImpl(retrofit.create(AnswerService.class), mApplication);
     }
 
 }

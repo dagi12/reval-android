@@ -12,6 +12,12 @@
         <item name="android:dropDownListViewStyle">@style/AppTheme.Spinner</item>
     </style>
 
+    <style name="AppTheme.MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/well_color_text</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
     <style name="EditTextLabel">
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimary</item>

@@ -7,11 +7,17 @@ import pl.edu.amu.wmi.reval.common.grid.AbstractRevalItem;
 import pl.edu.amu.wmi.reval.question.Question;
 
 public class Answer extends AbstractRevalItem implements Serializable {
+
     private String user;
     private String answerText;
     private Date pubDate;
-    private int similarity;
+    private Integer similarity;
+    private Integer rate;
     private Question question;
+
+    public Integer getRate() {
+        return rate;
+    }
 
     public String getAnswerText() {
         return answerText;
@@ -21,7 +27,7 @@ public class Answer extends AbstractRevalItem implements Serializable {
         this.answerText = answerText;
     }
 
-    public int getSimilarity() {
+    public Integer getSimilarity() {
         return similarity;
     }
 

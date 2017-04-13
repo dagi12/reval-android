@@ -1,15 +1,11 @@
 package pl.edu.amu.wmi.reval.common.error;
 
+import android.content.Context;
 import android.util.Log;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ErrorServiceImpl implements Thread.UncaughtExceptionHandler {
 
@@ -19,7 +15,10 @@ public class ErrorServiceImpl implements Thread.UncaughtExceptionHandler {
 
     private final Thread.UncaughtExceptionHandler defaultExceptionHandler;
 
-    public ErrorServiceImpl(ErrorService errorService, Thread.UncaughtExceptionHandler defaultExceptionHandler) {
+    private final Context application;
+
+    public ErrorServiceImpl(ErrorService errorService, Thread.UncaughtExceptionHandler defaultExceptionHandler, Context application) {
+        this.application = application;
         this.errorService = errorService;
         this.defaultExceptionHandler = defaultExceptionHandler;
     }
@@ -34,34 +33,35 @@ public class ErrorServiceImpl implements Thread.UncaughtExceptionHandler {
 
     public void caughtException(final Throwable e) {
         ErrorReport errorReport = new ErrorReport(constructReportFromThrowable(e));
-        errorService.postErrorReport(errorReport).enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.errorBody() == null) {
-                    Log.i(TAG, "Wysłanie stacka na serwer powiodło się");
-                } else {
-                    Log.e(TAG, "Wysłanie stacka na serwer nie powiodło się");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Log.e(TAG, "Wysłanie stacka na serwer nie powiodło się", t);
-            }
-        });
+//        errorService.postErrorReport(errorReport).enqueue(new Callback<Void>() {
+//            @Override
+//            public void onResponse(Call<Void> call, Response<Void> response) {
+//                if (response.errorBody() == null) {
+//                    Log.i(TAG, "Wysłanie stacka na serwer powiodło się");
+//                } else {
+//                    Log.e(TAG, "Wysłanie stacka na serwer nie powiodło się");
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Void> call, Throwable t) {
+//                Log.e(TAG, "Wysłanie stacka na serwer nie powiodło się", t);
+//            }
+//        });
+        Log.e(TAG, "Wysłanie stacka na serwer nie powiodło się", e);
     }
 
     @Override
     public void uncaughtException(final Thread thread, final Throwable e) {
-        if (NetworkContext.isOnline()) {
+        if (NetworkContext.isOnline(application)) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        errorService.postErrorReport(new ErrorReport(constructReportFromThrowable(e))).execute();
-                    } catch (IOException e1) {
-                        Log.e(TAG, "Błąd podczas wysyłania błędu xD", e1);
-                    }
+//                    try {
+//                        errorService.postErrorReport(new ErrorReport(constructReportFromThrowable(e))).execute();
+//                    } catch (IOException e1) {
+//                        Log.e(TAG, "Błąd podczas wysyłania błędu xD", e1);
+//                    }
                 }
             }).start();
         }

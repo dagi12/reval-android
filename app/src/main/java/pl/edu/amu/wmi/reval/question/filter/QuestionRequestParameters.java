@@ -1,30 +1,38 @@
 package pl.edu.amu.wmi.reval.question.filter;
 
+import pl.edu.amu.wmi.reval.subject.Subject;
+import pl.edu.amu.wmi.reval.topic.Topic;
+
 public class QuestionRequestParameters {
-    private Integer subjectId;
-    private Integer topicId;
+    private Subject subject;
+    private Topic topic;
 
     public QuestionRequestParameters() {
         // retrofit need
     }
 
-    public QuestionRequestParameters(int parameters) {
-        this.topicId = parameters;
-    }
-
     public Integer getTopicId() {
-        return topicId;
+        return topic.getId();
     }
 
-    public void setTopicId(Integer topicId) {
-        this.topicId = topicId;
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 
     public Integer getSubjectId() {
-        return subjectId;
-    }
 
-    public void setSubjectId(Integer subjectId) {
-        this.subjectId = subjectId;
+        return subject.getId();
     }
 }

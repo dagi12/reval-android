@@ -61,7 +61,7 @@ public class JUnitTestModule {
     @Provides
     @Singleton
     protected UserContext provideUserContext() {
-        return new UserContext(new PreferencesManagerMock());
+        return new UserContext(new PreferencesManagerMock(), null);
     }
 
     @Provides
