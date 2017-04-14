@@ -17,7 +17,7 @@ public class Question extends AbstractRevalItem implements Serializable {
     private String title;
 
     @Expose(serialize = false)
-    private Boolean answered;
+    private boolean answered;
     @Expose(serialize = false)
     private Integer questionId;
     @Expose(serialize = false)

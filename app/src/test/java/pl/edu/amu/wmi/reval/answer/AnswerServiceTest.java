@@ -13,7 +13,6 @@ import pl.edu.amu.wmi.reval.answer.basic.Answer;
 import pl.edu.amu.wmi.reval.answer.rate.RateAnswerRequest;
 import pl.edu.amu.wmi.reval.answer.rate.RateResult;
 import pl.edu.amu.wmi.reval.answer.report.AnswerReport;
-import pl.edu.amu.wmi.reval.common.util.ListUtils;
 import retrofit2.Response;
 
 public class AnswerServiceTest extends SignedDaggerServiceTest {
@@ -48,7 +47,7 @@ public class AnswerServiceTest extends SignedDaggerServiceTest {
     public void getSimilarAnswersTest() throws IOException {
         super.setUpAdmin();
         Response<List<AnswerReport>> answers = answerService.getSimilarAnswers(FILLED_TOPIC_ID).execute();
-        Assert.assertFalse(ListUtils.isEmpty(answers.body()));
+        Assert.assertNotNull(answers.body().get(0).getSimilarity());
     }
 
     @Test

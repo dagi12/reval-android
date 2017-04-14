@@ -10,9 +10,11 @@ import pl.edu.amu.wmi.reval.common.grid.AbstractRevalItem;
 public class AnswerReport extends AbstractRevalItem implements Serializable {
 
     private Answer answer;
+
+    @SerializedName("similarAnswer")
     private Integer similarAnswer;
 
-    @SerializedName("similarity_percentage")
+    @SerializedName("similarityPercentage")
     private Integer similarity;
 
     public AnswerReport() {
