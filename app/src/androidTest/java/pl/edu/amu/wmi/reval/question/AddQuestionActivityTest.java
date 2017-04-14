@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.di.MyDaggerMockRule;
+import pl.edu.amu.wmi.reval.question.add.AddQuestionActivity;
 import pl.edu.amu.wmi.reval.question.page.AdminQuestionPageActivity;
 
 import static android.support.test.espresso.Espresso.onView;

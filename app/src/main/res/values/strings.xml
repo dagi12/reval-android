@@ -48,4 +48,5 @@
     <string name="current_rating">Oceniono na: </string>
     <string name="no_data">Brak danych</string>
     <string name="answers_report">Raport odpowiedzi</string>
+    <string name="max_points">Maksymalna ilość punktów:</string>
 </resources>

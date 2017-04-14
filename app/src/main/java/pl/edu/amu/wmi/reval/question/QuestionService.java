@@ -2,6 +2,7 @@ package pl.edu.amu.wmi.reval.question;
 
 import java.util.List;
 
+import pl.edu.amu.wmi.reval.question.add.QuestionResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -17,5 +18,5 @@ public interface QuestionService {
     Call<List<Question>> getFilteredQuestions(@Path("id") int topicId);
 
     @POST("api/add_question")
-    Call<Question> addQuestion(@Body Question question);
+    Call<QuestionResponse> addQuestion(@Body Question question);
 }

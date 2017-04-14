@@ -42,7 +42,7 @@
             android:name=".answer.report.AnswerReportActivity"
             android:label="@string/answers_report" />
         <activity
-            android:name=".question.AddQuestionActivity"
+            android:name=".question.add.AddQuestionActivity"
             android:label="@string/add_question" />
         <activity
             android:name=".answer.page.AdminAnswerPageActivity"

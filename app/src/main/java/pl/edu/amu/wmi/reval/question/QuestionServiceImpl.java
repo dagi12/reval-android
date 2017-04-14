@@ -6,6 +6,8 @@ import java.util.List;
 
 import pl.edu.amu.wmi.reval.common.services.AbstactRetrofitService;
 import pl.edu.amu.wmi.reval.common.services.MyCallback;
+import pl.edu.amu.wmi.reval.question.add.AddQuestionAdapter;
+import pl.edu.amu.wmi.reval.question.add.QuestionResponse;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -36,13 +38,13 @@ public class QuestionServiceImpl extends AbstactRetrofitService {
         });
     }
 
-    void addQuestion(final AddQuestionAdapter adapter, final Question question) {
-        questionService.addQuestion(question).enqueue(new MyCallback<Question>(application) {
+    public void addQuestion(final AddQuestionAdapter adapter, final Question question) {
+        questionService.addQuestion(question).enqueue(new MyCallback<QuestionResponse>(application) {
             @Override
-            protected void onHandledResponse(Call<Question> call, Response<Question> response) {
-                Question resultQuestion = response.body();
-                if (resultQuestion.success()) {
-                    question.addSuccess(response.body());
+            protected void onHandledResponse(Call<QuestionResponse> call, Response<QuestionResponse> response) {
+                QuestionResponse resultQuestion = response.body();
+                if (resultQuestion.isSuccess()) {
+                    question.addSuccess(resultQuestion.getQuestion());
                     adapter.success(question);
                 }
             }
@@ -51,10 +53,6 @@ public class QuestionServiceImpl extends AbstactRetrofitService {
 
     protected interface QuestionAdapter {
         void setQuestions(List<Question> questions);
-    }
-
-    interface AddQuestionAdapter {
-        void success(Question question);
     }
 
 }

@@ -12,7 +12,6 @@ import pl.edu.amu.wmi.reval.topic.Topic;
 
 public class Question extends AbstractRevalItem implements Serializable {
 
-    private static final String SUCCESS_MESSAGE = "created";
     private String questionText;
     private String title;
 
@@ -35,7 +34,7 @@ public class Question extends AbstractRevalItem implements Serializable {
     private Topic topic;
     private Integer maxPoints;
 
-    public Question(Topic parameters, String questionText) {
+    public Question(Topic parameters, String questionText, int maxPoints) {
         super();
         this.topic = parameters;
         this.topicId = parameters.getId();
@@ -43,6 +42,7 @@ public class Question extends AbstractRevalItem implements Serializable {
             this.subjectId = parameters.getSubjectId();
         }
         this.questionText = questionText;
+        this.maxPoints = maxPoints;
     }
 
     public Question(int id, String title, String questionText, Date lastActivityDate, Topic topic) {
@@ -91,15 +91,11 @@ public class Question extends AbstractRevalItem implements Serializable {
         return topic.getName();
     }
 
-    boolean success() {
-        return SUCCESS_MESSAGE.equals(status);
-    }
-
     private Integer getQuestionId() {
         return questionId;
     }
 
-    public Integer getMaxPoints() {
+    Integer getMaxPoints() {
         return maxPoints;
     }
 

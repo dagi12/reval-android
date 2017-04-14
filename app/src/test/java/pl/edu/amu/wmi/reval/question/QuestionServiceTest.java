@@ -11,6 +11,7 @@ import java.util.List;
 
 import pl.edu.amu.wmi.reval.SignedDaggerServiceTest;
 import pl.edu.amu.wmi.reval.common.util.ListUtils;
+import pl.edu.amu.wmi.reval.question.add.QuestionResponse;
 import pl.edu.amu.wmi.reval.topic.Topic;
 import retrofit2.Response;
 
@@ -50,8 +51,8 @@ public class QuestionServiceTest extends SignedDaggerServiceTest {
     @Test
     public void addQuestion() throws IOException {
         super.setUpAdmin();
-        Response<Question> response = questionService.addQuestion(new Question(new Topic("Jakiś topic", 3), "dupa")).execute();
-        Assert.assertNotNull(response.body());
+        Response<QuestionResponse> response = questionService.addQuestion(new Question(new Topic("lorem ipsum", 3), "lorem", 3)).execute();
+        Assert.assertTrue(response.body().isSuccess());
     }
 
     private void verifyQuestions(Response<List<Question>> response) {
