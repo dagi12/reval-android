@@ -18,8 +18,8 @@ public class QuestionViewHolder extends AbstractViewHolder<Question> {
     @BindView(R.id.topic_name)
     TextView topicName;
 
-    @BindView(R.id.question_title)
-    TextView questionTitle;
+    @BindView(R.id.question_text)
+    TextView questionText;
 
     @BindView(R.id.question_date)
     TextView questionDate;
@@ -33,7 +33,7 @@ public class QuestionViewHolder extends AbstractViewHolder<Question> {
     public void setRow() {
         subjectName.setText(item.getSubjectName());
         topicName.setText(item.getTopicName());
-        questionTitle.setText(item.getTitle());
+        questionText.setText(item.getQuestionText());
         if (item.getLastActivityDate() != null) {
             questionDate.setText(DateFormat.getDateInstance().format(item.getLastActivityDate()));
         }

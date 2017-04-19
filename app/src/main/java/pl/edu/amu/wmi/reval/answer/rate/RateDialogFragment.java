@@ -10,28 +10,29 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
+import android.widget.Spinner;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.common.exception.AdapterLackException;
+import pl.edu.amu.wmi.reval.common.spinner.NumberSpinnerAdapter;
 
 public class RateDialogFragment extends DialogFragment {
 
-    private static final float DEFAULT_RATING = 2.5f;
-
     private static final String VOTE_TITLE_PARAM = "VOTE_TITLE";
+    private static final String MAX_POINTS_PARAM = "MAX_POINTS";
 
-    @BindView(R.id.answer_rating_bar)
-    RatingBar ratingBar;
+    @BindView(R.id.rate_spinner)
+    Spinner rateSpinner;
 
     private RateResultAdapter adapter;
 
-    public static RateDialogFragment getInstance(String message) {
+    public static RateDialogFragment getInstance(String message, Integer maxPoints) {
         RateDialogFragment rateDialogFragment = new RateDialogFragment();
         Bundle args = new Bundle();
         args.putString(VOTE_TITLE_PARAM, message);
+        args.putInt(MAX_POINTS_PARAM, maxPoints);
         rateDialogFragment.setArguments(args);
         return rateDialogFragment;
     }
@@ -54,7 +55,8 @@ public class RateDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AppTheme_MyAlertDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),
+                R.style.AppTheme_MyAlertDialogStyle);
         builder.setTitle(getArguments().getString(VOTE_TITLE_PARAM))
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
@@ -65,7 +67,7 @@ public class RateDialogFragment extends DialogFragment {
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        adapter.processVote(ratingBar.getRating());
+                        adapter.processVote((int) rateSpinner.getSelectedItem());
                     }
                 });
 
@@ -75,20 +77,13 @@ public class RateDialogFragment extends DialogFragment {
         builder.setView(view);
         Dialog dialog = builder.create();
         ButterKnife.bind(this, view);
-        ratingBar.setRating(DEFAULT_RATING);
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                if (rating < 1.0f) {
-                    ratingBar.setRating(1.0f);
-                }
-            }
-        });
+        rateSpinner.setAdapter(new NumberSpinnerAdapter(getActivity(),
+                getArguments().getInt(MAX_POINTS_PARAM)));
         return dialog;
     }
 
     public interface RateResultAdapter {
-        void processVote(final float vote);
+        void processVote(final int vote);
     }
 
 }

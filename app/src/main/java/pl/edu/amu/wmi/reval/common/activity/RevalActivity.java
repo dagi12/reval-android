@@ -47,7 +47,7 @@ public class RevalActivity extends AppCompatActivity {
     }
 
     protected void initProgressDialog(@StringRes int stringId) {
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this, R.style.ProgressDialogTheme);
         progressDialog.setMessage(getString(stringId));
     }
 

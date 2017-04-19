@@ -8,14 +8,14 @@ public abstract class SignedDaggerServiceTest extends AbstractDaggerServiceTest 
     //  s375195/91122103872
     protected void setUpAdmin() {
         User user = new User();
-        user.setToken("79eb1833ea302ae0ec7216e92ff38806f5f8b737");
+        user.setToken("bff039d4d16b0823b8cacd0d6bcfb1de8269750b");
         userContext.setUser(user);
     }
 
     //  s396419/prusio13
     protected void setUpStudent() {
         User user = new User();
-        user.setToken("5811c97aeaebd220e676956e8fe31e95d2f7b6bc");
+        user.setToken("b61f4eb2279ddc7ee1d6a9fa16787cf4786b87be");
         userContext.setUser(user);
     }
 

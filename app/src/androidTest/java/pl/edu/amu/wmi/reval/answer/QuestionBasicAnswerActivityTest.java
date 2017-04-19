@@ -36,7 +36,7 @@ public class QuestionBasicAnswerActivityTest {
     @Test
     public void simple() {
         activityRule.launchActivity(null);
-        onView(withId(R.id.question_title)).perform(click());
+        onView(withId(R.id.question_text)).perform(click());
     }
 
     @Test

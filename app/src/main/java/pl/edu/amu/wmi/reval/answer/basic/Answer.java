@@ -13,14 +13,20 @@ public class Answer extends AbstractRevalItem implements Serializable {
     private String user;
     private String answerText;
     private Date pubDate;
-
     @SerializedName("points")
     private Integer rate;
-
     private Question question;
+
+    public Question getQuestion() {
+        return question;
+    }
 
     public Integer getRate() {
         return rate;
+    }
+
+    public void setRate(Integer rate) {
+        this.rate = rate;
     }
 
     public String getAnswerText() {
@@ -37,13 +43,6 @@ public class Answer extends AbstractRevalItem implements Serializable {
 
     public void setPubDate(Date pubDate) {
         this.pubDate = pubDate;
-    }
-
-    public String getQuestionTitle() {
-        if (question != null) {
-            return question.getTitle();
-        }
-        return null;
     }
 
     public String getUser() {

@@ -1,5 +1,6 @@
 package pl.edu.amu.wmi.reval.answer.page;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,19 +21,20 @@ import pl.edu.amu.wmi.reval.answer.rate.RateResult;
 
 public class AdminAnswerPageActivity extends AbstractAnswerPageActivity implements AnswerServiceImpl.RateAnswerAdapter, RateDialogFragment.RateResultAdapter {
 
+    public static final int SUCCESS_CODE = 984;
     private static final String TAG = AdminAnswerPageActivity.class.getName();
     @BindView(R.id.rate_button)
     Button rateButton;
     @Inject
     AnswerServiceImpl answerService;
     private RateDialogFragment rateDialogFragment;
+    private Integer savedRate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getComponent().inject(this);
-        rateDialogFragment = RateDialogFragment
-                .getInstance(getString(R.string.rate_answer));
+        rateDialogFragment = RateDialogFragment.getInstance(getString(R.string.rate_answer), answer.getQuestion().getMaxPoints());
     }
 
     @Override
@@ -40,7 +42,10 @@ public class AdminAnswerPageActivity extends AbstractAnswerPageActivity implemen
         View view = findViewById(android.R.id.content);
         ButterKnife.bind(this, view);
         rateButton.setVisibility(View.VISIBLE);
-        rateSuccess(new RateResult(answer));
+        if (savedRate != null) {
+            answer.setRate(savedRate);
+        }
+        rateButton.setText(getRateButtonLabel(answer));
         getRateButtonLabel(answer);
         return new AdminAnswerViewHolder(view);
     }
@@ -51,15 +56,18 @@ public class AdminAnswerPageActivity extends AbstractAnswerPageActivity implemen
     }
 
     @Override
-    public void processVote(float rate) {
-        RateAnswerRequest request = new RateAnswerRequest(answer.getId(), (int) rate);
+    public void processVote(int rate) {
+        RateAnswerRequest request = new RateAnswerRequest(answer.getId(), rate);
         answerService.rateAnswer(request, this);
     }
 
-
     @Override
     public void rateSuccess(RateResult rateResult) {
-        rateButton.setText(getRateButtonLabel(rateResult.getAnswer()));
+        int rate = rateResult.getAnswer().getRate();
+        savedRate = rate;
+        answer.setRate(rate);
+        setResult(SUCCESS_CODE, new Intent().putExtra(ANSWER_PARAM, answer));
+        rateButton.setText(getRateButtonLabel(answer));
     }
 
     private String getRateButtonLabel(Answer answer) {

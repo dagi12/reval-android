@@ -13,7 +13,6 @@ import pl.edu.amu.wmi.reval.topic.Topic;
 public class Question extends AbstractRevalItem implements Serializable {
 
     private String questionText;
-    private String title;
 
     @Expose(serialize = false)
     private boolean answered;
@@ -45,9 +44,8 @@ public class Question extends AbstractRevalItem implements Serializable {
         this.maxPoints = maxPoints;
     }
 
-    public Question(int id, String title, String questionText, Date lastActivityDate, Topic topic) {
+    public Question(int id, String questionText, Date lastActivityDate, Topic topic) {
         super(id);
-        this.title = title;
         this.questionText = questionText;
         this.lastActivityDate = lastActivityDate;
         this.topic = topic;
@@ -55,10 +53,6 @@ public class Question extends AbstractRevalItem implements Serializable {
 
     public Boolean getAnswered() {
         return answered;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public Topic getTopic() {
@@ -95,7 +89,7 @@ public class Question extends AbstractRevalItem implements Serializable {
         return questionId;
     }
 
-    Integer getMaxPoints() {
+    public Integer getMaxPoints() {
         return maxPoints;
     }
 

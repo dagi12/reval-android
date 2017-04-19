@@ -60,7 +60,6 @@ public class QuestionServiceTest extends SignedDaggerServiceTest {
         Question question = response.body().get(0);
         Assert.assertFalse(isEmpty(question.getSubjectName()));
         Assert.assertFalse(isEmpty(question.getTopicName()));
-        Assert.assertFalse(isEmpty(question.getTitle()));
         Assert.assertNotNull(question.getLastActivityDate());
         Assert.assertTrue(question.getMaxPoints() > 0);
     }

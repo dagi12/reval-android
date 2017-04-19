@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,6 +15,7 @@ import butterknife.OnClick;
 import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.common.activity.RevalActivity;
 import pl.edu.amu.wmi.reval.common.activity.SubjectTopicContainer;
+import pl.edu.amu.wmi.reval.common.spinner.NumberSpinnerAdapter;
 import pl.edu.amu.wmi.reval.question.Question;
 import pl.edu.amu.wmi.reval.question.QuestionServiceImpl;
 import pl.edu.amu.wmi.reval.question.page.AbstractQuestionPageActivity;
@@ -42,13 +42,7 @@ public class AddQuestionActivity extends RevalActivity implements AddQuestionAda
         ButterKnife.bind(this);
         progressDialog = new ProgressDialog(this);
         container = new SubjectTopicContainer(this, this);
-        setMaxPointsSpinner();
-    }
-
-    private void setMaxPointsSpinner() {
-        Integer[] items = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, R.layout.spinner_dropdown_item, items);
-        maxPointsSpinner.setAdapter(adapter);
+        maxPointsSpinner.setAdapter(new NumberSpinnerAdapter(this, 10));
     }
 
     @OnClick(R.id.add_question)

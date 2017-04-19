@@ -36,11 +36,11 @@ public final class StubData {
 
     public static List<Question> stubQuestions() {
         List<Question> questions = new LinkedList<>();
-        questions.add(new Question(0, "Zadanie 1", "Treść zadania 1", new Date(), stubTopic()));
-        questions.add(new Question(0, "Zadanie 2", "Treść zadania 2", new Date(), stubTopic()));
-        questions.add(new Question(0, "Zadanie 3", "Treść zadania 3", new Date(), stubTopic()));
-        questions.add(new Question(0, "Zadanie 4", "Treść zadania 4", new Date(), stubTopic()));
-        questions.add(new Question(0, "Zadanie 5", "Treść zadania 5", new Date(), stubTopic()));
+        questions.add(new Question(0, "Treść zadania 1", new Date(), stubTopic()));
+        questions.add(new Question(0, "Treść zadania 2", new Date(), stubTopic()));
+        questions.add(new Question(0, "Treść zadania 3", new Date(), stubTopic()));
+        questions.add(new Question(0, "Treść zadania 4", new Date(), stubTopic()));
+        questions.add(new Question(0, "Treść zadania 5", new Date(), stubTopic()));
         return questions;
     }
 
@@ -65,7 +65,7 @@ public final class StubData {
     }
 
     public static Question stubQuestion() {
-        return new Question(0, "Zadanie 1", "Treść zadania 1", new Date(), stubTopic());
+        return new Question(0, "Treść zadania 1", new Date(), stubTopic());
     }
 
     public static List<Subject> stubSubjects() {

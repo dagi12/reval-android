@@ -13,20 +13,19 @@ import pl.edu.amu.wmi.reval.common.util.ListUtils;
 public class AnswerReportActivity extends AbstractAnswerActivity<AnswerReport> {
 
     public static final String CHECKED_ANSWERS_PARAM = "CHECKED_ANSWERS_PARAM";
-    private AnswerReportFragment answerReportFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer_report);
         getComponent().inject(this);
-        answerReportFragment = (AnswerReportFragment) getFragmentManager().findFragmentById(R.id.answer_report_fragment);
+        fragmentGrid = (AnswerReportFragment) getFragmentManager().findFragmentById(R.id.answer_report_fragment);
         initExtra();
     }
 
     @Override
     public void onListFragmentInteraction(AnswerReport item) {
-        fragmentInteraction(item.getAnswer());
+        fragmentInteraction(item);
     }
 
     @SuppressWarnings("unchecked")
@@ -38,7 +37,8 @@ public class AnswerReportActivity extends AbstractAnswerActivity<AnswerReport> {
         } else if (ListUtils.isEmpty(answersReport)) {
             EmptyGridDialogFragment.getInstance().show(getFragmentManager(), "dialog");
         } else {
-            answerReportFragment.setData(answersReport);
+            fragmentGrid.setData(answersReport);
         }
     }
+
 }

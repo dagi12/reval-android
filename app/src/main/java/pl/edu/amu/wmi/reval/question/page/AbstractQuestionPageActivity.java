@@ -3,7 +3,6 @@ package pl.edu.amu.wmi.reval.question.page;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,18 +48,18 @@ public abstract class AbstractQuestionPageActivity extends RevalActivity {
     abstract void answerClick();
 
     class QuestionPageViewHolder extends QuestionViewHolder {
-        @BindView(R.id.question_content)
-        TextView questionContent;
+//        @BindView(R.id.question_content)
+//        TextView questionContent;
 
         public QuestionPageViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+//            ButterKnife.bind(itemView);
         }
 
         @Override
         public void setRow() {
             super.setRow();
-            questionContent.setText(item.getQuestionText());
+//            questionContent.setText(item.getQuestionText());
         }
     }
 

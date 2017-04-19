@@ -22,13 +22,12 @@
             style="@style/AppTheme.PageLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/question_title" />
+            android:text="@string/question_content" />
 
         <TextView
-            android:id="@+id/question_title"
+            android:id="@+id/question_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/example_question_title" />
+            android:layout_height="wrap_content" />
 
         <TextView
             style="@style/AppTheme.PageLabel"

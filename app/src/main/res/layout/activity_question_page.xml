@@ -37,31 +37,6 @@
                 android:layout_toEndOf="@id/question_icon"
                 android:layout_toRightOf="@id/question_icon" />
 
-
-            <LinearLayout
-                android:id="@+id/question_content_wrapper"
-                style="@style/AppTheme.Paragraph"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/question_wrapper"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/AppTheme.PageLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/icon_margin"
-                    android:layout_marginStart="@dimen/icon_margin"
-                    android:text="@string/question_content" />
-
-                <TextView
-                    android:id="@+id/question_content"
-                    style="@style/AppTheme.Paragraph.Content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/example_content" />
-            </LinearLayout>
-
         </RelativeLayout>
     </ScrollView>
 

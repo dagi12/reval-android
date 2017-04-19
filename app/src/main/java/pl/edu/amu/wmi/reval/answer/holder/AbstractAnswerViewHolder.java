@@ -14,7 +14,7 @@ import pl.edu.amu.wmi.reval.common.grid.AbstractViewHolder;
 
 public abstract class AbstractAnswerViewHolder extends AbstractViewHolder<Answer> {
 
-    @BindView(R.id.question_title)
+    @BindView(R.id.question_text)
     TextView questionTitle;
 
     @BindView(R.id.answer_date)
@@ -27,8 +27,8 @@ public abstract class AbstractAnswerViewHolder extends AbstractViewHolder<Answer
 
     @Override
     public void setRow() {
-        if (!TextUtils.isEmpty(item.getQuestionTitle())) {
-            questionTitle.setText(item.getQuestionTitle());
+        if (item.getQuestion() != null && !TextUtils.isEmpty(item.getQuestion().getQuestionText())) {
+            questionTitle.setText(item.getQuestion().getQuestionText());
         }
         if (item.getPubDate() != null) {
             answerDate.setText(DateFormat.getDateInstance().format(item.getPubDate()));

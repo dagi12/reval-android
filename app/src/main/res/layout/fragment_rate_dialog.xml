@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RatingBar
-        android:id="@+id/answer_rating_bar"
+    <Spinner
+        android:id="@+id/rate_spinner"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:numStars="5" />
+        android:layout_height="@dimen/spinner_height"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>

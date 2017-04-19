@@ -28,8 +28,10 @@ public class CheckUniqueActivity extends RevalActivity implements AnswerServiceI
     @OnClick(R.id.check_unique)
     public void onClick() {
         Topic topic = container.getParameters();
-        progressDialog.show();
-        answerService.checkUnique(this, topic.getId());
+        if (topic != null && topic.getId() != null) {
+            progressDialog.show();
+            answerService.checkUnique(this, topic.getId());
+        }
     }
 
     @Override

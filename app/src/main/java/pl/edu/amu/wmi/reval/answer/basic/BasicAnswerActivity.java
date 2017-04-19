@@ -8,11 +8,11 @@ import pl.edu.amu.wmi.reval.R;
 import pl.edu.amu.wmi.reval.answer.AbstractAnswerActivity;
 import pl.edu.amu.wmi.reval.answer.AnswerServiceImpl;
 import pl.edu.amu.wmi.reval.common.exception.NoParamException;
+import pl.edu.amu.wmi.reval.common.grid.AbstractFragmentGrid;
 
 public class BasicAnswerActivity extends AbstractAnswerActivity<Answer> implements AnswerServiceImpl.AnswerAdapter {
 
     public static final String QUESTION_PARAM = "QUESTION_PARAM";
-    private BasicAnswerFragment basicAnswerFragment;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -20,7 +20,7 @@ public class BasicAnswerActivity extends AbstractAnswerActivity<Answer> implemen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
         getComponent().inject(this);
-        basicAnswerFragment = (BasicAnswerFragment) getFragmentManager().findFragmentById(R.id.answer_fragment);
+        fragmentGrid = (AbstractFragmentGrid) getFragmentManager().findFragmentById(R.id.answer_fragment);
         initProgressDialog(R.string.answer_progress);
         initExtra();
     }
@@ -36,10 +36,9 @@ public class BasicAnswerActivity extends AbstractAnswerActivity<Answer> implemen
         }
     }
 
-
     @Override
     public void setAnswers(List<Answer> answers) {
-        basicAnswerFragment.setData(answers);
+        fragmentGrid.setData(answers);
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
